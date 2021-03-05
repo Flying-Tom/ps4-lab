@@ -12,12 +12,9 @@ public:
         src = new int(source);
         des = new int(destination);
     };
-    ~Edge()
-    {
-        if (src != nullptr)
-            delete (src);
-        if (des != nullptr)
-            delete (des);
+    ~Edge(){
+        //delete (src);
+        //delete (des);
     };
 
 public:
