@@ -51,7 +51,8 @@ public:
                 return false;
             else
             {
-                edgeset->emplace_back(Edge(vertex1, vertex2));
+                Edge temp= Edge(vertex1, vertex2);
+                edgeset->emplace_back(temp);
                 return true;
             }
         }
