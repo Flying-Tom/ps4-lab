@@ -23,7 +23,7 @@ public:
 public:
     bool AddVertex(int vertex)
     {
-        if (ContainsVertex(vertex))
+        if (Graph::ContainsVertex(vertex))
             return false;
         else
             pointset->emplace_back(vertex);
@@ -31,7 +31,7 @@ public:
     };
     bool RemoveVertex(int vertex)
     {
-        if (VertexPosInSet(vertex) != pointset.end())
+        if (Graph::VertexPosInSet(vertex) != pointset.end())
         {
             pointset.erase(it);
             return true;
@@ -40,7 +40,7 @@ public:
     };
     bool AddEdge(int vertex1, int vertex2)
     {
-        if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
+        if (Graph::ContainsVertex(vertex1) && Graph::ContainsVertex(vertex2))
         {
             if (ContainsEdge(vertex1, vertex2))
                 return false;
@@ -51,7 +51,7 @@ public:
     };
     bool RemoveEdge(int vertex1, int vertex2)
     {
-        if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
+        if (Graph::ContainsVertex(vertex1) && Graph::ContainsVertex(vertex2))
         {
             auto it = EdgePosInSet(vertex1, vertex2);
             if (it != pointset.end())
