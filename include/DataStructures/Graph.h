@@ -67,11 +67,11 @@ public:
 public:
     std::vector<int>::iterator VertexPosInSet(int vertex)
     {
-        return std::find(pointset.begin(), pointset->end(), vertex);
+        return std::find(pointset->begin(), pointset->end(), vertex);
     };
     std::vector<Edge>::iterator EdgePosInSet(int vertex1, int vertex2)
     {
-        for (auto it = edgeset.begin(); it != edgeset->end(); it++)
+        for (auto it = edgeset->begin(); it != edgeset->end(); it++)
         {
             if (*it->GetSource() == vertex1 && *it->GetDestination() == vertex2)
                 return it;
