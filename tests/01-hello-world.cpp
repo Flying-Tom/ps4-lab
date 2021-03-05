@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
     Graph g;
-
+    assert(0);
     assert(g.AddVertex(1) == true);
     assert(g.AddVertex(2) == true);
     assert(g.AddVertex(3) == true);

@@ -12,7 +12,8 @@ public:
         src = new int(source);
         des = new int(destination);
     };
-    ~Edge(){
+    ~Edge()
+    {
         //delete (src);
         //delete (des);
     };
