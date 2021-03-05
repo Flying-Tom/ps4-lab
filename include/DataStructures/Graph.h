@@ -11,8 +11,8 @@ public:
     std::vector<int> *pointset;
     Graph()
     {
-        edgeset = new vector<Edge>;
-        pointset = new vector<int>;
+        edgeset = new std::vector<Edge>;
+        pointset = new std::vector<int>;
     };
     ~Graph()
     {
