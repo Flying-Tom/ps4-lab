@@ -7,8 +7,8 @@
 class Graph
 {
 public:
-    vector<Edge> *edgeset;
-    vector<int> *pointset;
+    std::vector<Edge> *edgeset;
+    std::vector<int> *pointset;
     Graph()
     {
         edgeset = new vector<Edge>;
