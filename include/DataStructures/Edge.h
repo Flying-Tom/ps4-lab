@@ -12,8 +12,8 @@ public:
     }
     ~Edge()
     {
-        //delete (src);
-        //delete (des);
+        delete (src);
+        delete (des);
     }
 
 public:
