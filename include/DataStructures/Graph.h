@@ -64,11 +64,11 @@ public:
     };
 
 public:
-    auto VertexPosInSet(int vertex)
+    std::vector<int>::iterator VertexPosInSet(int vertex)
     {
         return std::find(pointset.begin(), pointset->end(), vertex);
     };
-    auto EdgePosInSet(int vertex1, int vertex2)
+    std::vector<Edge>::iterator EdgePosInSet(int vertex1, int vertex2)
     {
         for (auto it = edgeset.begin(); it != edgeset->end(); it++)
         {
