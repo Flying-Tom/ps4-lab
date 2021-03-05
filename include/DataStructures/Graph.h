@@ -56,7 +56,7 @@ public:
         if (Graph::ContainsVertex(vertex1) && Graph::ContainsVertex(vertex2))
         {
             std::vector<Edge>::iterator it = EdgePosInSet(vertex1, vertex2);
-            if (it != pointset->end())
+            if (it != edgeset->end())
             {
                 edgeset->erase(it);
                 return true;
