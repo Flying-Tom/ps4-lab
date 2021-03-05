@@ -7,16 +7,13 @@ public:
     int *src, *des;
     Edge(int source, int destination)
     {
-        src = malloc(sizeof(int));
-        des = malloc(sizeof(int));
-
-        *src = source;
-        *des = destination;
+        src = new int(source)
+        des = new int(destination);
     }
     ~Edge()
     {
-        free(src);
-        free(des);
+        delete(src);
+        delete(des);
     }
 
 public:
