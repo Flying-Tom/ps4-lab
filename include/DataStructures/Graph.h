@@ -49,9 +49,13 @@ public:
         if (Graph::ContainsVertex(vertex1) && Graph::ContainsVertex(vertex2))
         {
             if (ContainsEdge(vertex1, vertex2))
+            {
+                printf("if\n");
                 return false;
+            }
             else
             {
+                printf("else\n");
                 Edge temp = Edge(vertex1, vertex2);
                 edgeset->emplace_back(temp);
                 return true;
