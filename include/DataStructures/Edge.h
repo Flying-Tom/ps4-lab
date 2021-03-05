@@ -14,9 +14,9 @@ public:
     };
     ~Edge()
     {
-        if (src != NULL)
+        if (src != nullptr)
             delete (src);
-        if (des != NULL)
+        if (des != nullptr)
             delete (des);
     };
 
