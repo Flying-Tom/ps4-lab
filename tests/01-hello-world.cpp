@@ -27,4 +27,6 @@ int main()
     assert(g.GetOutgoingEdges(1).size() == 2);
     assert(g.GetNeighbors(1).size() == 2);
     assert(g.GetNeighbors(2).empty());
+
+    puts("Pass!");
 }
