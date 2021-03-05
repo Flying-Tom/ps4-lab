@@ -32,7 +32,8 @@ public:
     };
     bool RemoveVertex(int vertex)
     {
-        if (Graph::VertexPosInSet(vertex) != pointset->end())
+        auto it = Graph::VertexPosInSet(vertex);
+        if (it != pointset->end())
         {
             pointset->erase(it);
             return true;
