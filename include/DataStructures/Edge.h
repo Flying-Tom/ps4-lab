@@ -3,15 +3,16 @@
 
 class Edge
 {
-public:
+private:
     int *src, *des;
+
+public:
     Edge(int source, int destination)
     {
         src = new int(source);
         des = new int(destination);
     };
-    ~Edge()
-    {
+    ~Edge(){
         //delete (src);
         //delete (des);
     };
