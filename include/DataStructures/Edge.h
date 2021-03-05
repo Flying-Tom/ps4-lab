@@ -13,7 +13,7 @@ public:
     ~Edge()
     {
         //delete (src);
-        delete (des);
+        //delete (des);
     };
 
 public:
