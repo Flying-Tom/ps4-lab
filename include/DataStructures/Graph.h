@@ -26,7 +26,7 @@ public:
         if (ContainsVertex(vertex))
             return false;
         else
-            pointset.push_back(vertex);
+            pointset->emplace_back(vertex);
         return true;
     };
     bool RemoveVertex(int vertex)
@@ -45,7 +45,7 @@ public:
             if (ContainsEdge(vertex1, vertex2))
                 return false;
             else
-                edgeset.push_back(Edge(vertex1, vertex2));
+                edgeset->emplace_back(Edge(vertex1, vertex2));
         }
         return false;
     };
