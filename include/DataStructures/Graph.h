@@ -31,7 +31,7 @@ public:
     };
     bool RemoveVertex(int vertex)
     {
-        if (Graph::VertexPosInSet(vertex) != pointset.end())
+        if (Graph::VertexPosInSet(vertex) != pointset->end())
         {
             pointset.erase(it);
             return true;
@@ -54,7 +54,7 @@ public:
         if (Graph::ContainsVertex(vertex1) && Graph::ContainsVertex(vertex2))
         {
             auto it = EdgePosInSet(vertex1, vertex2);
-            if (it != pointset.end())
+            if (it != pointset->end())
             {
                 edgeset.erase(it);
                 return true;
@@ -66,16 +66,16 @@ public:
 public:
     auto VertexPosInSet(int vertex)
     {
-        return std::find(pointset.begin(), pointset.end(), vertex);
+        return std::find(pointset.begin(), pointset->end(), vertex);
     };
     auto EdgePosInSet(int vertex1, int vertex2)
     {
-        for (auto it = edgeset.begin(); it != edgeset.end(); it++)
+        for (auto it = edgeset.begin(); it != edgeset->end(); it++)
         {
             if (*it->GetSource() == vertex1 && *it->GetDestination() == vertex2)
                 return it;
         }
-        return edgeset.end();
+        return edgeset->end();
     };
     int CountVertices() const
     {
@@ -87,13 +87,13 @@ public:
     };
     bool ContainsVertex(int vertex) const
     {
-        if (VertexPosInSet(vertex) != pointset.end())
+        if (VertexPosInSet(vertex) != pointset->end())
             return true;
         return false;
     };
     bool ContainsEdge(int vertex1, int vertex2) const
     {
-        if (EdgePosInSet(vertex1, vertex2) != edgeset.end())
+        if (EdgePosInSet(vertex1, vertex2) != edgeset->end())
             return true;
         return false;
     };
