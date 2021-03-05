@@ -12,7 +12,7 @@ public:
     };
     ~Edge()
     {
-        delete (src);
+        //delete (src);
         delete (des);
     };
 
