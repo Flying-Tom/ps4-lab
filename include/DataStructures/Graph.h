@@ -2,6 +2,7 @@
 #define GRAPH_H
 
 #include <vector>
+#include <algorithm>
 #include <DataStructures/Edge.h>
 
 class Graph
