@@ -32,7 +32,7 @@ public:
     };
     bool RemoveVertex(int vertex)
     {
-        auto it = Graph::VertexPosInSet(vertex);
+        std::vector<int>::iterator it = Graph::VertexPosInSet(vertex);
         if (it != pointset->end())
         {
             pointset->erase(it);
@@ -55,7 +55,7 @@ public:
     {
         if (Graph::ContainsVertex(vertex1) && Graph::ContainsVertex(vertex2))
         {
-            auto it = EdgePosInSet(vertex1, vertex2);
+            std::vector<Edge>::iterator it = EdgePosInSet(vertex1, vertex2);
             if (it != pointset->end())
             {
                 edgeset->erase(it);
@@ -72,7 +72,7 @@ public:
     };
     std::vector<Edge>::iterator EdgePosInSet(int vertex1, int vertex2)
     {
-        for (auto it = edgeset->begin(); it != edgeset->end(); it++)
+        for (std::vector<Edge>::iterator it = edgeset->begin(); it != edgeset->end(); it++)
         {
             if (*it->GetSource() == vertex1 && *it->GetDestination() == vertex2)
                 return it;
