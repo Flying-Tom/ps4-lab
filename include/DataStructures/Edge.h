@@ -9,22 +9,22 @@ public:
     {
         src = new int(source);
         des = new int(destination);
-    }
+    };
     ~Edge()
     {
         delete (src);
         delete (des);
-    }
+    };
 
 public:
     int GetSource() const
     {
         return *src;
-    }
+    };
     int GetDestination() const
     {
         return *des;
-    }
+    };
 };
 
 #endif
