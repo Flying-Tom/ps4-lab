@@ -27,8 +27,11 @@ public:
         if (Graph::ContainsVertex(vertex))
             return false;
         else
+        {
             pointset->emplace_back(vertex);
-        return true;
+            return true;
+        }
+        return false;
     };
     bool RemoveVertex(int vertex)
     {
@@ -47,7 +50,10 @@ public:
             if (ContainsEdge(vertex1, vertex2))
                 return false;
             else
+            {
                 edgeset->emplace_back(Edge(vertex1, vertex2));
+                return true;
+            }
         }
         return false;
     };
