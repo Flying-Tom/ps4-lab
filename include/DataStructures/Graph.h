@@ -99,12 +99,48 @@ public:
             return true;
         return false;
     };
-    std::vector<int> GetVertices() const;
-    std::vector<Edge> GetEdges() const;
-    std::vector<Edge> GetIncomingEdges(int vertex) const;
-    std::vector<Edge> GetOutgoingEdges(int vertex) const;
-    int GetDegree(int vertex) const;
-    std::vector<int> GetNeighbors(int vertex) const;
+    std::vector<int> GetVertices() const
+    {
+        return *pointset;
+    };
+    std::vector<Edge> GetEdges() const
+    {
+        return *edgeset;
+    };
+    std::vector<Edge> GetIncomingEdges(int vertex) const
+    {
+        std::vector<Edge> temp;
+        for (std::vector<Edge>::iterator it = edgeset->begin(); it != edgeset->end(); it++)
+        {
+            if (it->GetDestination() == vertex)
+                temp.emplace_back(*it);
+        }
+        return temp;
+    };
+    std::vector<Edge> GetOutgoingEdges(int vertex) const
+    {
+        std::vector<Edge> temp;
+        for (std::vector<Edge>::iterator it = edgeset->begin(); it != edgeset->end(); it++)
+        {
+            if (it->GetSource() == vertex)
+                temp.emplace_back(*it);
+        }
+        return temp;
+    };
+    int GetDegree(int vertex) const
+    {
+        return GetOutgoingEdges(vertex).size();
+    };
+    std::vector<int> GetNeighbors(int vertex) const
+    {
+        std::vector<int> temp;
+        for (std::vector<Edge>::iterator it = edgeset->begin(); it != edgeset->end(); it++)
+        {
+            if (it->GetSource() == vertex)
+                temp.emplace_back(it->GetDestination());
+        }
+        return temp;
+    };
 };
 
 #endif
