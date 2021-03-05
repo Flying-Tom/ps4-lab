@@ -66,11 +66,11 @@ public:
     };
 
 public:
-    std::vector<int>::iterator VertexPosInSet(int vertex)
+    std::vector<int>::iterator VertexPosInSet(int vertex) const
     {
         return std::find(pointset->begin(), pointset->end(), vertex);
     };
-    std::vector<Edge>::iterator EdgePosInSet(int vertex1, int vertex2)
+    std::vector<Edge>::iterator EdgePosInSet(int vertex1, int vertex2) const
     {
         for (std::vector<Edge>::iterator it = edgeset->begin(); it != edgeset->end(); it++)
         {
