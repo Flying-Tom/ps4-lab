@@ -33,7 +33,7 @@ public:
     {
         if (Graph::VertexPosInSet(vertex) != pointset->end())
         {
-            pointset.erase(it);
+            pointset->erase(it);
             return true;
         }
         return false;
@@ -56,7 +56,7 @@ public:
             auto it = EdgePosInSet(vertex1, vertex2);
             if (it != pointset->end())
             {
-                edgeset.erase(it);
+                edgeset->erase(it);
                 return true;
             }
         }
