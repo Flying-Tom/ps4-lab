@@ -48,13 +48,10 @@ public:
         if (Graph::ContainsVertex(vertex1) && Graph::ContainsVertex(vertex2))
         {
             if (ContainsEdge(vertex1, vertex2))
-            {
                 return false;
-            }
             else
             {
-                Edge temp = Edge(vertex1, vertex2);
-                edgeset->push_back(temp);
+                edgeset->emplace_back(Edge(vertex1, vertex2));
                 return true;
             }
         }
