@@ -74,18 +74,18 @@ public:
     {
         for (std::vector<Edge>::iterator it = edgeset->begin(); it != edgeset->end(); it++)
         {
-            if (*it->GetSource() == vertex1 && *it->GetDestination() == vertex2)
+            if (it->GetSource() == vertex1 && it->GetDestination() == vertex2)
                 return it;
         }
         return edgeset->end();
     };
     int CountVertices() const
     {
-        return pointset.size();
+        return pointset->size();
     };
     int CountEdges() const
     {
-        return edgeset.size();
+        return edgeset->size();
     };
     bool ContainsVertex(int vertex) const
     {
