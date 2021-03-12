@@ -92,7 +92,7 @@ public:
     {
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
-            auto it = points.find(vertex1);
+            auto it = edges.find(vertex1);
             for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
             {
                 if (vit->first == vertex2)
@@ -105,7 +105,7 @@ public:
     {
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
-            auto it = points.find(vertex1);
+            auto it = edges.find(vertex1);
             for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
             {
                 if (vit->first == vertex2)
