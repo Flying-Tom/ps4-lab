@@ -26,7 +26,7 @@ public:
     {
         if (points.find(vertex) == points.end())
         {
-            points[vertex] = make_pair(vertex, 1);
+            points[vertex] = pair(vertex, 1);
             edges[vertex] = vector<pair<int, int>>();
             return true;
         }
