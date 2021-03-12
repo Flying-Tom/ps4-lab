@@ -101,10 +101,14 @@ public:
     };
     int GetWeight(int vertex1, int vertex2) const
     {
-        for (auto it = edgeset->begin(); it != edgeset->end(); it++)
+        if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
-            if (it->GetSource() == vertex1 && it->GetDestination() == vertex2)
-                return it->weight;
+            auto it = points.find(vertex1);
+            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+            {
+                if (vit->first == vertex2)
+                    return vit->second;
+            }
         }
         return -1;
     };
