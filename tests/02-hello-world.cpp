@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    Graph g;
+    WeightedGraph g;
     assert(g.AddVertex(1) == true);
     assert(g.AddVertex(2) == true);
     assert(g.AddVertex(3) == true);
@@ -15,11 +15,11 @@ int main()
     assert(g.ContainsVertex(4) == false);
     assert(g.RemoveVertex(5) == false);
 
-    assert(g.AddEdge(1, 2) == true);
-    assert(g.AddEdge(1, 3) == true);
-    assert(g.AddEdge(2, 5) == false);
-    assert(g.ContainsEdge(1, 2) == true);
-    assert(g.ContainsEdge(2, 5) == false);
+    assert(g.AddEdge(1, 2, 1) == true);
+    assert(g.AddEdge(1, 3, 1) == true);
+    assert(g.AddEdge(2, 5, 1) == false);
+    assert(g.ContainsEdge(1, 2, 1) == true);
+    assert(g.ContainsEdge(2, 5, 1) == false);
 
     assert(g.GetDegree(1) == 2);
     assert(g.GetIncomingEdges(1).empty());
