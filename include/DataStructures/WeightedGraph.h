@@ -1,5 +1,6 @@
 #include <DataStructures/WeightedEdge.h>
 #include <map>
+#include <vector>
 
 class WeightedGraph
 {
