@@ -77,7 +77,10 @@ public:
     {
         int res = 0;
         for (auto it = edges.begin(); it != edges.end(); it++)
+        {
             res += it->second.size();
+            printf("%d\n", it->second.size());
+        }
         return res;
     };
     bool ContainsVertex(int vertex) const
