@@ -51,6 +51,7 @@ public:
                 return false;
             else
             {
+                puts("3");
                 auto it = edges.find(vertex1);
                 it->second.emplace_back(make_pair(vertex2, weight));
                 return true;
