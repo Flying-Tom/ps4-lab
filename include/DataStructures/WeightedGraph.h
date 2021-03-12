@@ -34,7 +34,7 @@ public:
                 return false;
             else
             {
-                edgeset->emplace_back(Edge(vertex1, vertex2));
+                edgeset->emplace_back(Edge(vertex1, vertex2, weight));
                 return true;
             }
         }
@@ -42,16 +42,7 @@ public:
     };
     bool RemoveEdge(int vertex1, int vertex2)
     {
-        if (Graph::ContainsVertex(vertex1) && Graph::ContainsVertex(vertex2))
-        {
-            std::vector<Edge>::iterator it = EdgePosInSet(vertex1, vertex2);
-            if (it != edgeset->end())
-            {
-                edgeset->erase(it);
-                return true;
-            }
-        }
-        return false;
+        return Graph::RemoveEdge(vertex1, vertex2);
     };
 
 public:
@@ -61,12 +52,7 @@ public:
     };
     std::vector<Edge>::iterator EdgePosInSet(int vertex1, int vertex2) const
     {
-        for (std::vector<Edge>::iterator it = edgeset->begin(); it != edgeset->end(); it++)
-        {
-            if (it->GetSource() == vertex1 && it->GetDestination() == vertex2)
-                return it;
-        }
-        return edgeset->end();
+        return Graph::EdgePosInset(vertex1, vertex2);
     };
     int CountVertices() const
     {
@@ -83,6 +69,15 @@ public:
     bool ContainsEdge(int vertex1, int vertex2) const
     {
         return Graph::EdgePosInSet(vertex1, vertex2);
+    };
+    int GetWeight(int vertex1, int vertex2) const
+    {
+        for (auto it = edgeset->begin(); it != edgeset->end(); it++)
+        {
+            if (it->GetSource() == vertex1 && it->GetDestination() == vertex2)
+                return it->weight;
+        }
+        return -1;
     };
     std::vector<int> GetVertices() const
     {
@@ -102,16 +97,10 @@ public:
     };
     int GetDegree(int vertex) const
     {
-        return GetOutgoingEdges(vertex).size();
+        return Graph::GetDegree(vertex);
     };
     std::vector<int> GetNeighbors(int vertex) const
     {
-        std::vector<int> temp;
-        for (std::vector<Edge>::iterator it = edgeset->begin(); it != edgeset->end(); it++)
-        {
-            if (it->GetSource() == vertex)
-                temp.emplace_back(it->GetDestination());
-        }
-        return temp;
+        return Graph::GetNeighbos(vertex);
     };
 };

@@ -7,9 +7,11 @@
 
 class Graph
 {
-public:
+private:
     std::vector<Edge> *edgeset;
     std::vector<int> *pointset;
+
+public:
     Graph()
     {
         edgeset = new std::vector<Edge>;
