@@ -144,7 +144,7 @@ public:
             for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
             {
                 if(vit->first == vertex)
-                temp.emplace_back(it->first);
+                temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
             }
         }
         return temp;
