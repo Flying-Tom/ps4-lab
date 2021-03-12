@@ -140,7 +140,7 @@ public:
     std::vector<int> GetNeighbors(int vertex) const
     {
         std::vector<int> temp;
-        for (std::vector<Edge>::iterator it = edgeset->begin(); it != edgeset->end(); it++)
+        for (auto it = edgeset->begin(); it != edgeset->end(); it++)
         {
             if (it->GetSource() == vertex)
                 temp.emplace_back(it->GetDestination());
