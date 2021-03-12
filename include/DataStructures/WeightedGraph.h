@@ -33,7 +33,7 @@ public:
     };
     bool AddEdge(int vertex1, int vertex2, int weight)
     {
-        if ContainsVertex (vertex1) && ContainsVertex(vertex2))
+        if ContainsVertex(vertex1) && ContainsVertex(vertex2))
             {
                 if (ContainsEdge(vertex1, vertex2))
                     return false;
