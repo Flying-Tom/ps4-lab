@@ -38,6 +38,8 @@ public:
         {
             points.erase(points.find(vertex));
             edges.erase(edges.find(vertex));
+            for (auto it = points.begin(); it != points.end(); it++)
+                RemoveEdge(it->first, vertex);
             return true;
         }
         return false;
