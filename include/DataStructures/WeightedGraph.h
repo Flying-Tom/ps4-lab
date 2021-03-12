@@ -96,12 +96,12 @@ public:
     };
     bool ContainsEdge(int vertex1, int vertex2) const
     {
-        puts("ContainsEdge");
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
             auto it = edges.find(vertex1);
             for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
             {
+                puts("seg");
                 if (vit->first == vertex2)
                     return true;
             }
