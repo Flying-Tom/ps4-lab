@@ -8,9 +8,6 @@ int main()
     assert(g.AddVertex(1) == true);
     assert(g.AddVertex(2) == true);
     assert(g.AddVertex(3) == true);
-
-    assert(0);
-    
     assert(g.AddVertex(3) == false);
     assert(g.AddVertex(4) == true);
     assert(g.ContainsVertex(4) == true);
