@@ -78,7 +78,7 @@ public:
     };
     std::vector<Edge>::iterator EdgePosInSet(int vertex1, int vertex2) const
     {
-        for (std::vector<Edge>::iterator it = edgeset->begin(); it != edgeset->end(); it++)
+        for (auto it = edgeset->begin(); it != edgeset->end(); it++)
         {
             if (it->GetSource() == vertex1 && it->GetDestination() == vertex2)
                 return it;
@@ -116,7 +116,7 @@ public:
     std::vector<Edge> GetIncomingEdges(int vertex) const
     {
         std::vector<Edge> temp;
-        for (std::vector<Edge>::iterator it = edgeset->begin(); it != edgeset->end(); it++)
+        for (auto it = edgeset->begin(); it != edgeset->end(); it++)
         {
             if (it->GetDestination() == vertex)
                 temp.emplace_back(*it);
