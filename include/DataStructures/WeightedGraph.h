@@ -24,12 +24,9 @@ public:
 public:
     bool AddVertex(int vertex)
     {
-        puts("0");
-        if (ContainsVertex(vertex))
+        if (!ContainsVertex(vertex))
         {
-            puts("1");
             points.insert(make_pair(vertex, 1));
-            puts("2");
             edges.insert(make_pair(vertex, vector<pair<int, int>>()));
             return true;
         }
