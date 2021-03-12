@@ -19,7 +19,12 @@ public:
 public:
     bool AddVertex(int vertex)
     {
-        points.insert(std::make_pair(vertex, 1));
+        if (points.find(vertex) == points.end())
+        {
+            points.insert(std::make_pair(vertex, 1));
+            return true;
+        }
+        return false;
     };
     bool RemoveVertex(int vertex)
     {
@@ -33,7 +38,7 @@ public:
     };
     bool AddEdge(int vertex1, int vertex2, int weight)
     {
-        if ContainsVertex(vertex1) && ContainsVertex(vertex2))
+        if ContainsVertex (vertex1) && ContainsVertex(vertex2))
             {
                 if (ContainsEdge(vertex1, vertex2))
                     return false;
@@ -48,11 +53,19 @@ public:
     };
     bool RemoveEdge(int vertex1, int vertex2)
     {
-        auto it = points.find(vertex1);
-        for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+        if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
-            temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
+            auto it = points.find(vertex1);
+            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+            {
+                if (vit->first == vertex2)
+                {
+                    it->second.erase(vit);
+                    return true;
+                }
+            }
         }
+        return false;
     };
 
 public:
