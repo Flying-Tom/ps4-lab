@@ -99,9 +99,9 @@ public:
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
             auto it = edges.find(vertex1);
+            printf("%d\n",it->second.size());
             for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
             {
-                puts("seg");
                 if (vit->first == vertex2)
                     return true;
             }
