@@ -124,7 +124,7 @@ public:
     vector<WeightedEdge> GetEdges() const
     {
         vector<WeightedEdge> temp;
-        for (auto it = edges.begin(); it != edges.end(); it++))
+        for (auto it = edges.begin(); it != edges.end(); it++)
         {
             for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
             {
@@ -136,16 +136,25 @@ public:
     vector<WeightedEdge> GetIncomingEdges(int vertex) const
     {
         vector<WeightedEdge> temp;
+        for (auto it = edges.begin(); it != edges.end(); it++)
+        {
+            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+            {
+                if(vit->first == vertex)
+                temp.emplace_back(it->first);
+            }
+        }
+        return temp;
+    };
+    vector<WeightedEdge> GetOutgoingEdges(int vertex) const
+    {
+        vector<WeightedEdge> temp;
         auto it = edges.find(vertex);
         for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
         {
             temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
         }
         return temp;
-    };
-    vector<WeightedEdge> GetOutgoingEdges(int vertex) const
-    {
-        return Graph::GetOutcomingEdges(vertex);
     };
     int GetDegree(int vertex) const
     {
