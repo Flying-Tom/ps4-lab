@@ -79,7 +79,8 @@ public:
         for (auto it = edges.begin(); it != edges.end(); it++)
         {
             res += it->second.size();
-            printf("%d\n", it->second.size());
+            printf("vertex:%d\n", it->first);
+            printf("size:%ld\n", it->second.size());
         }
         return res;
     };
