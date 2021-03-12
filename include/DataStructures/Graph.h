@@ -4,150 +4,73 @@
 #include <vector>
 #include <algorithm>
 #include <DataStructures/Edge.h>
+#include <DataStructures/WeightedGraph.h>
 
-class Graph
+class Graph : public WeightedGraph
 {
 private:
-    std::vector<Edge> *edgeset;
-    std::vector<int> *pointset;
-
 public:
-    Graph()
-    {
-        edgeset = new std::vector<Edge>;
-        pointset = new std::vector<int>;
-    };
-    ~Graph()
-    {
-        delete (edgeset);
-        delete (pointset);
-    };
+    Graph(){};
+    ~Graph(){};
 
 public:
     bool AddVertex(int vertex)
     {
-        if (Graph::ContainsVertex(vertex))
-            return false;
-        else
-        {
-            pointset->emplace_back(vertex);
-            return true;
-        }
-        return false;
+        return WeightedGraph::AddVertex(vertex);
     };
     bool RemoveVertex(int vertex)
     {
-        std::vector<int>::iterator it = Graph::VertexPosInSet(vertex);
-        if (it != pointset->end())
-        {
-            pointset->erase(it);
-            return true;
-        }
-        return false;
+        return WeightedGraph::RemoveVertex(vertex);
     };
     bool AddEdge(int vertex1, int vertex2)
     {
-        if (Graph::ContainsVertex(vertex1) && Graph::ContainsVertex(vertex2))
-        {
-            if (ContainsEdge(vertex1, vertex2))
-                return false;
-            else
-            {
-                edgeset->emplace_back(Edge(vertex1, vertex2));
-                return true;
-            }
-        }
-        return false;
+        return WeightedGraph::AddEdge(vertex1, vertex2, 1);
     };
     bool RemoveEdge(int vertex1, int vertex2)
     {
-        if (Graph::ContainsVertex(vertex1) && Graph::ContainsVertex(vertex2))
-        {
-            auto it = EdgePosInSet(vertex1, vertex2);
-            if (it != edgeset->end())
-            {
-                edgeset->erase(it);
-                return true;
-            }
-        }
-        return false;
+        return WeightedGraph::RemoveEdge(vertex1, vertex2);
     };
 
 public:
-    std::vector<int>::iterator VertexPosInSet(int vertex) const
-    {
-        return std::find(pointset->begin(), pointset->end(), vertex);
-    };
-    std::vector<Edge>::iterator EdgePosInSet(int vertex1, int vertex2) const
-    {
-        for (auto it = edgeset->begin(); it != edgeset->end(); it++)
-        {
-            if (it->GetSource() == vertex1 && it->GetDestination() == vertex2)
-                return it;
-        }
-        return edgeset->end();
-    };
     int CountVertices() const
     {
-        return pointset->size();
+        return WeightedGraph::CountVertices();
     };
     int CountEdges() const
     {
-        return edgeset->size();
+        return WeightedGraph::CountEdges();
     };
     bool ContainsVertex(int vertex) const
     {
-        if (VertexPosInSet(vertex) != pointset->end())
-            return true;
-        return false;
+        return WeightedGraph::ContainsVertex(vertex);
     };
     bool ContainsEdge(int vertex1, int vertex2) const
     {
-        if (EdgePosInSet(vertex1, vertex2) != edgeset->end())
-            return true;
-        return false;
+        return WeightedGraph::ContainsEdge(vertex1, vertex2);
     };
     std::vector<int> GetVertices() const
     {
-        return *pointset;
+        return WeightedGraph::GetVertices();
     };
     std::vector<Edge> GetEdges() const
     {
-        return *edgeset;
+        return WeightedGraph::GetEdges();
     };
     std::vector<Edge> GetIncomingEdges(int vertex) const
     {
-        std::vector<Edge> temp;
-        for (auto it = edgeset->begin(); it != edgeset->end(); it++)
-        {
-            if (it->GetDestination() == vertex)
-                temp.emplace_back(*it);
-        }
-        return temp;
+        return WeightedGraph::GetIncomingEdges(vertex);
     };
     std::vector<Edge> GetOutgoingEdges(int vertex) const
     {
-        std::vector<Edge> temp;
-        for (auto it = edgeset->begin(); it != edgeset->end(); it++)
-        {
-            if (it->GetSource() == vertex)
-                temp.emplace_back(*it);
-        }
-        return temp;
+        return WeightedGraph::GetOutgoingEdges(vertex);
     };
     int GetDegree(int vertex) const
     {
-        return GetOutgoingEdges(vertex).size();
+        return WeightedGraph::GetDegree(vertex);
     };
     std::vector<int> GetNeighbors(int vertex) const
     {
-        std::vector<int> temp;
-        for (auto it = edgeset->begin(); it != edgeset->end(); it++)
-        {
-            if (it->GetSource() == vertex)
-                temp.emplace_back(it->GetDestination());
-        }
-        return temp;
+        return WeightedGraph::GetNeighbors(vertex);
     };
 };
 

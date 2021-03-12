@@ -25,6 +25,6 @@ add_custom_command(TARGET GraphLibrary POST_BUILD
         WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
 
 # Your custom tests below
-#add_executable(Test01 tests/01-hello-world.cpp)
-add_executable(Test01 tests/02-hello-world.cpp)
+add_executable(Test01 tests/01-hello-world.cpp)
+#add_executable(Test01 tests/02-hello-world.cpp)
 target_link_libraries(Test01 GraphLibrary)

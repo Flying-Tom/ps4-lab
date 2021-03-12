@@ -3,14 +3,16 @@
 
 #include <DataStructures/WeightedEdge.h>
 
-class Edge
+class Edge :WeightedEdge
 {
 private:
     int src, des;
 
 public:
-    Edge(int source, int destination){};
-    ~Edge(){};
+    Edge(int source, int destination) : WeightedEdge(source, desination, 1){};
+    ~Edge(){
+
+    };
 
 public:
     int GetSource() const
@@ -22,6 +24,5 @@ public:
         return des;
     };
 };
-
 
 #endif
