@@ -76,7 +76,7 @@ public:
     {
         return std::find(pointset->begin(), pointset->end(), vertex);
     };
-    auto EdgePosInSet(int vertex1, int vertex2) const
+    std::vector<Edge>::iterator EdgePosInSet(int vertex1, int vertex2) const
     {
         for (auto it = edgeset->begin(); it != edgeset->end(); it++)
         {
