@@ -8,8 +8,7 @@ private:
 public:
     WeightedEdge(int source, int destination, int weight)
     {
-        src = new int(source);
-        des = new int(destination);
+        Edge::Edge(source, destination);
         w = new int(weight);
     };
     ~WeightedEdge(){
