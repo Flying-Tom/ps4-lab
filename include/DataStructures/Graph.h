@@ -61,7 +61,7 @@ public:
     {
         if (Graph::ContainsVertex(vertex1) && Graph::ContainsVertex(vertex2))
         {
-            std::vector<Edge>::iterator it = EdgePosInSet(vertex1, vertex2);
+            auto it = EdgePosInSet(vertex1, vertex2);
             if (it != edgeset->end())
             {
                 edgeset->erase(it);
@@ -76,7 +76,7 @@ public:
     {
         return std::find(pointset->begin(), pointset->end(), vertex);
     };
-    std::vector<Edge>::iterator EdgePosInSet(int vertex1, int vertex2) const
+    auto EdgePosInSet(int vertex1, int vertex2) const
     {
         for (auto it = edgeset->begin(); it != edgeset->end(); it++)
         {
