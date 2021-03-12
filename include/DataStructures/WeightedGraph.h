@@ -2,11 +2,13 @@
 #include <map>
 #include <vector>
 
+using namespace std;
+
 class WeightedGraph
 {
 private:
-    std::map<int, int> points;
-    std::map<int, std::vector<std::pair<int, int>>> edges;
+    map<int, int> points;
+    map<int, vector<pair<int, int>>> edges;
 
 public:
     WeightedGraph(){
@@ -21,7 +23,7 @@ public:
     {
         if (points.find(vertex) == points.end())
         {
-            points.insert(std::make_pair(vertex, 1));
+            points.insert(make_pair(vertex, 1));
             return true;
         }
         return false;
@@ -45,7 +47,7 @@ public:
             else
             {
                 auto it = points.find(vertex1);
-                *it->second.emplace_back(std::make_pair(vertex2, weight));
+                *it->second.emplace_back(make_pair(vertex2, weight));
                 return true;
             }
         }
@@ -112,16 +114,16 @@ public:
         }
         return -1;
     };
-    std::vector<int> GetVertices() const
+    vector<int> GetVertices() const
     {
-        std::vector<int> temp;
+        vector<int> temp;
         for (auto it = points.begin(); it != points.end(); it++)
             temp.emplace_back(it->first);
         return temp;
     };
-    std::vector<WeightedEdge> GetEdges() const
+    vector<WeightedEdge> GetEdges() const
     {
-        std::vector<WeightedEdge> temp;
+        vector<WeightedEdge> temp;
         for (auto it = edges.begin(); it != edges.end(); it++))
         {
             for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
@@ -131,9 +133,9 @@ public:
         }
         return temp;
     };
-    std::vector<WeightedEdge> GetIncomingEdges(int vertex) const
+    vector<WeightedEdge> GetIncomingEdges(int vertex) const
     {
-        std::vector<WeightedEdge> temp;
+        vector<WeightedEdge> temp;
         auto it = edges.find(vertex);
         for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
         {
@@ -141,7 +143,7 @@ public:
         }
         return temp;
     };
-    std::vector<WeightedEdge> GetOutgoingEdges(int vertex) const
+    vector<WeightedEdge> GetOutgoingEdges(int vertex) const
     {
         return Graph::GetOutcomingEdges(vertex);
     };
@@ -150,9 +152,9 @@ public:
         auto it = edges.find(vertex);
         return it->second.size();
     };
-    std::vector<int> GetNeighbors(int vertex) const
+    vector<int> GetNeighbors(int vertex) const
     {
-        std::vector<int> temp;
+        vector<int> temp;
         auto it = edges.find(vertex);
         for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
         {
