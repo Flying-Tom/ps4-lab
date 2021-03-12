@@ -3,7 +3,7 @@
 
 #include <DataStructures/WeightedEdge.h>
 
-class Edge::WeightedEdge
+class Edge :: public WeightedEdge
 {
 private:
     int src, des;
