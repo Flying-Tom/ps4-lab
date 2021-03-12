@@ -82,7 +82,7 @@ public:
     };
     bool ContainsVertex(int vertex) const
     {
-        if (points.find(vertex) != pointset->end())
+        if (points.find(vertex) != points.end())
             return true;
         return false;
     };
