@@ -38,17 +38,17 @@ public:
     };
     bool AddEdge(int vertex1, int vertex2, int weight)
     {
-        if ContainsVertex (vertex1) && ContainsVertex(vertex2))
+        if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
+        {
+            if (ContainsEdge(vertex1, vertex2))
+                return false;
+            else
             {
-                if (ContainsEdge(vertex1, vertex2))
-                    return false;
-                else
-                {
-                    auto it = points.find(vertex1);
-                    it->second.emplace_back(make_pair(vertex2, weight));
-                    return true;
-                }
+                auto it = points.find(vertex1);
+                it->second.emplace_back(make_pair(vertex2, weight));
+                return true;
             }
+        }
         return false;
     };
     bool RemoveEdge(int vertex1, int vertex2)
