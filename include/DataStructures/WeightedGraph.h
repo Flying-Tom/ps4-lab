@@ -5,7 +5,7 @@ class WeightedGraph
 {
 private:
     std::map<int, int> points;
-    std::map<int, vector<pair<int, int>>> edges;
+    std::map<int, std::vector<std::pair<int, int>>> edges;
 
 public:
     WeightedGraph(){
