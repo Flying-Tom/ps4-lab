@@ -1,4 +1,4 @@
-#include <WeightedEdge.h>
+#include <DataStructures/Edge.h>
 
 class WeightedEdge : public Edge
 {
