@@ -58,11 +58,19 @@ public:
     };
     std::vector<Edge> GetIncomingEdges(int vertex) const
     {
-        return WeightedGraph::GetIncomingEdges(vertex);
+        vector<WeightedEdge> temp = WeightedGraph::GetIncomingEdges(vertex);
+        vector<Edge> res;
+        for (auto it = temp.begin(); it != temp.end(); it++)
+            res.emplace_back(Edge(it->GetSource(), it->GetDestination()));
+        return res;
     };
     std::vector<Edge> GetOutgoingEdges(int vertex) const
     {
-        return WeightedGraph::GetOutgoingEdges(vertex);
+        vector<WeightedEdge> temp = WeightedGraph::GetOutgoingEdges(vertex);
+        vector<Edge> res;
+        for (auto it = temp.begin(); it != temp.end(); it++)
+            res.emplace_back(Edge(it->GetSource(), it->GetDestination()));
+        return res;
     };
     int GetDegree(int vertex) const
     {
