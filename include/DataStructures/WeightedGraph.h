@@ -136,12 +136,15 @@ public:
     vector<WeightedEdge> GetIncomingEdges(int vertex) const
     {
         vector<WeightedEdge> temp;
-        for (auto it = edges.begin(); it != edges.end(); it++)
+        if (ContainsVertex(vertex))
         {
-            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+            for (auto it = edges.begin(); it != edges.end(); it++)
             {
-                if (vit->first == vertex)
-                    temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
+                for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+                {
+                    if (vit->first == vertex)
+                        temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
+                }
             }
         }
         return temp;
@@ -149,16 +152,20 @@ public:
     vector<WeightedEdge> GetOutgoingEdges(int vertex) const
     {
         vector<WeightedEdge> temp;
-        auto it = edges.find(vertex);
-        for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+        if (ContainsVertex(vertex))
         {
-            temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
+            auto it = edges.find(vertex);
+            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+            {
+                temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
+            }
         }
         return temp;
     };
     int GetDegree(int vertex) const
     {
-        return edges.find(vertex).size();
+        auto it = edges.find(vertex);
+        return it->second.size();
     };
     vector<int> GetNeighbors(int vertex) const
     {
