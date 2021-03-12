@@ -27,16 +27,17 @@ public:
         if (points.find(vertex) == points.end())
         {
             points.insert(make_pair(vertex, 1));
+            edges.insert(vector<pair<int, int>>());
             return true;
         }
         return false;
     };
     bool RemoveVertex(int vertex)
     {
-        auto it = points.find(vertex);
-        if (it != points.end())
+        if (ContainsVertex(vertex))
         {
-            points.erase(it);
+            points.erase(points.find(vertex));
+            edges.erase(edges.find(vertex));
             return true;
         }
         return false;
@@ -99,7 +100,7 @@ public:
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
             auto it = edges.find(vertex1);
-            printf("%d\n",it->second.size());
+            printf("%d\n", it->second.size());
             for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
             {
                 if (vit->first == vertex2)
@@ -147,8 +148,8 @@ public:
         {
             for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
             {
-                if(vit->first == vertex)
-                temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
+                if (vit->first == vertex)
+                    temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
             }
         }
         return temp;
