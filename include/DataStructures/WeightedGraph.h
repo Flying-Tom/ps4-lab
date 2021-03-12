@@ -1,4 +1,5 @@
-#include <Graph.h>
+#include <DataStructures/WeightedEdge.h>
+#include <DataStructures/Graph.h>
 
 class WeightedGraph
 {
@@ -93,23 +94,11 @@ public:
     };
     std::vector<Edge> GetIncomingEdges(int vertex) const
     {
-        std::vector<Edge> temp;
-        for (std::vector<Edge>::iterator it = edgeset->begin(); it != edgeset->end(); it++)
-        {
-            if (it->GetDestination() == vertex)
-                temp.emplace_back(*it);
-        }
-        return temp;
+        return Graph::GetIncomingEdges(vertex);
     };
     std::vector<Edge> GetOutgoingEdges(int vertex) const
     {
-        std::vector<Edge> temp;
-        for (std::vector<Edge>::iterator it = edgeset->begin(); it != edgeset->end(); it++)
-        {
-            if (it->GetSource() == vertex)
-                temp.emplace_back(*it);
-        }
-        return temp;
+        return Graph::GetOutcomingEdges(vertex);
     };
     int GetDegree(int vertex) const
     {
