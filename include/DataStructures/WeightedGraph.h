@@ -79,8 +79,6 @@ public:
         for (auto it = edges.begin(); it != edges.end(); it++)
         {
             res += it->second.size();
-            printf("vertex:%d\n", it->first);
-            printf("size:%ld\n", it->second.size());
         }
         return res;
     };
@@ -160,17 +158,14 @@ public:
     };
     int GetDegree(int vertex) const
     {
-        auto it = edges.find(vertex);
-        return it->second.size();
+        return edges.find(vertex).size();
     };
     vector<int> GetNeighbors(int vertex) const
     {
         vector<int> temp;
         auto it = edges.find(vertex);
         for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
-        {
             temp.emplace_back(vit->first);
-        }
         return temp;
     };
 };
