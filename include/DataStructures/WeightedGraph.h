@@ -1,3 +1,6 @@
+#ifndef WEIGHTEDGRAPH_H
+#define WEIGHTEDGRAPH_H
+
 #include <map>
 #include <vector>
 #include <DataStructures/WeightedEdge.h>
@@ -172,3 +175,5 @@ public:
         return temp;
     };
 };
+
+#endif

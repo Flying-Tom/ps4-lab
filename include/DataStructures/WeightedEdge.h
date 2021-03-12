@@ -1,3 +1,6 @@
+#ifndef WEIGHTEDEDGE_H
+#define WEIGHTEDEDGE_H
+
 class WeightedEdge
 {
 private:
@@ -32,3 +35,5 @@ public:
         return w;
     };
 };
+
+#endif
