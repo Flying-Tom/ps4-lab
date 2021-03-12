@@ -45,7 +45,7 @@ public:
             else
             {
                 auto it = points.find(vertex1);
-                it->second.emplace_back(make_pair(vertex2, weight));
+                it->second.emplace_back(std::make_pair(vertex2, weight));
                 return true;
             }
         }
