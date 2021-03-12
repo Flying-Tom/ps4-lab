@@ -1,6 +1,6 @@
-#include <DataStructures/WeightedEdge.h>
 #include <map>
 #include <vector>
+#include <DataStructures/WeightedEdge.h>
 
 using namespace std;
 
