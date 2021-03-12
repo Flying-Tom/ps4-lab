@@ -1,5 +1,5 @@
 #include <cassert>
-#include <DataStructures/WeightGraph.h>
+#include <DataStructures/WeightedGraph.h>
 using namespace std;
 
 int main()
