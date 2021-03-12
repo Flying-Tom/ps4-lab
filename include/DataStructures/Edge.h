@@ -3,6 +3,7 @@
 
 #include <DataStructures/WeightedEdge.h>
 
+/*
 class Edge :: public WeightedEdge
 {
 private:
@@ -21,6 +22,6 @@ public:
     {
         return des;
     };
-};
+};*/
 
 #endif
