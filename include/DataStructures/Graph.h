@@ -54,7 +54,11 @@ public:
     };
     std::vector<Edge> GetEdges() const
     {
-        return WeightedGraph::GetEdges();
+        vector<WeightedEdge> temp = WeightedGraph::GetEdges();
+        vector<Edge> res;
+        for (auto it = temp.begin(); it != temp.end(); it++)
+            res.emplace_back(Edge(it->GetSource(), it->GetDestination()));
+        return res;
     };
     std::vector<Edge> GetIncomingEdges(int vertex) const
     {
