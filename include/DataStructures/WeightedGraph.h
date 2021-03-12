@@ -26,8 +26,8 @@ public:
     {
         if (points.find(vertex) == points.end())
         {
-            points[vertex] = pair(vertex, 1);
-            edges[vertex] = vector<pair<int, int>>();
+            points.insert(make_pair(vertex, 1));
+            edges[vertex] = (vector<pair<int, int>>());
             return true;
         }
         return false;
