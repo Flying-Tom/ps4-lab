@@ -122,7 +122,7 @@ public:
     std::vector<WeightedEdge> GetEdges() const
     {
         std::vector<WeightedEdge> temp;
-        for (auto it = edges.begin(; it != edges.end(); it++))
+        for (auto it = edges.begin(); it != edges.end(); it++))
         {
             for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
             {
