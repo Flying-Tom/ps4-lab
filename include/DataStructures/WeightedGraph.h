@@ -33,13 +33,14 @@ public:
     };
     bool AddEdge(int vertex1, int vertex2, int weight)
     {
-        if (Graph::ContainsVertex(vertex1) && Graph::ContainsVertex(vertex2))
+        if ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
             if (ContainsEdge(vertex1, vertex2))
                 return false;
             else
             {
-                edgeset->emplace_back(Edge(vertex1, vertex2, weight));
+                auto it = points.find(vertex1);
+                it->second.emplace_back(make_pair(vertex2,weight));
                 return true;
             }
         }
@@ -58,7 +59,7 @@ public:
     int CountEdges() const
     {
         int res = 0;
-        for (auto it = edgeset->begin(); it != edgeset->end(); it++)
+        for (auto it = edges->begin(); it != edges->end(); it++)
             res += it->second.size();
         return res;
     };
