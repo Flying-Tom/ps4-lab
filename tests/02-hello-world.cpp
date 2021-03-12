@@ -20,6 +20,7 @@ int main()
     assert(g.AddEdge(1, 3, 9) == true);
     assert(g.AddEdge(2, 5, 1) == false);
 
+    printf("Edges:%d\n", g.CountEdges());
     assert(g.CountEdges() == 3);
 
     assert(g.ContainsEdge(1, 2) == true);
