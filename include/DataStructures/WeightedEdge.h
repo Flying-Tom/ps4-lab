@@ -1,6 +1,6 @@
 #include <DataStructures/Edge.h>
 
-class WeightedEdge : public Edge
+class WeightedEdge
 {
 private:
     int *src, *des, *w;
@@ -8,7 +8,8 @@ private:
 public:
     WeightedEdge(int source, int destination, int weight)
     {
-        Edge::Edge(source, destination);
+        src = new int(source);
+        des = new int(destination);
         w = new int(weight);
     };
     ~WeightedEdge(){
@@ -18,11 +19,11 @@ public:
 public:
     int GetSource() const
     {
-        return Edge::GetSource();
+        return *src;
     };
     int GetDestination() const
     {
-        return Edge::GetDestination();
+        return *des;
     };
     int GetWeight() const
     {
