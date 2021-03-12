@@ -17,12 +17,13 @@ int main()
     assert(g.RemoveVertex(5) == false);
 
     assert(g.AddEdge(1, 2, 1) == true);
-    assert(g.AddEdge(1, 3, 1) == true);
+    assert(g.AddEdge(1, 3, 9) == true);
     assert(g.AddEdge(2, 5, 1) == false);
     assert(g.ContainsEdge(1, 2) == true);
     assert(g.ContainsEdge(2, 5) == false);
 
     assert(g.GetDegree(1) == 2);
+    assert(g.GetWeight(1,3) == 2);
     assert(g.GetIncomingEdges(1).empty());
     assert(g.GetOutgoingEdges(1).size() == 2);
     assert(g.GetNeighbors(1).size() == 2);

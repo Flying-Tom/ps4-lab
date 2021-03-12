@@ -1,30 +1,25 @@
 #ifndef EDGE_H
 #define EDGE_H
 
-class Edge
+#include <DataStructures/WeightedEdge.h>
+
+class Edge ::WeightedEdge
 {
 private:
-    int *src, *des;
+    int src, des;
 
 public:
-    Edge(int source, int destination)
-    {
-        src = new int(source);
-        des = new int(destination);
-    };
-    ~Edge(){
-        //delete (src);
-        //delete (des);
-    };
+    Edge(int source, int destination) : WeightedEdge(source, desination, 1){};
+    ~Edge(){};
 
 public:
     int GetSource() const
     {
-        return *src;
+        return src;
     };
     int GetDestination() const
     {
-        return *des;
+        return des;
     };
 };
 
