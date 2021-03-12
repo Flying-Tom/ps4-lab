@@ -21,14 +21,14 @@ public:
 public:
     int GetSource() const
     {
-        return *src;
+        return src;
     };
     int GetDestination() const
     {
-        return *des;
+        return des;
     };
     int GetWeight() const
     {
-        return *w;
+        return w;
     };
 };
