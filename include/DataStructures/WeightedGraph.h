@@ -10,11 +10,15 @@ public:
     std::vector<int> *pointset;
     WeightedGraph()
     {
-        Graph::Graph();
+        //Graph::Graph();
+        edgeset = new std::vector<WeightedEdge>;
+        pointset = new std::vector<int>;
     };
     ~WeightedGraph()
     {
-        Graph::~Graph();
+        //Graph::~Graph();
+        delete (edgeset);
+        delete (pointset);
     };
 
 public:
