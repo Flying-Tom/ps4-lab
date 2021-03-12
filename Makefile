@@ -5,7 +5,7 @@ SHELL := /bin/bash
 all:
 	@if [[ ! -e build/Makefile ]]; then \
 		mkdir -p build; \
-		cd build && cmake ..; fi
+		cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug; fi
 	@make -C build
 
 clean:

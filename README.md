@@ -32,4 +32,11 @@ XXXXXX.zip
     - .git
 ```
 
+or (supports after doowzs/DotOJ#4)
+
+```
+XXXXXX.zip
+  - .git
+```
+
 On Linux/macOS, run `make submit TOKEN=token` or submit manually.
