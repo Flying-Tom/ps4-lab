@@ -12,8 +12,9 @@ public:
         des = new int(destination);
         w = new int(weight);
     };
-    ~WeightedEdge(){
-
+    ~WeightedEdge()
+    {
+        ////////
     };
 
 public:
