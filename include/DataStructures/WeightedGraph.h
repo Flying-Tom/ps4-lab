@@ -46,8 +46,8 @@ public:
                 return false;
             else
             {
-                auto it = points.find(vertex1);
-                it->emplace_back(make_pair(vertex2, weight));
+                auto it = edges.find(vertex1);
+                it->second.emplace_back(make_pair(vertex2, weight));
                 return true;
             }
         }
