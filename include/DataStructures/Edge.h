@@ -1,17 +1,15 @@
 #ifndef EDGE_H
 #define EDGE_H
 
-/*
 #include <DataStructures/WeightedEdge.h>
 
-
-class Edge :: public WeightedEdge
+class Edge
 {
 private:
     int src, des;
 
 public:
-    Edge(int source, int destination) : WeightedEdge(source, desination, 1){};
+    Edge(int source, int destination){};
     ~Edge(){};
 
 public:
@@ -23,6 +21,7 @@ public:
     {
         return des;
     };
-};*/
+};
+* /
 
 #endif
