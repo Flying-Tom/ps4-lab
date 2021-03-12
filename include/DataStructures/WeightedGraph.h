@@ -19,7 +19,7 @@ public:
 public:
     bool AddVertex(int vertex)
     {
-        points.insert(make_pair(vertex, 1));
+        points.insert(std::make_pair(vertex, 1));
     };
     bool RemoveVertex(int vertex)
     {
