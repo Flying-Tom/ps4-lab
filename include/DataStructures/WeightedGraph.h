@@ -24,6 +24,7 @@ public:
 public:
     bool AddVertex(int vertex)
     {
+        puts("0");
         if (ContainsVertex(vertex))
         {
             puts("1");
