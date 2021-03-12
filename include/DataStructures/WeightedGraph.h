@@ -24,10 +24,10 @@ public:
 public:
     bool AddVertex(int vertex)
     {
-        if (points.find(vertex) == points.end())
+        if (ContainsVertex(vertex))
         {
             points.insert(make_pair(vertex, 1));
-            edges[vertex] = (vector<pair<int, int>>());
+            edges.insert(make_pair(vertex, vector<pair<int, int>>()));
             return true;
         }
         return false;
@@ -44,15 +44,10 @@ public:
     };
     bool AddEdge(int vertex1, int vertex2, int weight)
     {
-        if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
+        if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && !ContainsEdge(vertex1, vertex2))
         {
-            if (ContainsEdge(vertex1, vertex2))
-                return false;
-            else
-            {
-                edges[vertex1].emplace_back(make_pair(vertex2, weight));
-                return true;
-            }
+            edges[vertex1].emplace_back(make_pair(vertex2, weight));
+            return true;
         }
         return false;
     };
