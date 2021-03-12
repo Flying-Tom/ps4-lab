@@ -44,17 +44,13 @@ public:
     };
     bool AddEdge(int vertex1, int vertex2, int weight)
     {
-        puts("1");
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
-            puts("2");
             if (ContainsEdge(vertex1, vertex2))
                 return false;
             else
             {
-                puts("3");
-                auto it = edges.find(vertex1);
-                it->second.emplace_back(make_pair(vertex2, weight));
+                edges[vertex1].emplace_back(make_pair(vertex2, weight));
                 return true;
             }
         }
