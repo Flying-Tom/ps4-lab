@@ -1,34 +1,34 @@
 #include <DataStructures/WeightedEdge.h>
-#include <DataStructures/Graph.h>
+#include <map>
 
 class WeightedGraph
 {
 private:
-    /* data */
+    std::map<int, int> points;
+    std::map<int, vector<pair<int, int>>> edges;
+
 public:
-    std::vector<WeightedEdge> *edgeset;
-    std::vector<int> *pointset;
-    WeightedGraph()
-    {
-        //Graph::Graph();
-        edgeset = new std::vector<WeightedEdge>;
-        pointset = new std::vector<int>;
+    WeightedGraph(){
+
     };
-    ~WeightedGraph()
-    {
-        //Graph::~Graph();
-        delete (edgeset);
-        delete (pointset);
+    ~WeightedGraph(){
+
     };
 
 public:
     bool AddVertex(int vertex)
     {
-        Graph::AddVertex(vertex);
+        points.insert(make_pair(vertex, 1));
     };
     bool RemoveVertex(int vertex)
     {
-        Graph::RemoveVertex(vertex);
+        auto it = points.find(vertex);
+        if (it != points.end())
+        {
+            points.erase(it);
+            return true;
+        }
+        return false;
     };
     bool AddEdge(int vertex1, int vertex2, int weight)
     {
@@ -50,29 +50,35 @@ public:
     };
 
 public:
-    std::vector<int>::iterator VertexPosInSet(int vertex) const
-    {
-        Graph::VertexPosInSet(vertex);
-    };
-    std::vector<Edge>::iterator EdgePosInSet(int vertex1, int vertex2) const
-    {
-        return Graph::EdgePosInset(vertex1, vertex2);
-    };
     int CountVertices() const
     {
-        return Graph::CountVertices();
+        return points.size();
     };
     int CountEdges() const
     {
-        return Graph::CountEdges();
+        int res = 0;
+        for (auto it = edgeset->begin(); it != edgeset->end(); it++)
+            res += it->second.size();
+        return res;
     };
     bool ContainsVertex(int vertex) const
     {
-        return Graph::VertexPosInSet(vertex);
+        if (points.find(vertex) != pointset->end())
+            return true;
+        return false;
     };
     bool ContainsEdge(int vertex1, int vertex2) const
     {
-        return Graph::EdgePosInSet(vertex1, vertex2);
+        if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
+        {
+            auto it = points.find(vertex1);
+            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+            {
+                if (vit->first == vertex2)
+                    return true;
+            }
+        }
+        return false;
     };
     int GetWeight(int vertex1, int vertex2) const
     {
@@ -85,26 +91,50 @@ public:
     };
     std::vector<int> GetVertices() const
     {
-        return Graph::GetVertices();
+        std::vector<int> temp;
+        for (auto it = points.begin(); it != points.end(); it++)
+            temp.emplace_back(it->first);
+        return temp;
     };
-    std::vector<Edge> GetEdges() const
+    std::vector<WeightedEdge> GetEdges() const
     {
-        return Graph::GetEdges();
+        std::vector<WeightedEdge> temp;
+        for (auto it = edges.begin(; it != edges.end(); it++))
+        {
+            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+            {
+                temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
+            }
+        }
+        return temp;
     };
-    std::vector<Edge> GetIncomingEdges(int vertex) const
+    std::vector<WeightedEdge> GetIncomingEdges(int vertex) const
     {
-        return Graph::GetIncomingEdges(vertex);
+        std::vector<WeightedEdge> temp;
+        auto it = edges.find(vertex);
+        for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+        {
+            temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
+        }
+        return temp;
     };
-    std::vector<Edge> GetOutgoingEdges(int vertex) const
+    std::vector<WeightedEdge> GetOutgoingEdges(int vertex) const
     {
         return Graph::GetOutcomingEdges(vertex);
     };
     int GetDegree(int vertex) const
     {
-        return Graph::GetDegree(vertex);
+        auto it = edges.find(vertex);
+        return it->second.size();
     };
     std::vector<int> GetNeighbors(int vertex) const
     {
-        return Graph::GetNeighbos(vertex);
+        std::vector<int> temp;
+        auto it = edges.find(vertex);
+        for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+        {
+            temp.emplace_back(vit->first);
+        }
+        return temp;
     };
 };
