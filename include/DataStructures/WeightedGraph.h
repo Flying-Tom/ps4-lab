@@ -131,7 +131,7 @@ public:
         {
             for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
             {
-                temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
+                //temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
             }
         }
         return temp;
@@ -155,7 +155,7 @@ public:
         auto it = edges.find(vertex);
         for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
         {
-            temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
+            //temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
         }
         return temp;
     };
