@@ -96,6 +96,7 @@ public:
     };
     bool ContainsEdge(int vertex1, int vertex2) const
     {
+        puts("ContainsEdge");
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
             auto it = edges.find(vertex1);
