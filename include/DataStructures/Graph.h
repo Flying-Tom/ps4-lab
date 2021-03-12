@@ -126,7 +126,7 @@ public:
     std::vector<Edge> GetOutgoingEdges(int vertex) const
     {
         std::vector<Edge> temp;
-        for (std::vector<Edge>::iterator it = edgeset->begin(); it != edgeset->end(); it++)
+        for (auto it = edgeset->begin(); it != edgeset->end(); it++)
         {
             if (it->GetSource() == vertex)
                 temp.emplace_back(*it);
