@@ -60,12 +60,11 @@ public:
     {
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
-            auto it = edges.find(vertex1);
-            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+            for (auto vit = edges[vertex1].begin(); vit != edges[vertex1].end(); vit++)
             {
                 if (vit->first == vertex2)
                 {
-                    it->second.erase(vit);
+                    edges[vertex1].erase(vit);
                     return true;
                 }
             }
@@ -95,9 +94,7 @@ public:
     {
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
-            auto it = edges.find(vertex1);
-            printf("%d\n", it->second.size());
-            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+            for (auto vit = edges[vertex1].begin(); vit != edges[vertex1].end(); vit++)
             {
                 if (vit->first == vertex2)
                     return true;
@@ -109,8 +106,7 @@ public:
     {
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
-            auto it = edges.find(vertex1);
-            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+            for (auto vit = edges[vertex1].begin(); vit != edges[vertex1].end(); vit++)
             {
                 if (vit->first == vertex2)
                     return vit->second;
