@@ -48,7 +48,7 @@ public:
     };
     bool AddEdge(int vertex1, int vertex2, int weight)
     {
-        if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && !ContainsEdge(vertex1, vertex2))
+        if (!ContainsEdge(vertex1, vertex2))
         {
             auto it = edges.find(vertex1);
             it->second.emplace_back(make_pair(vertex2, weight));
@@ -58,7 +58,7 @@ public:
     };
     bool RemoveEdge(int vertex1, int vertex2)
     {
-        if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && vertex1 != vertex2)
+        if (ContainsEdge(vertex1, vertex2))
         {
             auto it = edges.find(vertex1);
             for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
@@ -95,7 +95,7 @@ public:
     };
     bool ContainsEdge(int vertex1, int vertex2) const
     {
-        if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
+        if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && vertex1 != vertex2)
         {
             auto it = edges.find(vertex1);
             for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
@@ -108,7 +108,7 @@ public:
     };
     int GetWeight(int vertex1, int vertex2) const
     {
-        if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
+        if (ContainsEdge(vertex1, vertex2))
         {
             auto it = edges.find(vertex1);
             for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
