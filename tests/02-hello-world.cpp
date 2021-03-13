@@ -18,7 +18,7 @@ int main()
     assert(g.AddEdge(1, 2, 1) == true);
     assert(g.AddEdge(1, 3, 9) == true);
     assert(g.AddEdge(2, 5, 1) == false);
-
+puts("1");
     assert(g.CountEdges() == 2);
 
     assert(g.ContainsEdge(1, 2) == true);
