@@ -12,7 +12,9 @@ int main()
     assert(g.AddVertex(3) == false);
     assert(g.AddVertex(4) == true);
     assert(g.ContainsVertex(4) == true);
+    puts("1");
     assert(g.RemoveVertex(4) == true);
+    puts("1");
     assert(g.ContainsVertex(4) == false);
     assert(g.RemoveVertex(5) == false);
     assert(g.AddEdge(1, 2, 1) == true);
@@ -21,9 +23,7 @@ int main()
 
     assert(g.CountEdges() == 2);
 
-    puts("1");
     assert(g.ContainsEdge(1, 2) == true);
-    puts("2");
     assert(g.ContainsEdge(2, 5) == false);
 
     assert(g.GetDegree(1) == 2);
