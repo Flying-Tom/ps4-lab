@@ -15,7 +15,7 @@ int main()
     assert(g.RemoveVertex(4) == true);
     assert(g.ContainsVertex(4) == false);
     assert(g.RemoveVertex(5) == false);
-
+    puts("1");
     assert(g.AddEdge(1, 2, 1) == true);
     assert(g.AddEdge(1, 3, 9) == true);
     assert(g.AddEdge(2, 5, 1) == false);
