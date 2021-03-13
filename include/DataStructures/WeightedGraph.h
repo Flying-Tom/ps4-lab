@@ -36,10 +36,10 @@ public:
     {
         if (ContainsVertex(vertex))
         {
+            points.erase(points.find(vertex));
             edges.erase(edges.find(vertex));
             for (auto it = points.begin(); it != points.end(); it++)
                 RemoveEdge(it->first, vertex);
-            points.erase(points.find(vertex));
             return true;
         }
         return false;
