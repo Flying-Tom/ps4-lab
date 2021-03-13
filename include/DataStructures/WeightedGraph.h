@@ -58,7 +58,7 @@ public:
     {
         if (!ContainsVertex(vertex1) || !ContainsVertex(vertex2) || !ContainsEdge(vertex1, vertex2))
             return false;
-
+        puts("Re");
         auto it = edges.find(vertex1);
         for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
         {
