@@ -37,12 +37,9 @@ public:
         if (ContainsVertex(vertex))
         {
             edges.erase(edges.find(vertex));
-            puts("1fffff");
             for (auto it = points.begin(); it != points.end(); it++)
             {
-                puts("2fffff");
                 RemoveEdge(it->first, vertex);
-                printf("(%d,%d)\n", it->first, vertex);
             }
             points.erase(points.find(vertex));
             return true;
@@ -61,7 +58,7 @@ public:
     };
     bool RemoveEdge(int vertex1, int vertex2)
     {
-        if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
+        if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && vertex1 != vertex2)
         {
             auto it = edges.find(vertex1);
             for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
