@@ -8,9 +8,7 @@ class Edge : WeightedEdge
 
 public:
     Edge(int source, int destination) : WeightedEdge(source, destination, 1){};
-    ~Edge(){
-
-    };
+    ~Edge(){};
 
 public:
     int GetSource() const
