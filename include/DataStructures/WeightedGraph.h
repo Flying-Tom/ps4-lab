@@ -10,7 +10,7 @@ using namespace std;
 class WeightedGraph
 {
 private:
-    map<int, int> points;
+    map<int, int> vertexs;
     map<int, vector<pair<int, int>>> edges;
 
 public:
@@ -24,59 +24,52 @@ public:
 public:
     bool AddVertex(int vertex)
     {
-        if (!ContainsVertex(vertex))
-        {
-            points.insert(make_pair(vertex, 1));
-            edges.insert(make_pair(vertex, vector<pair<int, int>>()));
-            return true;
-        }
-        return false;
+        if (ContainsVertex(vertex))
+            return false;
+        vertexs.insert(make_pair(vertex, 1));
+        edges.insert(make_pair(vertex, vector<pair<int, int>>()));
+        return true;
     };
     bool RemoveVertex(int vertex)
     {
-        if (ContainsVertex(vertex))
-        {
-            edges.erase(edges.find(vertex));
-            for (auto it = points.begin(); it != points.end(); it++)
-            {
-                RemoveEdge(it->first, vertex);
-            }
-            points.erase(points.find(vertex));
-            return true;
-        }
-        return false;
+        if (!ContainsVertex(vertex))
+            return false;
+        edges.erase(edges.find(vertex));
+        for (auto it = vertexs.begin(); it != vertexs.end(); it++)
+            RemoveEdge(it->first, vertex);
+        vertexs.erase(vertexs.find(vertex));
+        return true;
     };
     bool AddEdge(int vertex1, int vertex2, int weight)
     {
-        if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && !ContainsEdge(vertex1, vertex2))
-        {
-            auto it = edges.find(vertex1);
-            it->second.emplace_back(make_pair(vertex2, weight));
-            return true;
-        }
-        return false;
+        if (!ContainsVertex(vertex1) || !ContainsVertex(vertex2) || ContainsEdge(vertex1, vertex2))
+            return false;
+
+        auto it = edges.find(vertex1);
+        it->second.emplace_back(make_pair(vertex2, weight));
+        return true;
     };
     bool RemoveEdge(int vertex1, int vertex2)
     {
-        if (ContainsEdge(vertex1, vertex2))
+        if (!ContainsVertex(vertex1) || !ContainsVertex(vertex2) || !ContainsEdge(vertex1, vertex2))
+            return false;
+
+        auto it = edges.find(vertex1);
+        for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
         {
-            auto it = edges.find(vertex1);
-            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+            if (vit->first == vertex2)
             {
-                if (vit->first == vertex2)
-                {
-                    it->second.erase(vit);
-                    return true;
-                }
+                it->second.erase(vit);
+                return true;
             }
         }
-        return false;
+        exit(-1);
     };
 
 public:
     int CountVertices() const
     {
-        return points.size();
+        return vertexs.size();
     };
     int CountEdges() const
     {
@@ -89,22 +82,21 @@ public:
     };
     bool ContainsVertex(int vertex) const
     {
-        if (points.find(vertex) != points.end())
+        if (vertexs.find(vertex) != vertexs.end())
             return true;
         return false;
     };
     bool ContainsEdge(int vertex1, int vertex2) const
     {
-        if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && vertex1 != vertex2)
+        if (!ContainsVertex(vertex1) || !ContainsVertex(vertex2) || vertex1 == vertex2)
+            return false;
+            
+        auto it = edges.find(vertex1);
+        for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
         {
-            auto it = edges.find(vertex1);
-            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
-            {
-                if (vit->first == vertex2)
-                    return true;
-            }
+            if (vit->first == vertex2)
+                return true;
         }
-        return false;
     };
     int GetWeight(int vertex1, int vertex2) const
     {
@@ -122,7 +114,7 @@ public:
     vector<int> GetVertices() const
     {
         vector<int> temp;
-        for (auto it = points.begin(); it != points.end(); it++)
+        for (auto it = vertexs.begin(); it != vertexs.end(); it++)
             temp.emplace_back(it->first);
         return temp;
     };
