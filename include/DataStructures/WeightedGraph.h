@@ -99,6 +99,7 @@ public:
         auto it = edges.find(vertex1);
 
         puts("it");
+        printf("it->first:%d\n", it->first);
         printf("it->second.size():%d\n", it->second.size());
         for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
         {
