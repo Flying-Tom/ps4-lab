@@ -96,14 +96,13 @@ public:
         if (!ContainsVertex(vertex1) || !ContainsVertex(vertex2))
             return false;
 
-        puts("Re");
-        
         auto it = edges.find(vertex1);
         for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
         {
             if (vit->first == vertex2)
                 return true;
         }
+        puts("Return");
         return false;
     };
     int GetWeight(int vertex1, int vertex2) const
