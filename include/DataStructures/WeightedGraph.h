@@ -34,11 +34,14 @@ public:
     {
         if (!ContainsVertex(vertex))
             return false;
-            puts("1");
+        puts("1");
         edges.erase(edges.find(vertex));
         for (auto it = vertexs.begin(); it != vertexs.end(); it++)
+        {
+            printf("(%d,%d)\n", it->first, vertex);
             RemoveEdge(it->first, vertex);
-        puts("2");
+        }
+
         vertexs.erase(vertexs.find(vertex));
         return true;
     };
