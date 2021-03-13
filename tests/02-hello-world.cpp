@@ -12,7 +12,9 @@ int main()
     assert(g.AddVertex(3) == false);
     assert(g.AddVertex(4) == true);
     assert(g.ContainsVertex(4) == true);
+    puts("ffffffffffffff");
     assert(g.RemoveVertex(4) == true);
+    puts("kkkkkkkkkkkkkkk");
     assert(g.ContainsVertex(4) == false);
     assert(g.RemoveVertex(5) == false);
     assert(g.AddEdge(1, 2, 1) == true);
