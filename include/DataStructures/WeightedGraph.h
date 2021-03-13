@@ -38,6 +38,7 @@ public:
         edges.erase(edges.find(vertex));
         for (auto it = vertexs.begin(); it != vertexs.end(); it++)
             RemoveEdge(it->first, vertex);
+        puts("2");
         vertexs.erase(vertexs.find(vertex));
         return true;
     };
