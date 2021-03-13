@@ -48,7 +48,7 @@ public:
     };
     bool AddEdge(int vertex1, int vertex2, int weight)
     {
-        if (!ContainsEdge(vertex1, vertex2))
+        if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && !ContainsEdge(vertex1, vertex2))
         {
             auto it = edges.find(vertex1);
             it->second.emplace_back(make_pair(vertex2, weight));
