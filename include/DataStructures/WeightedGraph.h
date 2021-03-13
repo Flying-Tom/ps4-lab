@@ -37,8 +37,12 @@ public:
         if (ContainsVertex(vertex))
         {
             edges.erase(edges.find(vertex));
+            puts("1fffff");
             for (auto it = points.begin(); it != points.end(); it++)
+            {
                 RemoveEdge(it->first, vertex);
+                printf("(%d,%d)\n", it->first, vertex);
+            }
             points.erase(points.find(vertex));
             return true;
         }
