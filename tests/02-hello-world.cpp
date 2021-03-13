@@ -21,7 +21,9 @@ int main()
 
     assert(g.CountEdges() == 2);
 
+    puts("1");
     assert(g.ContainsEdge(1, 2) == true);
+    puts("2");
     assert(g.ContainsEdge(2, 5) == false);
 
     assert(g.GetDegree(1) == 2);
