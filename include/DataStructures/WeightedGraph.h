@@ -63,8 +63,7 @@ public:
                 return true;
             }
         }
-        puts("RemoveEdgeError!");
-        exit(-1);
+        return false;
     };
 
 public:
@@ -89,7 +88,6 @@ public:
     };
     bool ContainsEdge(int vertex1, int vertex2) const
     {
-        printf("(%d,%d)\n", vertex1, vertex2);
         if (!ContainsVertex(vertex1) || !ContainsVertex(vertex2) || vertex1 == vertex2)
             return false;
 
@@ -99,8 +97,7 @@ public:
             if (vit->first == vertex2)
                 return true;
         }
-        puts("ContainsEdgeError!");
-        exit(-1);
+        return false;
     };
     int GetWeight(int vertex1, int vertex2) const
     {
