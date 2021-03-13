@@ -162,15 +162,20 @@ public:
     };
     int GetDegree(int vertex) const
     {
+        if (!ContainsVertex(vertex))
+            return 0;
         auto it = edges.find(vertex);
         return it->second.size();
     };
     vector<int> GetNeighbors(int vertex) const
     {
         vector<int> temp;
-        auto it = edges.find(vertex);
-        for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
-            temp.emplace_back(vit->first);
+        if (ContainsVertex(vertex))
+        {
+            auto it = edges.find(vertex);
+            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+                temp.emplace_back(vit->first);
+        }
         return temp;
     };
 };
