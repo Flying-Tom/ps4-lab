@@ -63,6 +63,7 @@ public:
                 return true;
             }
         }
+        puts("RemoveEdgeError!");
         exit(-1);
     };
 
@@ -97,6 +98,7 @@ public:
             if (vit->first == vertex2)
                 return true;
         }
+        puts("ContainsEdgeError!");
         exit(-1);
     };
     int GetWeight(int vertex1, int vertex2) const
