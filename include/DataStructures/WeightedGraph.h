@@ -27,7 +27,7 @@ public:
         if (ContainsVertex(vertex))
             return false;
         vertexs.insert(make_pair(vertex, 1));
-        edges[vertex] =vector<pair<int, int>>();
+        edges.insert(make_pair(vertex, vector<pair<int, int>>()));
         return true;
     };
     bool RemoveVertex(int vertex)
@@ -97,7 +97,9 @@ public:
             return false;
 
         auto it = edges.find(vertex1);
+
         puts("it");
+        printf("it->second.size():%d\n", it->second.size());
         for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
         {
             printf("vit->first:%d\n", vit->first);
