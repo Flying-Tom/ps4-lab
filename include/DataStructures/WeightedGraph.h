@@ -39,7 +39,7 @@ public:
         {
             RemoveEdge(it->first, vertex);
         }
-
+        edges.erase(edges.find(vertex));
         vertexs.erase(vertexs.find(vertex));
         return true;
     };
