@@ -97,6 +97,7 @@ public:
             return false;
 
         auto it = edges.find(vertex1);
+        puts("it");
         for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
         {
             if (vit->first == vertex2)
