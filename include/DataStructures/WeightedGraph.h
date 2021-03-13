@@ -40,10 +40,10 @@ public:
             puts("1fffff");
             for (auto it = points.begin(); it != points.end(); it++)
             {
+                puts("2fffff");
                 RemoveEdge(it->first, vertex);
                 printf("(%d,%d)\n", it->first, vertex);
             }
-            puts("2fffff");
             points.erase(points.find(vertex));
             return true;
         }
