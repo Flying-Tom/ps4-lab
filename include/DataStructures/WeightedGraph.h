@@ -36,10 +36,10 @@ public:
     {
         if (ContainsVertex(vertex))
         {
-            points.erase(points.find(vertex));
             edges.erase(edges.find(vertex));
             for (auto it = points.begin(); it != points.end(); it++)
                 RemoveEdge(it->first, vertex);
+            points.erase(points.find(vertex));
             return true;
         }
         return false;
@@ -48,7 +48,8 @@ public:
     {
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && !ContainsEdge(vertex1, vertex2))
         {
-            edges[vertex1].emplace_back(make_pair(vertex2, weight));
+            auto it = edges.find(vertex1);
+            it->second.emplace_back(make_pair(vertex2, weight));
             return true;
         }
         return false;
