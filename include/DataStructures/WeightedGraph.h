@@ -100,6 +100,7 @@ public:
         puts("it");
         for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
         {
+            puts("vit");
             if (vit->first == vertex2)
                 return true;
         }
