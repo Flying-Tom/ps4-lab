@@ -43,6 +43,7 @@ public:
                 RemoveEdge(it->first, vertex);
                 printf("(%d,%d)\n", it->first, vertex);
             }
+            puts("2fffff");
             points.erase(points.find(vertex));
             return true;
         }
