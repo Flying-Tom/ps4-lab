@@ -5,8 +5,6 @@
 
 class Edge : WeightedEdge
 {
-private:
-    int src, des;
 
 public:
     Edge(int source, int destination) : WeightedEdge(source, destination, 1){};
@@ -17,11 +15,11 @@ public:
 public:
     int GetSource() const
     {
-        return src;
+        return WeightedEdge::GetSource();
     };
     int GetDestination() const
     {
-        return des;
+        return WeightedEdge::GetDestination();
     };
 };
 
