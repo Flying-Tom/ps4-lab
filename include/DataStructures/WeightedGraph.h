@@ -34,6 +34,7 @@ public:
     {
         if (!ContainsVertex(vertex))
             return false;
+            puts("1");
         edges.erase(edges.find(vertex));
         for (auto it = vertexs.begin(); it != vertexs.end(); it++)
             RemoveEdge(it->first, vertex);
