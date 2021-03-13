@@ -89,6 +89,7 @@ public:
     };
     bool ContainsEdge(int vertex1, int vertex2) const
     {
+        printf("(%d,%d)\n", vertex1, vertex2);
         if (!ContainsVertex(vertex1) || !ContainsVertex(vertex2) || vertex1 == vertex2)
             return false;
 
