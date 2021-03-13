@@ -34,11 +34,9 @@ public:
     {
         if (!ContainsVertex(vertex))
             return false;
-        puts("1");
         edges.erase(edges.find(vertex));
         for (auto it = vertexs.begin(); it != vertexs.end(); it++)
         {
-            printf("(%d,%d)\n", it->first, vertex);
             RemoveEdge(it->first, vertex);
         }
 
@@ -98,16 +96,11 @@ public:
 
         auto it = edges.find(vertex1);
 
-        puts("it");
-        printf("it->first:%d\n", it->first);
-        printf("it->second.size():%d\n", it->second.size());
         for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
         {
-            printf("vit->first:%d\n", vit->first);
             if (vit->first == vertex2)
                 return true;
         }
-        puts("Return");
         return false;
     };
     int GetWeight(int vertex1, int vertex2) const
