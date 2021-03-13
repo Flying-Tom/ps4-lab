@@ -27,7 +27,7 @@ public:
         if (ContainsVertex(vertex))
             return false;
         vertexs.insert(make_pair(vertex, 1));
-        edges[vertex] =vector<pair<int, int>>()));
+        edges[vertex] =vector<pair<int, int>>();
         return true;
     };
     bool RemoveVertex(int vertex)
