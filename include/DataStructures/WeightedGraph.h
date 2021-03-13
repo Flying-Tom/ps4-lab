@@ -90,13 +90,14 @@ public:
     {
         if (!ContainsVertex(vertex1) || !ContainsVertex(vertex2) || vertex1 == vertex2)
             return false;
-            
+
         auto it = edges.find(vertex1);
         for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
         {
             if (vit->first == vertex2)
                 return true;
         }
+        exit(-1);
     };
     int GetWeight(int vertex1, int vertex2) const
     {
