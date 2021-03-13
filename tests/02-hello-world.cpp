@@ -12,13 +12,14 @@ int main()
     assert(g.AddVertex(3) == false);
     assert(g.AddVertex(4) == true);
     assert(g.ContainsVertex(4) == true);
+    puts("1");
     assert(g.RemoveVertex(4) == true);
     assert(g.ContainsVertex(4) == false);
     assert(g.RemoveVertex(5) == false);
     assert(g.AddEdge(1, 2, 1) == true);
     assert(g.AddEdge(1, 3, 9) == true);
     assert(g.AddEdge(2, 5, 1) == false);
-puts("1");
+
     assert(g.CountEdges() == 2);
 
     assert(g.ContainsEdge(1, 2) == true);
