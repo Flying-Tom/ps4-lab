@@ -59,11 +59,11 @@ public:
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && ContainsEdge(vertex1, vertex2))
         {
             auto it = edges.find(vertex1);
-            for (auto &vit : it->second)
+            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
             {
                 if (vit.first == vertex2)
                 {
-                    it->second.erase(&vit);
+                    it->second.erase(vit);
                     return true;
                 }
             }
