@@ -63,7 +63,7 @@ public:
             {
                 if (vit.first == vertex2)
                 {
-                    it->second.erase(vit);
+                    it->second.erase(&vit);
                     return true;
                 }
             }
