@@ -129,7 +129,7 @@ public:
         {
             for (auto vit : it->second)
             {
-                temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
+                temp.emplace_back(WeightedEdge(it.first, vit.first, vit.second));
             }
         }
         return temp;
