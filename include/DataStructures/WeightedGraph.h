@@ -48,7 +48,6 @@ public:
     {
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && !ContainsEdge(vertex1, vertex2))
         {
-            //auto it = edges.find(vertex1);
             edges[vertex1].emplace_back(make_pair(vertex2, weight));
             return true;
         }
@@ -94,9 +93,9 @@ public:
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
             auto it = edges.find(vertex1);
-            for (auto vit : it->second)
+            for (auto j : it->second)
             {
-                if (vit.first == vertex2)
+                if (j.first == vertex2)
                     return true;
             }
         }
@@ -107,10 +106,10 @@ public:
         if (ContainsEdge(vertex1, vertex2))
         {
             auto it = edges.find(vertex1);
-            for (auto vit : it->second)
+            for (auto j : it->second)
             {
-                if (vit.first == vertex2)
-                    return vit.second;
+                if (j.first == vertex2)
+                    return j.second;
             }
         }
         return -1;
@@ -118,20 +117,16 @@ public:
     vector<int> GetVertices() const
     {
         vector<int> temp;
-        for (auto &it : vertexs)
-            temp.emplace_back(it.first);
+        for (auto &i : vertexs)
+            temp.emplace_back(i.first);
         return temp;
     };
     vector<WeightedEdge> GetEdges() const
     {
         vector<WeightedEdge> temp;
-        for (auto it : edges)
-        {
-            for (auto vit : it.second)
-            {
-                temp.emplace_back(WeightedEdge(it.first, vit.first, vit.second));
-            }
-        }
+        for (auto i : edges)
+            for (auto j : i.second)
+                temp.emplace_back(WeightedEdge(i.first, j.first, j.second));
         return temp;
     };
     vector<WeightedEdge> GetIncomingEdges(int vertex) const
@@ -139,12 +134,12 @@ public:
         vector<WeightedEdge> temp;
         if (ContainsVertex(vertex))
         {
-            for (auto it : edges)
+            for (auto i : edges)
             {
-                for (auto vit : it.second)
+                for (auto j : i.second)
                 {
-                    if (vit.first == vertex)
-                        temp.emplace_back(WeightedEdge(it.first, vit.first, vit.second));
+                    if (j.first == vertex)
+                        temp.emplace_back(WeightedEdge(i.first, j.first, j.second));
                 }
             }
         }
