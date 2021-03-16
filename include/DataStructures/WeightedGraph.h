@@ -156,7 +156,7 @@ public:
         if (ContainsVertex(vertex))
         {
             auto it = edges.find(vertex);
-            for (auto &vit : it->second.begin())
+            for (auto &vit : it->second)
                 temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
         }
         return temp;
