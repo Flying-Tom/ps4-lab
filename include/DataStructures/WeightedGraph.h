@@ -80,7 +80,7 @@ public:
     {
         int res = 0;
         for (auto it : edges)
-            res += it->second.size();
+            res += it.second.size();
         return res;
     };
     bool ContainsVertex(int vertex) const
