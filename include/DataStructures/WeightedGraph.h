@@ -36,7 +36,7 @@ public:
     {
         if (ContainsVertex(vertex))
         {
-            for (auto &it : vertexs)
+            for (auto it : vertexs)
                 RemoveEdge(it.first, vertex);
             edges.erase(edges.find(vertex));
             vertexs.erase(vertexs.find(vertex));
@@ -79,8 +79,8 @@ public:
     int CountEdges() const
     {
         int res = 0;
-        for (auto &it : edges)
-            res += it->second.size();
+        for (auto it : edges)
+            res += it.second.size();
         return res;
     };
     bool ContainsVertex(int vertex) const
@@ -94,7 +94,7 @@ public:
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
             auto it = edges.find(vertex1);
-            for (auto &vit : it->second)
+            for (auto vit : it->second)
             {
                 if (vit.first == vertex2)
                     return true;
@@ -107,10 +107,10 @@ public:
         if (ContainsEdge(vertex1, vertex2))
         {
             auto it = edges.find(vertex1);
-            for (auto &vit : it->second)
+            for (auto vit : it->second)
             {
                 if (vit.first == vertex2)
-                    return vit->first;
+                    return vit.second;
             }
         }
         return -1;
@@ -125,9 +125,9 @@ public:
     vector<WeightedEdge> GetEdges() const
     {
         vector<WeightedEdge> temp;
-        for (auto &it : edges)
+        for (auto it : edges)
         {
-            for (auto &vit : it->second)
+            for (auto vit : it->second)
             {
                 temp.emplace_back(WeightedEdge(it.first, vit->first, vit->second));
             }
@@ -139,12 +139,12 @@ public:
         vector<WeightedEdge> temp;
         if (ContainsVertex(vertex))
         {
-            for (auto &it : edges)
+            for (auto it : edges)
             {
-                for (auto &vit : it->second)
+                for (auto vit : it.second)
                 {
                     if (vit.first == vertex)
-                        temp.emplace_back(WeightedEdge(it.first, vit->first, vit->second));
+                        temp.emplace_back(WeightedEdge(it.first, vit.first, vit.second));
                 }
             }
         }
@@ -156,8 +156,8 @@ public:
         if (ContainsVertex(vertex))
         {
             auto it = edges.find(vertex);
-            for (auto &vit : it->second)
-                temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
+            for (auto vit : it->second)
+                temp.emplace_back(WeightedEdge(it->first, vit.first, vit.second));
         }
         return temp;
     };
@@ -176,7 +176,7 @@ public:
         if (ContainsVertex(vertex))
         {
             auto it = edges.find(vertex);
-            for (auto &vit : it->second)
+            for (auto vit : it->second)
                 temp.emplace_back(vit.first);
         }
         return temp;
