@@ -61,7 +61,7 @@ public:
             auto it = edges.find(vertex1);
             for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
             {
-                if (vit.first == vertex2)
+                if (vit->first == vertex2)
                 {
                     it->second.erase(vit);
                     return true;
