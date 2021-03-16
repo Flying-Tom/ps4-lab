@@ -127,9 +127,9 @@ public:
         vector<WeightedEdge> temp;
         for (auto it : edges)
         {
-            for (auto vit : it->second)
+            for (auto vit : it.second)
             {
-                temp.emplace_back(WeightedEdge(it.first, vit->first, vit->second));
+                temp.emplace_back(WeightedEdge(it.first, vit.first, vit.second));
             }
         }
         return temp;
