@@ -36,7 +36,7 @@ public:
     {
         if (ContainsVertex(vertex))
         {
-            for (auto it = vertexs.begin(); it != vertexs.end(); it++)
+            for (auto it : vertexs)
                 RemoveEdge(it->first, vertex);
             edges.erase(edges.find(vertex));
             vertexs.erase(vertexs.find(vertex));
@@ -59,7 +59,7 @@ public:
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && ContainsEdge(vertex1, vertex2))
         {
             auto it = edges.find(vertex1);
-            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+            for (auto vit : it->second)
             {
                 if (vit->first == vertex2)
                 {
@@ -79,7 +79,7 @@ public:
     int CountEdges() const
     {
         int res = 0;
-        for (auto it = edges.begin(); it != edges.end(); it++)
+        for (auto it : edges)
             res += it->second.size();
         return res;
     };
@@ -94,7 +94,7 @@ public:
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
             auto it = edges.find(vertex1);
-            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+            for (auto vit : it->second)
             {
                 if (vit->first == vertex2)
                     return true;
@@ -107,7 +107,7 @@ public:
         if (ContainsEdge(vertex1, vertex2))
         {
             auto it = edges.find(vertex1);
-            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+            for (auto vit : it->second)
             {
                 if (vit->first == vertex2)
                     return vit->second;
@@ -118,16 +118,16 @@ public:
     vector<int> GetVertices() const
     {
         vector<int> temp;
-        for (auto it = vertexs.begin(); it != vertexs.end(); it++)
+        for (auto it : vertexs)
             temp.emplace_back(it->first);
         return temp;
     };
     vector<WeightedEdge> GetEdges() const
     {
         vector<WeightedEdge> temp;
-        for (auto it = edges.begin(); it != edges.end(); it++)
+        for (auto it : edges)
         {
-            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+            for (auto vit : it->second)
             {
                 temp.emplace_back(WeightedEdge(it->first, vit->first, vit->second));
             }
