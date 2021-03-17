@@ -21,3 +21,6 @@ submit:
 	@curl -m 5 -w "\n" -X POST -F "TOKEN=${TOKEN}" -F "FILE=@${FILE}" \
 		http://114.212.10.47:8085/api/v1/submission/lab
 	@rm -r ${TEMP}
+
+test:
+	make && ./build/Test02
