@@ -75,16 +75,14 @@ public:
     };
     vector<WeightedEdge> GetEdges() const
     {
-        vector<WeightedEdge> temp = WeightedGraph::GetEdges();
-        vector<WeightedEdge> res;
+        vector<WeightedEdge> res = WeightedGraph::GetEdges();
         map<pair<int, int>, int> mtemp;
 
         for (auto it = temp.begin(); it != temp.end(); it++)
         {
             int src = it->GetSource(), des = it->GetDestination(), weight = it->GetWeight();
             if (mtemp.find(make_pair(src, des)) != mtemp.end() || mtemp.find(make_pair(des, src)) != mtemp.end())
-                continue;
-            res.emplace_back(WeightedEdge(src, des, weight));
+                res.erase(it);
             mtemp.insert(make_pair(make_pair(src, des), 1));
         };
         return res;
