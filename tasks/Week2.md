@@ -42,7 +42,7 @@ class WeightedEdge : public Edge {
 - `~WeightedGraph()`
 - `bool AddVertex(int vertex)`
 - `bool RemoveVertex(int vertex)`
-- `bool AddEdge(int vertex1, int vertex2, int weight)`：添加了权重参数
+- `bool AddEdge(int vertex1, int vertex2, int weight)`：添加了权重参数；如果添加某条边时图中已经存在了相同起点和终点的边（无论权重是多少），则什么都不做并返回`false`
 - `bool RemoveEdge(int vertex1, int vertex2)`
 - `int CountVertices() const`
 - `int CountEdges() const`
