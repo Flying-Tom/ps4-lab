@@ -88,7 +88,10 @@ public:
     };
     int GetDegree(int vertex) const
     {
-        return Graph::GetDegree(vertex);
+        if (Graph::ContainsEdge(vertex, vertex))
+            return Graph::GetDegree(vertex) + 1;
+        else
+            return Graph::GetDegree(vertex);
     };
     std::vector<int> GetNeighbors(int vertex) const
     {

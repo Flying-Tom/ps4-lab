@@ -98,7 +98,10 @@ public:
     };
     int GetDegree(int vertex) const
     {
-        return WeightedGraph::GetDegree(vertex);
+        if (WeightedGraph::ContainsEdge(vertex, vertex))
+            return WeightedGraph::GetDegree(vertex) + 1;
+        else
+            return WeightedGraph::GetDegree(vertex);
     };
     vector<int> GetNeighbors(int vertex) const
     {
