@@ -61,7 +61,7 @@ public:
     };
     vector<WeightedEdge> GetEdges() const
     {
-        vector<WeightedEdge> temp = Graph::GetEdges();
+        vector<WeightedEdge> temp = WeightedGraph::GetEdges();
         vector<WeightedEdge> res;
         map<pair<int, int>, int> mtemp;
 
