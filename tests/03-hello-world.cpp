@@ -36,7 +36,12 @@ int main()
     assert(g.ContainsEdge(2, 5) == false);
 
     assert(g.GetDegree(1) == 2);
-    assert(g.GetOutgoingEdges(1).size() == 3);
+    assert(g.GetOutgoingEdges(1).size() == 2);
+
+    assert(g.AddEdge(1, 1) == false);
+    assert(g.GetDegree(1) == 4);
+    assert(g.GetOutgoingEdges(1).size() == 4);
+
     assert(g.GetNeighbors(1).size() == 3);
 
     puts("Pass!");
