@@ -28,39 +28,14 @@ int main()
     assert(g.AddEdge(1, 1) == true);
 
     assert(g.CountEdges() == 3);
-    //assert(g.GetEdges().size() == g.CountEdges());
-    /*
-    for (auto i : g.GetEdges())
-    {
-        printf("%d -> %d\n", i.GetSource(), i.GetDestination());
-    }
-    */
+    assert(g.GetEdges().size() == g.CountEdges());
 
-    for (auto i : g.GetIncomingEdges(1))
-    {
-        printf("%d <-> %d\n", i.GetSource(), i.GetDestination());
-    }
-    puts("-----------------------");
-    for (auto i : g.GetOutgoingEdges(1))
-    {
-        printf("%d <-> %d\n", i.GetSource(), i.GetDestination());
-    }
-    puts("-----------------------");
-    for (auto i : g.GetNeighbors(1))
-    {
-        printf("%d\n", i);
-    }
     assert(g.RemoveEdge(1, 1) == true);
-    puts("-----------------------");
-    for (auto i : g.GetNeighbors(1))
-    {
-        printf("%d\n", i);
-    }
 
     assert(g.ContainsEdge(1, 2) == true);
     assert(g.ContainsEdge(2, 5) == false);
 
-    assert(g.GetDegree(1) == 3);
+    assert(g.GetDegree(1) == 4);
     assert(g.GetOutgoingEdges(1).size() == 3);
     assert(g.GetNeighbors(1).size() == 3);
 
