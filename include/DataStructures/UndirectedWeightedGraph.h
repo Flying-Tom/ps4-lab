@@ -27,11 +27,17 @@ public:
     };
     bool AddEdge(int vertex1, int vertex2, int weight)
     {
-        return WeightedGraph::AddEdge(vertex1, vertex2, weight) && WeightedGraph::AddEdge(vertex2, vertex1, weight);
+        if (vertex1 == vertex2)
+            return WeightedGraph::AddEdge(vertex1, vertex2, weight);
+        else
+            return WeightedGraph::AddEdge(vertex1, vertex2, weight) && WeightedGraph::AddEdge(vertex2, vertex1, weight);
     };
     bool RemoveEdge(int vertex1, int vertex2)
     {
-        return WeightedGraph::RemoveEdge(vertex1, vertex2) && WeightedGraph::RemoveEdge(vertex2, vertex1);
+        if (vertex1 == vertex2)
+            return WeightedGraph::RemoveEdge(vertex1, vertex2);
+        else
+            return WeightedGraph::RemoveEdge(vertex1, vertex2) && WeightedGraph::RemoveEdge(vertex2, vertex1);
     };
 
 public:
@@ -41,7 +47,15 @@ public:
     };
     int CountEdges() const
     {
-        return WeightedGraph::CountEdges() / 2;
+        int ret = WeightedGraph::CountEdges();
+        vector<int> vtemp = WeightedGraph::GetVertices();
+        for (auto i : vtemp)
+        {
+            if (WeightedGraph::ContainsEdge(i, i))
+                ret++;
+        }
+        assert(ret % 2 == 0);
+        return ret / 2;
     };
     bool ContainsVertex(int vertex) const
     {
