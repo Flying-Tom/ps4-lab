@@ -21,11 +21,17 @@ public:
     };
     bool AddEdge(int vertex1, int vertex2)
     {
-        return Graph::AddEdge(vertex1, vertex2) && Graph::AddEdge(vertex2, vertex1);
+        if (vertex1 == vertex2)
+            return Graph::AddEdge(vertex1, vertex2);
+        else
+            return Graph::AddEdge(vertex1, vertex2) && Graph::AddEdge(vertex2, vertex1);
     };
     bool RemoveEdge(int vertex1, int vertex2)
     {
-        return Graph::RemoveEdge(vertex1, vertex2) && Graph::RemoveEdge(vertex2, vertex1);
+        if (vertex1 == vertex2)
+            return Graph::RemoveEdge(vertex1, vertex2);
+        else
+            return Graph::RemoveEdge(vertex1, vertex2) && Graph::RemoveEdge(vertex2, vertex1);
     };
 
 public:
