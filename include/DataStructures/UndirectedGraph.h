@@ -68,6 +68,11 @@ public:
         vector<Edge> res = Graph::GetEdges();
         map<pair<int, int>, int> mtemp;
 
+        for (auto i : res)
+        {
+            printf("%d -> %d\n", i.GetSource(), i.GetDestination());
+        }
+
         for (auto it = res.begin(); it != res.end(); it++)
         {
             int src = it->GetSource(), des = it->GetDestination();
