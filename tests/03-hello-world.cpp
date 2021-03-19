@@ -50,6 +50,11 @@ int main()
     {
         printf("%d\n", i);
     }
+    assert(g.RemoveEdge(1, 2) == true);
+    for (auto i : g.GetNeighbors(1))
+    {
+        printf("%d\n", i);
+    }
 
     assert(g.ContainsEdge(1, 2) == true);
     assert(g.ContainsEdge(2, 5) == false);
