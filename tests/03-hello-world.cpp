@@ -34,7 +34,7 @@ int main()
         printf("%d -> %d\n", i.GetSource(), i.GetDestination());
     }
     */
-    for (auto i : g.GetIncomingEdges())
+    for (auto i : g.GetIncomingEdges(1))
     {
         printf("%d -> %d\n", i.GetSource(), i.GetDestination());
     }
