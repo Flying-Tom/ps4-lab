@@ -1,18 +1,13 @@
-#ifndef WEIGHTEDGRAPH_H
-#define WEIGHTEDGRAPH_H
+#ifndef UNDIRECTEDWEIGHTEDGRAPH_H
+#define UNDIRECTEDWEIGHTEDGRAPH_H
 
-#include <map>
-#include <vector>
-#include <DataStructures/WeightedEdge.h>
-#include <cassert>
+#include <DataStructures/WeightedGraph.h>
 
 using namespace std;
 
-class WeightedGraph
+class UndirectedWeightedGraph : public WeightedGraph
 {
 private:
-    map<int, int> vertexs;
-    map<int, vector<pair<int, int>>> edges;
 
 public:
     WeightedGraph(){
