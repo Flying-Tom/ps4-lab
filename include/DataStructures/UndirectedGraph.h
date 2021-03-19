@@ -53,7 +53,7 @@ public:
     };
     std::vector<Edge> GetEdges() const
     {
-        vector<WeightedEdge> temp = Graph::GetEdges();
+        vector<Edge> temp = Graph::GetEdges();
         vector<Edge> res;
         map<pair<int, int>, int> mtemp;
 
