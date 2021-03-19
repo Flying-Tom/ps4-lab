@@ -40,7 +40,7 @@ int main()
 
     assert(g.AddEdge(1, 1) == true);
     assert(g.GetDegree(1) == 4);
-    assert(g.GetOutgoingEdges(1).size() == 4);
+    assert(g.GetOutgoingEdges(1).size() == 3);
 
     assert(g.GetNeighbors(1).size() == 3);
 
