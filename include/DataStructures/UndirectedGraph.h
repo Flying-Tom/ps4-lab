@@ -66,7 +66,6 @@ public:
     std::vector<Edge> GetEdges() const
     {
         vector<Edge> res = Graph::GetEdges();
-        /*
         map<pair<int, int>, int> mtemp;
 
         for (auto it = res.begin(); it != res.end(); it++)
@@ -75,7 +74,7 @@ public:
             if (mtemp.find(make_pair(src, des)) != mtemp.end() || mtemp.find(make_pair(des, src)) != mtemp.end())
                 res.erase(it);
             mtemp.insert(make_pair(make_pair(src, des), 1));
-        };*/
+        };
         return res;
     }
     std::vector<Edge> GetIncomingEdges(int vertex) const
