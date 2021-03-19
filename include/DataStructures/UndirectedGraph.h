@@ -7,8 +7,8 @@ class UndirectedGraph : public Graph
 {
 private:
 public:
-    Graph(){};
-    ~Graph(){};
+    UndirectedGraph(){};
+    ~UndirectedGraph(){};
 
 public:
     bool AddVertex(int vertex)
