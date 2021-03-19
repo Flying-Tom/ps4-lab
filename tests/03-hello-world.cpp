@@ -31,7 +31,7 @@ int main()
     assert(g.ContainsEdge(1, 2) == true);
     assert(g.ContainsEdge(2, 5) == false);
 
-    assert(g.GetDegree(1) == 2);
+    assert(g.GetDegree(1) == 3);
     assert(g.GetOutgoingEdges(1).size() == 2);
     assert(g.GetNeighbors(1).size() == 2);
 
