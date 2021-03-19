@@ -45,7 +45,7 @@ public:
         vector<int> vtemp = Graph::GetVertices();
         for (auto i : vtemp)
         {
-            if (Graph::ContainsEdge(vtemp[i], vtemp[i]))
+            if (Graph::ContainsEdge(i, i))
                 ret++;
         }
         assert(ret % 2 == 0);
