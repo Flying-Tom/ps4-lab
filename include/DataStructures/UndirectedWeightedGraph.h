@@ -70,8 +70,8 @@ public:
             int src = it->GetSource(), des = it->GetDestination(), weight = it->GetWeight();
             if (mtemp.find(make_pair(src, des)) != mtemp.end() || mtemp.find(make_pair(des, src)) != mtemp.end())
                 continue;
-            res.emplace_back(Edge(src, des, weight));
-            mtemp.insert(make_pair(make_pair(src, des, weight), 1));
+            res.emplace_back(WeightedEdge(src, des, weight));
+            mtemp.insert(make_pair(make_pair(src, des), 1));
         };
         return res;
     };
