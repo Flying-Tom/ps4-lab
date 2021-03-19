@@ -64,7 +64,7 @@ public:
                 continue;
 
             res.emplace_back(Edge(src, des));
-            mtemp.insert(make_pair(src, des));
+            mtemp.insert(make_pair(make_pair(src, des), 1));
         };
         return res;
     }
