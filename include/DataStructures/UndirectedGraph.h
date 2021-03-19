@@ -74,7 +74,7 @@ public:
     };
     std::vector<Edge> GetOutgoingEdges(int vertex) const
     {
-        return Graph::GetOutcomingEdges(vertex);
+        return Graph::GetOutgoingEdges(vertex);
     };
     int GetDegree(int vertex) const
     {
