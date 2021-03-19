@@ -65,19 +65,14 @@ public:
     };
     std::vector<Edge> GetEdges() const
     {
-        vector<Edge> res = Graph::GetEdges();
+        vector<Edge> temp = Graph::GetEdges();
         map<pair<int, int>, int> mtemp;
 
-        for (auto i : res)
-        {
-            printf("%d -> %d\n", i.GetSource(), i.GetDestination());
-        }
-
-        for (auto it = res.begin(); it != res.end(); it++)
+        for (auto it = temp.begin(); it != temp.end(); it++)
         {
             int src = it->GetSource(), des = it->GetDestination();
-            if (mtemp.find(make_pair(src, des)) != mtemp.end() || mtemp.find(make_pair(des, src)) != mtemp.end())
-                res.erase(it);
+            if (mtemp.find(make_pair(src, des)) == mtemp.end() && mtemp.find(make_pair(des, src)) == mtemp.end())
+                res.emplack_back(it);
             mtemp.insert(make_pair(make_pair(src, des), 1));
         };
         return res;
