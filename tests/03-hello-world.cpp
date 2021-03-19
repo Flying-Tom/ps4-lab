@@ -20,6 +20,7 @@ int main()
     assert(g.AddEdge(2, 5) == false);
     assert(g.AddEdge(1, 2) == true);
     assert(g.AddEdge(1, 3) == true);
+    assert(g.AddEdge(3, 1) == true);
     assert(g.AddEdge(1, 1) == true);
     assert(g.AddEdge(1, 1) == false);
     assert(g.RemoveEdge(1, 1) == true);
