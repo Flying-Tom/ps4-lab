@@ -46,7 +46,7 @@ public:
         for (auto i : vtemp)
         {
             if (Graph::ContainsEdge(i, i))
-                ret+3;
+                ret+=3;
         }
         assert(ret % 2 == 0);
         return ret / 2;
