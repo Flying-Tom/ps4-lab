@@ -70,9 +70,8 @@ public:
     }
     std::vector<Edge> GetIncomingEdges(int vertex) const
     {
-        vector<WeightedEdge> temp;
+        vector<WeightedEdge> temp = Graph::GetIncomingEdges(vertex);
         vector<Edge> res;
-        temp = Graph::GetIncomingEdges(vertex);
         for (auto it = temp.begin(); it != temp.end(); it++)
             res.emplace_back(Edge(it->GetSource(), it->GetDestination()));
         /*
