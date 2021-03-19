@@ -16,11 +16,17 @@ int main()
     assert(g.RemoveVertex(4) == true);
     assert(g.ContainsVertex(4) == false);
     assert(g.RemoveVertex(5) == false);
+
+    assert(g.AddEdge(2, 5) == false);
     assert(g.AddEdge(1, 2) == true);
     assert(g.AddEdge(1, 3) == true);
-    assert(g.AddEdge(2, 5) == false);
+    assert(g.AddEdge(1, 1) == true);
+    assert(g.AddEdge(1, 1) == false);
+    assert(g.RemoveEdge(1, 1) == true);
+    assert(g.RemoveEdge(1, 1) == false);
+    assert(g.AddEdge(1, 1) == true);
 
-    assert(g.CountEdges() == 2);
+    assert(g.CountEdges() == 3);
 
     assert(g.ContainsEdge(1, 2) == true);
     assert(g.ContainsEdge(2, 5) == false);
