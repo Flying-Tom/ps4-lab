@@ -78,7 +78,7 @@ public:
         vector<WeightedEdge> res = WeightedGraph::GetEdges();
         map<pair<int, int>, int> mtemp;
 
-        for (auto it = temp.begin(); it != temp.end(); it++)
+        for (auto it = res.begin(); it != res.end(); it++)
         {
             int src = it->GetSource(), des = it->GetDestination(), weight = it->GetWeight();
             if (mtemp.find(make_pair(src, des)) != mtemp.end() || mtemp.find(make_pair(des, src)) != mtemp.end())
