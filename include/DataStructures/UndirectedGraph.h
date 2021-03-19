@@ -21,7 +21,7 @@ public:
     };
     bool AddEdge(int vertex1, int vertex2)
     {
-        return Graph::AddEdge(vertex1, vertex2, 1) && Graph::AddEdge(vertex2, vertex1, 1);
+        return Graph::AddEdge(vertex1, vertex2) && Graph::AddEdge(vertex2, vertex1);
     };
     bool RemoveEdge(int vertex1, int vertex2)
     {
