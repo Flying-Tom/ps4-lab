@@ -27,7 +27,7 @@ int main()
     assert(g.RemoveEdge(1, 1) == false);
     assert(g.AddEdge(1, 1) == true);
 
-    assert(g.CountEdges() == 4);
+    assert(g.CountEdges() == 3);
     //assert(g.GetEdges().size() == g.CountEdges());
     /*
     for (auto i : g.GetEdges())

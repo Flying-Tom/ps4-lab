@@ -46,7 +46,7 @@ public:
         for (auto i : vtemp)
         {
             if (Graph::ContainsEdge(i, i))
-                ret+=3;
+                ret++;
         }
         assert(ret % 2 == 0);
         return ret / 2;
@@ -73,7 +73,7 @@ public:
         {
             int src = it->GetSource(), des = it->GetDestination();
             if (mtemp.find(make_pair(src, des)) == mtemp.end() && mtemp.find(make_pair(des, src)) == mtemp.end())
-                res.emplace_back(*it);
+                res.emplack_back(*it);
             mtemp.insert(make_pair(make_pair(src, des), 1));
         };
         return res;

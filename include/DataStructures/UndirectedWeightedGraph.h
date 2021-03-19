@@ -52,7 +52,7 @@ public:
         for (auto i : vtemp)
         {
             if (WeightedGraph::ContainsEdge(i, i))
-                ret+=3;
+                ret++;
         }
         assert(ret % 2 == 0);
         return ret / 2;
