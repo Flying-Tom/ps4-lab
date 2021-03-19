@@ -25,7 +25,6 @@ int main()
     assert(g.ContainsEdge(2, 5) == false);
 
     assert(g.GetDegree(1) == 2);
-    assert(g.GetWeight(1, 3) == 9);
     assert(g.GetIncomingEdges(1).empty());
     assert(g.GetOutgoingEdges(1).size() == 2);
     assert(g.GetNeighbors(1).size() == 2);
