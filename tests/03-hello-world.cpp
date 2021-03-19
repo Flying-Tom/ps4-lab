@@ -1,5 +1,6 @@
 #include <cassert>
 #include <DataStructures/UndirectedGraph.h>
+#include <DataStructures/UndirectedWeightedGraph.h>
 using namespace std;
 
 int main()
