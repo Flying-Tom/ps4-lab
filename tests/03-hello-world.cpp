@@ -20,7 +20,7 @@ int main()
     assert(g.AddEdge(2, 5) == false);
     assert(g.AddEdge(1, 2) == true);
     assert(g.AddEdge(1, 3) == true);
-    assert(g.AddEdge(3, 1) == true);
+    assert(g.AddEdge(3, 1) == false);
     assert(g.AddEdge(1, 1) == true);
     assert(g.AddEdge(1, 1) == false);
     assert(g.RemoveEdge(1, 1) == true);
@@ -44,6 +44,11 @@ int main()
     for (auto i : g.GetOutgoingEdges(1))
     {
         printf("%d -> %d\n", i.GetSource(), i.GetDestination());
+    }
+    puts("-----------------------");
+    for (auto i : g.GetNeighbors(1))
+    {
+        printf("%d\n", i);
     }
 
     assert(g.ContainsEdge(1, 2) == true);
