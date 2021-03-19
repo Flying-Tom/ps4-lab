@@ -27,7 +27,11 @@ int main()
     assert(g.AddEdge(1, 1) == true);
 
     assert(g.CountEdges() == 3);
-    printf("%d\n", g.GetEdges().size());
+    printf("%lld\n", g.GetEdges().size());
+    for (auto i : g.GetEdges())
+    {
+        printf("%d -> %d\n", i.GetSource(), i.GetDestination());
+    }
     assert(g.GetEdges().size() == 3);
 
     assert(g.ContainsEdge(1, 2) == true);
