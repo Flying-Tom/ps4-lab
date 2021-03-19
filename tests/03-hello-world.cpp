@@ -38,12 +38,12 @@ int main()
 
     for (auto i : g.GetIncomingEdges(1))
     {
-        printf("%d -> %d\n", i.GetSource(), i.GetDestination());
+        printf("%d <-> %d\n", i.GetSource(), i.GetDestination());
     }
     puts("-----------------------");
     for (auto i : g.GetOutgoingEdges(1))
     {
-        printf("%d -> %d\n", i.GetSource(), i.GetDestination());
+        printf("%d <-> %d\n", i.GetSource(), i.GetDestination());
     }
     puts("-----------------------");
     for (auto i : g.GetNeighbors(1))
