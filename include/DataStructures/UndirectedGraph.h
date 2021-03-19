@@ -42,6 +42,12 @@ public:
     int CountEdges() const
     {
         int ret = Graph::CountEdges();
+        vector<int> vtemp = Graph::GetVertices();
+        for (auto i : vtemp)
+        {
+            if (Graph::ContainsEdge(vtemp[i], vtemp[i]))
+                ret++;
+        }
         assert(ret % 2 == 0);
         return ret / 2;
     };
