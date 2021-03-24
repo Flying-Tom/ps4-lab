@@ -43,7 +43,7 @@ int main()
     assert(g.GetOutgoingEdges(1).size() == 3);
 
     assert(g.GetNeighbors(1).size() == 3);
-    assert(g.Graph::AddVertex(1,2) == 3);
+    assert(g.Graph::AddVertex(1));
 
     puts("Pass!");
 }
