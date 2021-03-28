@@ -73,10 +73,10 @@ public:
     {
         return WeightedGraph<T>::GetVertices();
     };
-    vector<WeightedEdge> GetEdges() const
+    vector<WeightedEdge<T>> GetEdges() const
     {
-        vector<WeightedEdge> temp = WeightedGraph<T>::GetEdges();
-        vector<WeightedEdge> res;
+        vector<WeightedEdge<T>> temp = WeightedGraph<T>::GetEdges();
+        vector<WeightedEdge<T>> res;
         map<pair<int, int>, int> mtemp;
 
         for (auto it = temp.begin(); it != temp.end(); it++)
@@ -88,11 +88,11 @@ public:
         };
         return res;
     };
-    vector<WeightedEdge> GetIncomingEdges(int vertex) const
+    vector<WeightedEdge<T>> GetIncomingEdges(int vertex) const
     {
         return WeightedGraph<T>::GetIncomingEdges(vertex);
     };
-    vector<WeightedEdge> GetOutgoingEdges(int vertex) const
+    vector<WeightedEdge<T>> GetOutgoingEdges(int vertex) const
     {
         return WeightedGraph<T>::GetOutgoingEdges(vertex);
     };
