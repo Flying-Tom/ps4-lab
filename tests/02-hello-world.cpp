@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    WeightedGraph g;
+    WeightedGraph<int> g;
 
     assert(g.AddVertex(1) == true);
     assert(g.AddVertex(2) == true);
