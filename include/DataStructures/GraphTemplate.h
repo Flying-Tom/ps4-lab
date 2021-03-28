@@ -4,6 +4,7 @@
 #include <map>
 #include <vector>
 #include <cassert>
+#include <DataStructures/Edge.h>
 using namespace std;
 
 template <typename TEdge>

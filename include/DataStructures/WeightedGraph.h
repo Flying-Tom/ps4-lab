@@ -1,7 +1,6 @@
 #ifndef WEIGHTEDGRAPH_H
 #define WEIGHTEDGRAPH_H
 
-#include <DataStructures/WeightedEdge.h>
 #include <DataStructures/GraphTemplate.h>
 
 using namespace std;
