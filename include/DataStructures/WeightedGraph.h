@@ -6,7 +6,8 @@
 
 using namespace std;
 
-class WeightedGraph : public Generic<WeightedEdge>
+template <typename T>
+class WeightedGraph : public Generic<WeightedEdge<T>>
 {
 public:
     WeightedGraph(){
