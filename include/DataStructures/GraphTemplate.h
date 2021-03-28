@@ -42,8 +42,8 @@ public:
     {
         if (ContainsVertex(vertex))
         {
-            for (auto it : vertexs)
-                RemoveEdge(it.first, vertex);
+            for (auto v : vertexs)
+                RemoveEdge(v.first, vertex);
             edges.erase(edges.find(vertex));
             vertexs.erase(vertexs.find(vertex));
             return true;
@@ -54,12 +54,12 @@ public:
     {
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && ContainsEdge(vertex1, vertex2))
         {
-            auto it = edges.find(vertex1);
-            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
+            auto v = edges.find(vertex1);
+            for (auto edge = v->second.begin(); edge != v->second.end(); edge++)
             {
-                if (vit->GetDestination() == vertex2)
+                if (edge->GetDestination() == vertex2)
                 {
-                    it->second.erase(vit);
+                    v->second.erase(edge);
                     return true;
                 }
             }
