@@ -77,7 +77,7 @@ public:
     };
     vector<int> GetNeighbors(int vertex) const
     {
-        return Generic::GetDegree(vertex);
+        return Generic::GetNeighbors(vertex);
     };
 };
 

@@ -103,7 +103,7 @@ public:
             for (auto j : it->second)
             {
                 if (j.GetDestination() == vertex2)
-                    return j.second;
+                    return j.GetWeight();
             }
         }
         return -1;
