@@ -1,13 +1,15 @@
 #ifndef WEIGHTEDEDGE_H
 #define WEIGHTEDEDGE_H
 
+template <typename T>
 class WeightedEdge
 {
 private:
-    int src, des, w;
+    int src, des;
+    T w;
 
 public:
-    WeightedEdge(int source, int destination, int weight)
+    WeightedEdge(int source, int destination, T weight)
     {
         src = source;
         des = destination;
@@ -24,7 +26,7 @@ public:
     {
         return des;
     };
-    int GetWeight() const
+    T GetWeight() const
     {
         return w;
     };
