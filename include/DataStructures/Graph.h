@@ -4,7 +4,7 @@
 #include <DataStructures/Edge.h>
 #include <DataStructures/GraphTemplate.h>
 
-class Graph : public Generic
+class Graph : public Generic<Edge>
 {
 public:
     Graph(){};
