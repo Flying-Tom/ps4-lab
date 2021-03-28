@@ -1,6 +1,7 @@
 #include <map>
 #include <vector>
 #include <cassert>
+using namespace std;
 
 template <typename TEdge>
 class Generic
