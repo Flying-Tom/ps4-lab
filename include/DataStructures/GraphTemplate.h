@@ -16,7 +16,7 @@ protected:
         int vertex1 = edge.GetSource(), vertex2 = edge.GetDestination();
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && !ContainsEdge(vertex1, vertex2))
         {
-            edge[vertex1].emplace_back(edge);
+            edges[vertex1].emplace_back(edge);
             return true;
         }
         return false;
