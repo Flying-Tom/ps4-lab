@@ -56,13 +56,11 @@ public:
         {
             auto v = edges.find(vertex1);
             for (auto edge = v->second.begin(); edge != v->second.end(); edge++)
-            {
                 if (edge->GetDestination() == vertex2)
                 {
                     v->second.erase(edge);
                     return true;
                 }
-            }
         }
         return false;
     };
@@ -89,10 +87,10 @@ public:
     {
         if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
         {
-            auto it = edges.find(vertex1);
-            for (auto j : it->second)
+            auto v = edges.find(vertex1);
+            for (auto edge : v->second)
             {
-                if (j.GetDestination() == vertex2)
+                if (edge.GetDestination() == vertex2)
                     return true;
             }
         }
@@ -102,11 +100,11 @@ public:
     {
         if (ContainsEdge(vertex1, vertex2))
         {
-            auto it = edges.find(vertex1);
-            for (auto j : it->second)
+            auto v = edges.find(vertex1);
+            for (auto edge : v->second)
             {
-                if (j.GetDestination() == vertex2)
-                    return j.GetWeight();
+                if (edge.GetDestination() == vertex2)
+                    return edge.GetWeight();
             }
         }
         return -1;
