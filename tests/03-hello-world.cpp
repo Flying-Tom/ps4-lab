@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    UndirectedGraph g;
+    UndirectedWeightedGraph<int> g;
 
     assert(g.AddVertex(1) == true);
     assert(g.AddVertex(2) == true);
@@ -16,12 +16,12 @@ int main()
     assert(g.ContainsVertex(4) == false);
     assert(g.RemoveVertex(5) == false);
 
-    assert(g.AddEdge(2, 5) == false);
-    assert(g.AddEdge(1, 2) == true);
-    assert(g.AddEdge(1, 3) == true);
-    assert(g.AddEdge(3, 1) == false);
-    assert(g.AddEdge(1, 1) == true);
-    assert(g.AddEdge(1, 1) == false);
+    assert(g.AddEdge(2, 5, 2) == false);
+    assert(g.AddEdge(1, 2, 3) == true);
+    assert(g.AddEdge(1, 3, 4) == true);
+    assert(g.AddEdge(3, 1, 5) == false);
+    assert(g.AddEdge(1, 1, 6) == true);
+    assert(g.AddEdge(1, 1, 7) == false);
     assert(g.RemoveEdge(1, 1) == true);
     assert(g.RemoveEdge(1, 1) == false);
     assert(g.AddEdge(1, 1) == true);
