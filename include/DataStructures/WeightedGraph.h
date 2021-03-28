@@ -1,19 +1,13 @@
 #ifndef WEIGHTEDGRAPH_H
 #define WEIGHTEDGRAPH_H
 
-#include <map>
-#include <vector>
 #include <DataStructures/WeightedEdge.h>
-#include <cassert>
+#include <DataStructures/GraphTemplate.h>
 
 using namespace std;
 
-class WeightedGraph
+class WeightedGraph : public Generic<WeightedEdge>
 {
-private:
-    map<int, int> vertexs;
-    map<int, vector<pair<int, int>>> edges;
-
 public:
     WeightedGraph(){
 
@@ -25,157 +19,65 @@ public:
 public:
     bool AddVertex(int vertex)
     {
-        if (!ContainsVertex(vertex))
-        {
-            vertexs.insert(make_pair(vertex, 1));
-            edges.insert(make_pair(vertex, vector<pair<int, int>>()));
-            return true;
-        }
-        return false;
+        return Generic::AddVertex(vertex);
     };
     bool RemoveVertex(int vertex)
     {
-        if (ContainsVertex(vertex))
-        {
-            for (auto it : vertexs)
-                RemoveEdge(it.first, vertex);
-            edges.erase(edges.find(vertex));
-            vertexs.erase(vertexs.find(vertex));
-            return true;
-        }
-        return false;
+        return Generic::RemoveVertex(vertex);
     };
     bool AddEdge(int vertex1, int vertex2, int weight)
     {
-        if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && !ContainsEdge(vertex1, vertex2))
-        {
-            edges[vertex1].emplace_back(make_pair(vertex2, weight));
-            return true;
-        }
-        return false;
+        return Generic::InsertEdge(WeightedEdge(vertex1, vertex2, weight));
     };
     bool RemoveEdge(int vertex1, int vertex2)
     {
-        if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && ContainsEdge(vertex1, vertex2))
-        {
-            auto it = edges.find(vertex1);
-            for (auto vit = it->second.begin(); vit != it->second.end(); vit++)
-            {
-                if (vit->first == vertex2)
-                {
-                    it->second.erase(vit);
-                    return true;
-                }
-            }
-        }
-        return false;
+        return Generic::RemoveEdge(vertex1, vertex2);
     };
 
 public:
     int CountVertices() const
     {
-        return vertexs.size();
+        return Generic::CountVertices();
     };
     int CountEdges() const
     {
-        int res = 0;
-        for (auto it : edges)
-            res += it.second.size();
-        return res;
+        return Generic::CountEdges();
     };
     bool ContainsVertex(int vertex) const
     {
-        if (vertexs.find(vertex) != vertexs.end())
-            return true;
-        return false;
+        return Generic::ContainsVertex(vertex);
     };
     bool ContainsEdge(int vertex1, int vertex2) const
     {
-        if (ContainsVertex(vertex1) && ContainsVertex(vertex2))
-        {
-            auto it = edges.find(vertex1);
-            for (auto j : it->second)
-            {
-                if (j.first == vertex2)
-                    return true;
-            }
-        }
-        return false;
+        return Generic::ContainsEdge(vertex1, vertex2);
     };
     int GetWeight(int vertex1, int vertex2) const
     {
-        if (ContainsEdge(vertex1, vertex2))
-        {
-            auto it = edges.find(vertex1);
-            for (auto j : it->second)
-            {
-                if (j.first == vertex2)
-                    return j.second;
-            }
-        }
-        return -1;
+        return Generic::GetWeight(vertex1, vertex2);
     };
     vector<int> GetVertices() const
     {
-        vector<int> temp;
-        for (auto &i : vertexs)
-            temp.emplace_back(i.first);
-        return temp;
+        return Generic::GetVertices();
     };
     vector<WeightedEdge> GetEdges() const
     {
-        vector<WeightedEdge> temp;
-        for (auto i : edges)
-            for (auto j : i.second)
-                temp.emplace_back(WeightedEdge(i.first, j.first, j.second));
-        return temp;
+        return Generic::GetEdges();
     };
     vector<WeightedEdge> GetIncomingEdges(int vertex) const
     {
-        vector<WeightedEdge> temp;
-        if (ContainsVertex(vertex))
-        {
-            for (auto i : edges)
-            {
-                for (auto j : i.second)
-                {
-                    if (j.first == vertex)
-                        temp.emplace_back(WeightedEdge(i.first, j.first, j.second));
-                }
-            }
-        }
-        return temp;
+        return Generic::GetIncomingEdges(vertex);
     };
     vector<WeightedEdge> GetOutgoingEdges(int vertex) const
     {
-        vector<WeightedEdge> temp;
-        if (ContainsVertex(vertex))
-        {
-            auto it = edges.find(vertex);
-            for (auto vit : it->second)
-                temp.emplace_back(WeightedEdge(it->first, vit.first, vit.second));
-        }
-        return temp;
+        return Generic::GetOutgoingEdges(vertex);
     };
     int GetDegree(int vertex) const
     {
-        if (ContainsVertex(vertex))
-        {
-            auto it = edges.find(vertex);
-            return it->second.size();
-        }
-        return 0;
+        return Generic::GetDegree(vertex);
     };
     vector<int> GetNeighbors(int vertex) const
     {
-        vector<int> temp;
-        if (ContainsVertex(vertex))
-        {
-            auto it = edges.find(vertex);
-            for (auto vit : it->second)
-                temp.emplace_back(vit.first);
-        }
-        return temp;
+        return Generic::GetDegree(vertex);
     };
 };
 
