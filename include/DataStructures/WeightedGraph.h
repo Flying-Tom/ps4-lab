@@ -60,15 +60,15 @@ public:
     {
         return Generic::GetVertices();
     };
-    vector<WeightedEdge> GetEdges() const
+    vector<WeightedEdge<T>> GetEdges() const
     {
         return Generic::GetEdges();
     };
-    vector<WeightedEdge> GetIncomingEdges(int vertex) const
+    vector<WeightedEdge<T>> GetIncomingEdges(int vertex) const
     {
         return Generic::GetIncomingEdges(vertex);
     };
-    vector<WeightedEdge> GetOutgoingEdges(int vertex) const
+    vector<WeightedEdge<T>> GetOutgoingEdges(int vertex) const
     {
         return Generic::GetOutgoingEdges(vertex);
     };

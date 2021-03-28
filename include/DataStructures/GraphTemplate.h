@@ -1,3 +1,6 @@
+#ifndef GRAPHTEMPLATE_H
+#define GRAPHTEMPLATE_H
+
 #include <map>
 #include <vector>
 #include <cassert>
@@ -166,3 +169,5 @@ public:
         return temp;
     };
 };
+
+#endif
