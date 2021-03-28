@@ -23,8 +23,8 @@ protected:
     }
 
 public:
-    Generic();
-    ~Generic();
+    Generic(){};
+    ~Generic(){};
     bool AddVertex(int vertex)
     {
         if (!ContainsVertex(vertex))
