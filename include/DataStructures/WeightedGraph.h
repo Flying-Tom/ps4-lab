@@ -17,6 +17,7 @@ public:
     };
 
 public:
+/*
     bool AddVertex(int vertex)
     {
         return Generic<WeightedEdge<T>>::AddVertex(vertex);
@@ -79,6 +80,7 @@ public:
     {
         return Generic<WeightedEdge<T>>::GetNeighbors(vertex);
     };
+    */
 };
 
 #endif
