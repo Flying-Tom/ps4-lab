@@ -1,7 +1,6 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include <DataStructures/Edge.h>
 #include <DataStructures/GraphTemplate.h>
 
 class Graph : public Generic<Edge>
