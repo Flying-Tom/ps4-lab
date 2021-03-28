@@ -17,10 +17,9 @@ private:
 protected:
     bool InsertEdge(TEdge edge)
     {
-        int vertex1 = edge.GetSource(), vertex2 = edge.GetDestination();
-        if (ContainsVertex(vertex1) && ContainsVertex(vertex2) && !ContainsEdge(vertex1, vertex2))
+        if (ContainsVertex(edge.GetSource()) && ContainsVertex(edge.GetDestination()) && !ContainsEdge(edge.GetSource(), edge.GetDestination()))
         {
-            edges[vertex1].emplace_back(edge);
+            edges[edge.GetSource()].emplace_back(edge);
             return true;
         }
         return false;
