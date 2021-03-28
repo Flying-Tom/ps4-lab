@@ -30,7 +30,7 @@ public:
         if (!ContainsVertex(vertex))
         {
             vertexs.insert(make_pair(vertex, 1));
-            edges.insert(make_pair(vertex, vector<TEdge>));
+            edges.insert(make_pair(vertex, vector<TEdge>()));
             return true;
         }
         return false;
