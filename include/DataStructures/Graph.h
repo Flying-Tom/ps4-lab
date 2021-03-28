@@ -6,7 +6,6 @@
 
 class Graph : public Generic
 {
-private:
 public:
     Graph(){};
     ~Graph(){};
