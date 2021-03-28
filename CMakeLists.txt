@@ -29,8 +29,8 @@ add_custom_command(TARGET GraphLibrary POST_BUILD
 #add_executable(Test01 tests/01-hello-world.cpp)
 #target_link_libraries(Test01 GraphLibrary)
 
-#add_executable(Test02 tests/02-hello-world.cpp)
-#target_link_libraries(Test02 GraphLibrary)
+add_executable(Test02 tests/02-hello-world.cpp)
+target_link_libraries(Test02 GraphLibrary)
 
 
 #add_executable(Test03 tests/03-hello-world.cpp)
