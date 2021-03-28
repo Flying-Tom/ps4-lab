@@ -112,16 +112,16 @@ public:
     vector<int> GetVertices() const
     {
         vector<int> temp;
-        for (auto &i : vertexs)
-            temp.emplace_back(i.first);
+        for (auto &v : vertexs)
+            temp.emplace_back(v.first);
         return temp;
     };
 
     vector<TEdge> GetEdges() const
     {
         vector<TEdge> temp;
-        for (auto i : edges)
-            for (auto edge : i.second)
+        for (auto v : edges)
+            for (auto edge : v.second)
                 temp.emplace_back(edge);
         return temp;
     };
@@ -130,9 +130,9 @@ public:
         vector<TEdge> temp;
         if (ContainsVertex(vertex))
         {
-            for (auto i : edges)
+            for (auto v : edges)
             {
-                for (auto edge : i.second)
+                for (auto edge : v.second)
                 {
                     if (edge.GetDestination() == vertex)
                         temp.emplace_back(edge);
@@ -143,15 +143,15 @@ public:
     };
     vector<TEdge> GetOutgoingEdges(int vertex) const
     {
-        auto it = edges.find(vertex);
-        return it->second;
+        auto v = edges.find(vertex);
+        return v->second;
     };
     int GetDegree(int vertex) const
     {
         if (ContainsVertex(vertex))
         {
-            auto it = edges.find(vertex);
-            return it->second.size();
+            auto v = edges.find(vertex);
+            return v->second.size();
         }
         return 0;
     };
@@ -160,8 +160,8 @@ public:
         vector<int> temp;
         if (ContainsVertex(vertex))
         {
-            auto it = edges.find(vertex);
-            for (auto edge : it->second)
+            auto v = edges.find(vertex);
+            for (auto edge : v->second)
                 temp.emplace_back(edge.GetDestination());
         }
         return temp;
