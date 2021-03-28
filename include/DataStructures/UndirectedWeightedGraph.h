@@ -5,9 +5,9 @@
 
 using namespace std;
 
-class UndirectedWeightedGraph : public WeightedGraph
+template <typename T>
+class UndirectedWeightedGraph : public WeightedGraph<T>
 {
-private:
 public:
     UndirectedWeightedGraph(){
 
@@ -19,39 +19,39 @@ public:
 public:
     bool AddVertex(int vertex)
     {
-        return WeightedGraph::AddVertex(vertex);
+        return WeightedGraph<T>::AddVertex(vertex);
     };
     bool RemoveVertex(int vertex)
     {
-        return WeightedGraph::RemoveVertex(vertex);
+        return WeightedGraph<T>::RemoveVertex(vertex);
     };
     bool AddEdge(int vertex1, int vertex2, int weight)
     {
         if (vertex1 == vertex2)
-            return WeightedGraph::AddEdge(vertex1, vertex2, weight);
+            return WeightedGraph<T>::AddEdge(vertex1, vertex2, weight);
         else
-            return WeightedGraph::AddEdge(vertex1, vertex2, weight) && WeightedGraph::AddEdge(vertex2, vertex1, weight);
+            return WeightedGraph<T>::AddEdge(vertex1, vertex2, weight) && WeightedGraph<T>::AddEdge(vertex2, vertex1, weight);
     };
     bool RemoveEdge(int vertex1, int vertex2)
     {
         if (vertex1 == vertex2)
-            return WeightedGraph::RemoveEdge(vertex1, vertex2);
+            return WeightedGraph<T>::RemoveEdge(vertex1, vertex2);
         else
-            return WeightedGraph::RemoveEdge(vertex1, vertex2) && WeightedGraph::RemoveEdge(vertex2, vertex1);
+            return WeightedGraph<T>::RemoveEdge(vertex1, vertex2) && WeightedGraph<T>::RemoveEdge(vertex2, vertex1);
     };
 
 public:
     int CountVertices() const
     {
-        return WeightedGraph::CountVertices();
+        return WeightedGraph<T>::CountVertices();
     };
     int CountEdges() const
     {
-        int ret = WeightedGraph::CountEdges();
-        vector<int> vtemp = WeightedGraph::GetVertices();
+        int ret = WeightedGraph<T>::CountEdges();
+        vector<int> vtemp = WeightedGraph<T>::GetVertices();
         for (auto i : vtemp)
         {
-            if (WeightedGraph::ContainsEdge(i, i))
+            if (WeightedGraph<T>::ContainsEdge(i, i))
                 ret++;
         }
         assert(ret % 2 == 0);
@@ -59,23 +59,23 @@ public:
     };
     bool ContainsVertex(int vertex) const
     {
-        return WeightedGraph::ContainsVertex(vertex);
+        return WeightedGraph<T>::ContainsVertex(vertex);
     };
     bool ContainsEdge(int vertex1, int vertex2) const
     {
-        return WeightedGraph::ContainsEdge(vertex1, vertex2);
+        return WeightedGraph<T>::ContainsEdge(vertex1, vertex2);
     };
     int GetWeight(int vertex1, int vertex2) const
     {
-        return WeightedGraph::GetWeight(vertex1, vertex2);
+        return WeightedGraph<T>::GetWeight(vertex1, vertex2);
     };
     vector<int> GetVertices() const
     {
-        return WeightedGraph::GetVertices();
+        return WeightedGraph<T>::GetVertices();
     };
     vector<WeightedEdge> GetEdges() const
     {
-        vector<WeightedEdge> temp = WeightedGraph::GetEdges();
+        vector<WeightedEdge> temp = WeightedGraph<T>::GetEdges();
         vector<WeightedEdge> res;
         map<pair<int, int>, int> mtemp;
 
@@ -90,22 +90,22 @@ public:
     };
     vector<WeightedEdge> GetIncomingEdges(int vertex) const
     {
-        return WeightedGraph::GetIncomingEdges(vertex);
+        return WeightedGraph<T>::GetIncomingEdges(vertex);
     };
     vector<WeightedEdge> GetOutgoingEdges(int vertex) const
     {
-        return WeightedGraph::GetOutgoingEdges(vertex);
+        return WeightedGraph<T>::GetOutgoingEdges(vertex);
     };
     int GetDegree(int vertex) const
     {
-        if (WeightedGraph::ContainsEdge(vertex, vertex))
-            return WeightedGraph::GetDegree(vertex) + 1;
+        if (WeightedGraph<T>::ContainsEdge(vertex, vertex))
+            return WeightedGraph<T>::GetDegree(vertex) + 1;
         else
-            return WeightedGraph::GetDegree(vertex);
+            return WeightedGraph<T>::GetDegree(vertex);
     };
     vector<int> GetNeighbors(int vertex) const
     {
-        return WeightedGraph::GetNeighbors(vertex);
+        return WeightedGraph<T>::GetNeighbors(vertex);
     };
 };
 
