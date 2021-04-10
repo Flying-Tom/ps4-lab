@@ -24,7 +24,7 @@ public:
                 vis.emplace(cur);
                 for (int u : graph->GetNeighbors(cur))
                 {
-                    if (!vis.contains(u))
+                    if (!vis.count(u))
                         q.emplace(u);
                 }
             }
@@ -44,7 +44,7 @@ public:
                 vis.emplace(cur);
                 for (int u : graph->GetNeighbors(cur))
                 {
-                    if (!vis.contains(u))
+                    if (!vis.count(u))
                         q.emplace(u);
                 }
             }
