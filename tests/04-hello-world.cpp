@@ -51,6 +51,6 @@ int main()
     assert(g.GetNeighbors(1).size() == 3);
     //assert(g.Graph::AddVertex(1));
     DepthFirstSearcher<UndirectedWeightedGraph<int>> d;
-    d.VisitAllVertices(g, 1, func);
+    d.VisitAllVertices(&g, 1, func);
     puts("Pass!");
 }
