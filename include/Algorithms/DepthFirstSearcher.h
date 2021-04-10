@@ -21,7 +21,8 @@ public:
             {
                 int cur = s.top();
                 s.pop();
-                action(cur);
+                if (!vis.count(cur))
+                    action(cur);
                 vis.emplace(cur);
                 for (int u : graph->GetNeighbors(cur))
                 {
