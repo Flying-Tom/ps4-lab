@@ -4,6 +4,11 @@
 #include <Algorithms/DepthFirstSearcher.h>
 using namespace std;
 
+void func(int x)
+{
+    printf("%d\n", x);
+}
+
 int main()
 {
     UndirectedWeightedGraph<int> g;
@@ -46,6 +51,6 @@ int main()
     assert(g.GetNeighbors(1).size() == 3);
     //assert(g.Graph::AddVertex(1));
     DepthFirstSearcher<UndirectedWeightedGraph> d;
-    d.VisitAllVertices(g, 1, void func(int x){ printf("%d\n", x); });
+    d.VisitAllVertices(g, 1, func);
     puts("Pass!");
 }
