@@ -52,7 +52,7 @@ public:
                 }
             }
         }
-        return std::nullopt;
+        return NULL;
     };
 };
 
