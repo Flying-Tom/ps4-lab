@@ -42,13 +42,11 @@ int main()
     DepthFirstSearcher<UndirectedWeightedGraph<int>> dfs;
     BreadthFirstSearcher<UndirectedWeightedGraph<int>> bfs;
     puts("=======DFS TEST =======");
-    dfs.VisitAllVertices(&g, 1, func);
-    puts("*********************");
-    dfs.VisitAllVertices(&g, 1, func);
+    //dfs.VisitAllVertices(&g, 1, func);
     puts("=======================");
 
     puts("=======BFS TEST =======");
-    bfs.VisitAllVertices(&g, 13, func);
+    bfs.VisitAllVertices(&g, 1, func);
     puts("=======================");
     puts("End.");
 }
