@@ -41,20 +41,17 @@ public:
         if (graph->ContainsVertex(start))
         {
             q.emplace(start);
-            vis.emplace(start);
             while (!q.empty())
             {
                 int cur = q.front();
                 q.pop();
                 if (predicate(cur))
                     return cur;
+                vis.emplace(cur);
                 for (int u : graph->GetNeighbors(cur))
                 {
                     if (!vis.count(u))
-                    {
                         q.emplace(u);
-                        vis.emplace(start);
-                    }
                 }
             }
         }
