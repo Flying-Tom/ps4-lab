@@ -51,7 +51,7 @@ public:
                     if (!vis.count(u))
                     {
                         s.emplace(u);
-                        vis.emplace_back(u);
+                        vis.emplace(u);
                     }
                 }
             }
