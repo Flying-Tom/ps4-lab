@@ -43,10 +43,10 @@ int main()
     BreadthFirstSearcher<UndirectedWeightedGraph<int>> bfs;
     puts("=======DFS TEST =======");
     //dfs.VisitAllVertices(&g, 1, func);
-    puts("=======================");
+    puts("\n=======================");
 
     puts("=======BFS TEST =======");
     bfs.VisitAllVertices(&g, 1, func);
-    puts("=======================");
+    puts("\n=======================");
     puts("End.");
 }
