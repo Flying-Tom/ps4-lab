@@ -13,25 +13,30 @@ int main()
 {
     UndirectedWeightedGraph<int> g;
 
-    assert(g.AddVertex(1) == true);
-    assert(g.AddVertex(2) == true);
-    assert(g.AddVertex(3) == true);
-    assert(g.AddVertex(3) == false);
-    assert(g.AddVertex(4) == true);
-    assert(g.ContainsVertex(4) == true);
-    assert(g.RemoveVertex(4) == true);
-    assert(g.ContainsVertex(4) == false);
-    assert(g.RemoveVertex(5) == false);
+    g.AddVertex(1);
+    g.AddVertex(2);
+    g.AddVertex(3);
+    g.AddVertex(4);
+    g.AddVertex(5);
+    g.AddVertex(6);
+    g.AddVertex(7);
+    g.AddVertex(8);
+    g.AddVertex(9);
+    g.AddVertex(10);
+    g.AddVertex(11);
+    g.AddVertex(12);
 
-    assert(g.AddEdge(2, 5, 2) == false);
-    assert(g.AddEdge(1, 2, 3) == true);
-    assert(g.AddEdge(1, 3, 4) == true);
-    assert(g.AddEdge(3, 1, 5) == false);
-    assert(g.AddEdge(1, 1, 6) == true);
-    assert(g.AddEdge(1, 1, 7) == false);
-    assert(g.RemoveEdge(1, 1) == true);
-    assert(g.RemoveEdge(1, 1) == false);
-    assert(g.AddEdge(1, 1, 9) == true);
+    g.AddEdge(1, 2, 1);
+    g.AddEdge(2, 3, 1);
+    g.AddEdge(2, 4, 1);
+    g.AddEdge(3, 10, 1);
+    g.AddEdge(3, 11, 1);
+    g.AddEdge(4, 12, 1);
+    g.AddEdge(1, 5, 1);
+    g.AddEdge(5, 6, 1);
+    g.AddEdge(6, 7, 1);
+    g.AddEdge(6, 8, 1);
+    g.AddEdge(5, 9, 1);
 
     DepthFirstSearcher<UndirectedWeightedGraph<int>> dfs;
     BreadthFirstSearcher<UndirectedWeightedGraph<int>> bfs;
