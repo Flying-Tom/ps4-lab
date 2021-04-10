@@ -6,7 +6,7 @@ using namespace std;
 
 void func(int x)
 {
-    printf("%d\n", x);
+    printf("%d ", x);
 }
 
 int main()
