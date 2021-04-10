@@ -45,7 +45,7 @@ int main()
     puts("=======================");
 
     puts("=======BFS TEST =======");
-    bfs.VisitAllVertices(&g, 1, func);
+    bfs.VisitAllVertices(&g, 13, func);
     puts("=======================");
     puts("End.");
 }
