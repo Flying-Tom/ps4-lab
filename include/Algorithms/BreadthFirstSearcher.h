@@ -18,7 +18,8 @@ public:
         {
             while (!q.empty())
             {
-                int cur = q.front(), q.pop();
+                int cur = q.front();
+                q.pop();
                 action(cur);
                 vis.emplace(cur);
                 for (int u : graph->GetNeighbors(cur))
