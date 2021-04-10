@@ -6,7 +6,7 @@
 #include <set>
 #include <stack>
 
-template <typename TGraph>
+template<typename TGraph>
 class DepthFirstSearcher
 {
 public:
@@ -32,6 +32,7 @@ public:
             }
         }
     };
+
     static std::optional<int> FindFirstVertex(const TGraph *graph, int start, const std::function<bool(int)> &predicate)
     {
         set<int> vis;
