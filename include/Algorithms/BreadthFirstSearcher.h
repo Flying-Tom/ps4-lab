@@ -13,9 +13,10 @@ public:
     static void VisitAllVertices(const TGraph *graph, int start, const std::function<void(int)> &action)
     {
         set<int> vis;
-        queue<int> q(start);
+        queue<int> q;
         if (graph->ContainsVertex(start))
         {
+            q.emplace(start);
             while (!q.empty())
             {
                 int cur = q.front();
@@ -33,9 +34,10 @@ public:
     static std::optional<int> FindFirstVertex(const TGraph *graph, int start, const std::function<bool(int)> &predicate)
     {
         set<int> vis;
-        queue<int> q(start);
+        queue<int> q;
         if (graph->ContainsVertex(start))
         {
+            q.emplace(start);
             while (!q.empty())
             {
                 int cur = q.front();
