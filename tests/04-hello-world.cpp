@@ -38,6 +38,7 @@ int main()
     g.AddEdge(6, 7, 1);
     g.AddEdge(6, 8, 1);
     g.AddEdge(5, 9, 1);
+    g.AddEdge(7, 8, 1);
 
     DepthFirstSearcher<UndirectedWeightedGraph<int>> dfs;
     BreadthFirstSearcher<UndirectedWeightedGraph<int>> bfs;
