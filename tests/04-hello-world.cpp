@@ -45,7 +45,7 @@ int main()
 
     assert(g.GetNeighbors(1).size() == 3);
     //assert(g.Graph::AddVertex(1));
-    DepthFirstSearcher d<UndirectedWeightedGraph>;
+    DepthFirstSearcher<UndirectedWeightedGraph> d;
     d::VisitAllVertices(g, 1, void(int x){ printf("%d\n", x); });
     puts("Pass!");
 }
