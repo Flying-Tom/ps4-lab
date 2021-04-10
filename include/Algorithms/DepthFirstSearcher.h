@@ -18,7 +18,8 @@ public:
         {
             while (!s.empty())
             {
-                int cur = s.top(), s.pop();
+                int cur = s.top();
+                s.pop();
                 action(cur);
                 vis.emplace(cur);
                 for (int u : graph->GetNeighbors(cur))
@@ -37,7 +38,8 @@ public:
         {
             while (!s.empty())
             {
-                int cur = s.top(), s.pop();
+                int cur = s.top();
+                s.pop();
                 if (predicate(cur))
                     return cur;
                 vis.emplace(cur);

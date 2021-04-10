@@ -38,7 +38,8 @@ public:
         {
             while (!q.empty())
             {
-                int cur = q.front(), q.pop();
+                int cur = q.front();
+                q.pop();
                 if (predicate(cur))
                     return cur;
                 vis.emplace(cur);
