@@ -33,24 +33,14 @@ int main()
     assert(g.RemoveEdge(1, 1) == false);
     assert(g.AddEdge(1, 1, 9) == true);
 
-    assert(g.CountEdges() == 3);
-    assert(g.GetEdges().size() == g.CountEdges());
-
-    assert(g.RemoveEdge(1, 1) == true);
-
-    assert(g.ContainsEdge(1, 2) == true);
-    assert(g.ContainsEdge(2, 5) == false);
-
-    assert(g.GetDegree(1) == 2);
-    assert(g.GetOutgoingEdges(1).size() == 2);
-
-    assert(g.AddEdge(1, 1, 111) == true);
-    assert(g.GetDegree(1) == 4);
-    assert(g.GetOutgoingEdges(1).size() == 3);
-
-    assert(g.GetNeighbors(1).size() == 3);
-    //assert(g.Graph::AddVertex(1));
     DepthFirstSearcher<UndirectedWeightedGraph<int>> dfs;
+    BreadthFirstSearcher<UndirectedWeightedGraph<int>> bfs;
+    puts("=======DFS TEST =======");
     dfs.VisitAllVertices(&g, 1, func);
-    puts("Pass!");
+    puts("=======================");
+
+    puts("=======BFS TEST =======");
+    bfs.VisitAllVertices(&g, 1, func);
+    puts("=======================");
+    puts("End.");
 }
