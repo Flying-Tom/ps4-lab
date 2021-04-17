@@ -40,14 +40,8 @@ int main()
     g.AddEdge(5, 9, 1);
     g.AddEdge(7, 8, 1);
 
-    DepthFirstSearcher<UndirectedWeightedGraph<int>> dfs;
-    BreadthFirstSearcher<UndirectedWeightedGraph<int>> bfs;
-    puts("=======DFS TEST =======");
-    dfs.VisitAllVertices(&g, 1, func);
+    puts("=======ShortestPaths =======");
+    ShortestPaths<WeightedGraph, int>
+        *p = new DijkstraShortestPaths<WeightedGraph, int>(g, 1);
     puts("\n=======================");
-
-    puts("=======BFS TEST =======");
-    //bfs.VisitAllVertices(&g, 1, func);
-    puts("\n=======================");
-    puts("End.");
 }
