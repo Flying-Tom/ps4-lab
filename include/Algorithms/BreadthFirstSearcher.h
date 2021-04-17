@@ -34,7 +34,7 @@ public:
             }
         }
     };
-    static std::optional<int> FindFirstVertex(const TGraph *graph, int start, const std::function<bool(int)> &predicate)
+    static std::optional<int> TryFindFirstVertex(const TGraph *graph, int start, const std::function<bool(int)> &predicate)
     {
         set<int> vis;
         queue<int> q;
