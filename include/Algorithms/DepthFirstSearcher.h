@@ -58,6 +58,6 @@ public:
         }
         return std::nullopt;
     };
-}
+};
 
 #endif
