@@ -34,14 +34,14 @@ public:
 
     std::optional<TValue> TryGetDistanceTo(int destination) const
     {
-        if (HasPathTo(destination))
+        if (cost.find(destination) != cost.end())
             return cost[destination];
         return std::nullopt;
     };
 
     std::optional<std::vector<int>> TryGetShortestPathTo(int destination) const
     {
-        if (HasPathTo(destination))
+        if (cost.find(destination) != cost.end())
         {
             vector<int> ret;
             int cur = destination;
