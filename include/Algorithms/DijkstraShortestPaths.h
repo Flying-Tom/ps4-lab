@@ -23,8 +23,8 @@ public:
             if (vis.find(cur_idx) != vis.end())
                 continue;
             vis[cur_idx] = true;
-            vector<WeightedEdge<TValue>> edges;
-            edges = graph->GetOutgoingEdges(cur_idx);
+            vector<WeightedEdge<TValue>> edges = graph->GetOutgoingEdges(cur_idx);
+            //edges = graph->GetOutgoingEdges(cur_idx);
             for (const auto &edge : graph->GetOutgoingEdges(cur_idx))
             {
                 const TValue new_cost = cur_cost + edge.GetWeight();
