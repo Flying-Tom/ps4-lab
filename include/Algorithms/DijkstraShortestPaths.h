@@ -12,7 +12,7 @@ public:
     DijkstraShortestPaths(const TGraph<TValue> *graph, int source) : ShortestPaths<TGraph, TValue>(graph, source)
     {
         map<int, bool> vis;
-        priority_queue<pair<TValue, int>> Q;
+        priority_queue<pair<TValue, int>> Q<pair<TValue, int>, vector<pair<TValue, int>>, greater<pair<TValue, int>>>;
 
         ShortestPaths<TGraph, TValue>::cost[source] = TValue();
         Q.emplace(TValue(), source);
@@ -25,12 +25,11 @@ public:
             if (vis[cur_idx])
                 continue;
             vis[cur_idx] = true;
-            vector<int> neighbors;
             for (const auto &edge : graph->GetOutgoingEdges(cur_idx))
             {
                 const TValue new_cost = cur_cost + edge.GetWeight();
                 const int new_idx = edge.GetDestination();
-                if (new_cost > ShortestPaths<TGraph, TValue>::cost[new_idx])
+                if (new_cost < ShortestPaths<TGraph, TValue>::cost[new_idx])
                 {
                     Q.push({new_cost, new_idx});
                     ShortestPaths<TGraph, TValue>::parent[new_idx] = cur_idx;
