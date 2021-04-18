@@ -25,7 +25,7 @@ public:
     {
         return Generic<WeightedEdge<T>>::RemoveVertex(vertex);
     };
-    bool AddEdge(int vertex1, int vertex2, int weight)
+    bool AddEdge(int vertex1, int vertex2, T weight)
     {
         return Generic<WeightedEdge<T>>::InsertEdge(WeightedEdge<T>(vertex1, vertex2, weight));
     };
