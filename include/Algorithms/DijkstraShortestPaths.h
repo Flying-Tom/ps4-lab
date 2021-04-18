@@ -22,7 +22,7 @@ public:
             Q.pop();
             const TValue cur_cost = state.first;
             const int cur_idx = state.second;
-            if (vis[cur_idx])
+            if (vis.find(cur_idx) != vis.end())
                 continue;
             vis[cur_idx] = true;
             for (const auto &edge : graph->GetOutgoingEdges(cur_idx))
