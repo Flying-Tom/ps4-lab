@@ -25,7 +25,7 @@ public:
     {
         return WeightedGraph<T>::RemoveVertex(vertex);
     };
-    bool AddEdge(int vertex1, int vertex2, int weight)
+    bool AddEdge(int vertex1, int vertex2, T weight)
     {
         if (vertex1 == vertex2)
             return WeightedGraph<T>::AddEdge(vertex1, vertex2, weight);
