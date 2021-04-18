@@ -15,7 +15,7 @@ public:
         priority_queue<pair<TValue, int>> Q;
 
         ShortestPaths<TGraph, TValue>::cost[source] = TValue();
-        Q.emplace(0, source);
+        Q.emplace(TValue(), source);
         while (!Q.empty())
         {
             const auto state = Q.top();
