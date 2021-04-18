@@ -41,7 +41,6 @@ int main()
     g.AddEdge(7, 8, 1);
 
     puts("=======ShortestPaths =======");
-    ShortestPaths<WeightedGraph, int>
-        *p = new DijkstraShortestPaths<WeightedGraph, int>(g, 1);
+    ShortestPaths<WeightedGraph, int> *p = new DijkstraShortestPaths<WeightedGraph, int>(g, 1);
     puts("\n=======================");
 }
