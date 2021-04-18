@@ -39,7 +39,7 @@ public:
         }
     };
 
-    virtual ~DijkstraShortestPaths();
+    virtual ~DijkstraShortestPaths(){};
 
 public:
     bool HasPathTo(int destination) const
