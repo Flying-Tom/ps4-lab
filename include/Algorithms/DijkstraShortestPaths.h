@@ -18,13 +18,13 @@ public:
         Q.emplace(TValue(), source);
         while (!Q.empty())
         {
-            const auto state = Q.top();
+            const auto [cur_cost, cur_idx] = Q.top();
             Q.pop();
-            const TValue cur_cost = state.first;
-            const int cur_idx = state.second;
             if (vis.find(cur_idx) != vis.end())
                 continue;
             vis[cur_idx] = true;
+            vector<WeightedEdge<TValue>> edges;
+            edges = graph->GetOutgoingEdges(cur_idx);
             for (const auto &edge : graph->GetOutgoingEdges(cur_idx))
             {
                 const TValue new_cost = cur_cost + edge.GetWeight();
