@@ -29,7 +29,7 @@ public:
             {
                 const TValue new_cost = cur_cost + edge.GetWeight();
                 const int new_idx = edge.GetDestination();
-                if (new_cost < ShortestPaths<TGraph, TValue>::cost[new_idx])
+                if (ShortestPaths<TGraph, TValue>::cost.find(new_idx) != ShortestPaths<TGraph, TValue>::cost.end() && new_cost < ShortestPaths<TGraph, TValue>::cost[new_idx])
                 {
                     Q.push({new_cost, new_idx});
                     ShortestPaths<TGraph, TValue>::parent[new_idx] = cur_idx;
