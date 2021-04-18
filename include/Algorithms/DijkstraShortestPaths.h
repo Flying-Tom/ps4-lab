@@ -12,7 +12,7 @@ public:
     DijkstraShortestPaths(const TGraph<TValue> *graph, int source) : ShortestPaths<TGraph, TValue>(graph, source)
     {
         map<int, bool> vis;
-        priority_queue<pair<TValue, int>> Q<pair<TValue, int>, vector<pair<TValue, int>>, greater<pair<TValue, int>>>;
+        priority_queue<pair<TValue, int>, vector<pair<TValue, int>>, greater<pair<TValue, int>>> Q;
 
         ShortestPaths<TGraph, TValue>::cost[source] = TValue();
         Q.emplace(TValue(), source);
