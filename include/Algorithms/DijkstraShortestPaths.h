@@ -14,7 +14,7 @@ public:
         map<int, bool> vis;
         priority_queue<pair<TValue, int>> Q;
 
-        ShortestPaths<TGraph, TValue>::cost[source] = 0;
+        ShortestPaths<TGraph, TValue>::cost[source] = TValue();
         Q.emplace(0, source);
         while (!Q.empty())
         {
