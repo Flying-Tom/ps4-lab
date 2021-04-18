@@ -33,6 +33,7 @@ public:
                 if (new_cost > ShortestPaths<TGraph, TValue>::cost[new_idx])
                 {
                     Q.push({new_cost, new_idx});
+                    ShortestPaths<TGraph, TValue>::parent[new_idx] = cur_idx;
                     ShortestPaths<TGraph, TValue>::cost[new_idx] = new_cost;
                 }
             }

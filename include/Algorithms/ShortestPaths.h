@@ -10,6 +10,7 @@ class ShortestPaths
 {
 public:
     mutable map<int, TValue> cost;
+    mutable map<int, int> parent;
     int src;
 
 public:
@@ -42,19 +43,11 @@ public:
         if (HasPathTo(destination))
         {
             vector<int> ret;
-            vector<WeightedEdge<TValue>> edges;
             int cur = destination;
             while (cur != src)
             {
-                edges = TGraph<TValue>::GetIncomingEdges(cur);
-                for (auto e : edges)
-                {
-                    if (cost[e.GetSource()] + e.GetWeight() == cost[cur])
-                    {
-                        cur = e.GetSource();
-                        break;
-                    }
-                }
+                ret.emplace_back(cur);
+                cur = parent[cur];
             }
 
             ret.reserve(ret.size());
