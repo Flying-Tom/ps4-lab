@@ -28,7 +28,7 @@ public:
             vector<int> neighbors;
             for (const auto &edge : graph->GetOutgoingEdges(cur_idx))
             {
-                const TValue new_cost = cur_cost - edge.GetWeight();
+                const TValue new_cost = cur_cost + edge.GetWeight();
                 const int new_idx = edge.GetDestination();
                 if (new_cost > ShortestPaths<TGraph, TValue>::cost[new_idx])
                 {
