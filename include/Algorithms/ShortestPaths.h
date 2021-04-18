@@ -9,7 +9,7 @@ template <template <typename> class TGraph, typename TValue>
 class ShortestPaths
 {
 public:
-    map<int, TValue> cost;
+    mutable map<int, TValue> cost;
     int src;
 
 public:
