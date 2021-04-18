@@ -4,6 +4,7 @@
 #include <vector>
 #include <optional>
 #include <queue>
+#include <algorithm>
 
 template <template <typename> class TGraph, typename TValue>
 class ShortestPaths
