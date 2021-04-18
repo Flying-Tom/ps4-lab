@@ -1,7 +1,6 @@
 #include <cassert>
 #include <DataStructures/UndirectedWeightedGraph.h>
-#include <Algorithms/BreadthFirstSearcher.h>
-#include <Algorithms/DepthFirstSearcher.h>
+#include <Algorithms/DijkstraShortestPaths.h>
 using namespace std;
 
 void func(int x)
