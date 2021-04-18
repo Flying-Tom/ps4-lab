@@ -20,7 +20,7 @@ public:
         src = source;
     };
 
-    virtual ~ShortestPaths();
+    virtual ~ShortestPaths(){};
 
 public:
     bool HasPathTo(int destination) const
