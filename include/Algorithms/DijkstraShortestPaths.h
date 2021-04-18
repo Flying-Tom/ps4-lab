@@ -24,14 +24,13 @@ public:
                 continue;
             vis[cur_idx] = true;
             vector<WeightedEdge<TValue>> edges = graph->GetOutgoingEdges(cur_idx);
-            //edges = graph->GetOutgoingEdges(cur_idx);
-            for (const auto &edge : graph->GetOutgoingEdges(cur_idx))
+            for (const auto &edge : edges)
             {
                 const TValue new_cost = cur_cost + edge.GetWeight();
                 const int new_idx = edge.GetDestination();
                 if (ShortestPaths<TGraph, TValue>::cost.find(new_idx) == ShortestPaths<TGraph, TValue>::cost.end() || new_cost < ShortestPaths<TGraph, TValue>::cost[new_idx])
                 {
-                    Q.push({new_cost, new_idx});
+                    Q.emplace(new_cost, new_idx);
                     ShortestPaths<TGraph, TValue>::parent[new_idx] = cur_idx;
                     ShortestPaths<TGraph, TValue>::cost[new_idx] = new_cost;
                 }
