@@ -18,7 +18,8 @@ public:
         vector<int> vertexs = graph->GetVertices();
         int edges_num = 0;
         edges_num = edges.size();
-        if (is_same(UndirectedWeightedGraph<TValue>, TGraph).value())
+
+        if (graph->GetDegree() == 2 * edges_num)
         {
             for (int i = 0; i < edges_num; i++)
             {
@@ -26,7 +27,6 @@ public:
                     edges.emplace_back(WeightedEdge(edges[i].GetDestination(), edges[i].GetSource(), edges[i].GetWeight()));
             }
         }
-
         ShortestPaths<TGraph>::cost[source] = TValue();
 
         for (int i = 1; i < vertexs.size(); i++)
