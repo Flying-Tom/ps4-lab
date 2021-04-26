@@ -14,28 +14,21 @@ public:
 
     BellmanFordShortestPaths(const TGraph *graph, int source) : ShortestPaths<TGraph>(graph, source)
     {
-        map<int, bool> vis;
-        priority_queue<pair<TValue, int>, vector<pair<TValue, int>>, greater<pair<TValue, int>>> Q;
-
         ShortestPaths<TGraph>::cost[source] = TValue();
-        Q.emplace(TValue(), source);
-        while (!Q.empty())
+        vector<int> vertexs = graph->GetVertices();
+        for (int i = 0; i < vertexs.size(); i++)
         {
-            const auto [cur_cost, cur_idx] = Q.top();
-            Q.pop();
-            if (vis.find(cur_idx) != vis.end())
-                continue;
-            vis[cur_idx] = true;
-            vector<WeightedEdge<TValue>> edges = graph->GetOutgoingEdges(cur_idx);
+            vector<WeightedEdge<TValue>> edges = graph->GetOutgoingEdges(vertexs[i]);
             for (const auto &edge : edges)
             {
                 const TValue new_cost = cur_cost + edge.GetWeight();
-                const int new_idx = edge.GetDestination();
-                if (ShortestPaths<TGraph>::cost.find(new_idx) == ShortestPaths<TGraph>::cost.end() || new_cost < ShortestPaths<TGraph>::cost[new_idx])
+                const int u = edge.GetSource();
+                const int v = edge.GetDestination();
+                const int w = edge.GetWeight();
+                if (ShortestPaths<TGraph>::cost.find(new_idx) == ShortestPaths<TGraph>::cost.end() || ShortestPaths<TGraph>::cost[v] > ShortestPaths<TGraph>::cost[u] + w)
                 {
-                    Q.emplace(new_cost, new_idx);
-                    ShortestPaths<TGraph>::parent[new_idx] = cur_idx;
-                    ShortestPaths<TGraph>::cost[new_idx] = new_cost;
+                    ShortestPaths<TGraph>::cost[v] = ShortestPaths<TGraph>::cost[u] + w;
+                    ShortestPaths<TGraph>::parent[v] = u;
                 }
             }
         }
