@@ -21,7 +21,6 @@ public:
             vector<WeightedEdge<TValue>> edges = graph->GetOutgoingEdges(vertexs[i]);
             for (const auto &edge : edges)
             {
-                const TValue new_cost = cur_cost + edge.GetWeight();
                 const int u = edge.GetSource();
                 const int v = edge.GetDestination();
                 const int w = edge.GetWeight();
