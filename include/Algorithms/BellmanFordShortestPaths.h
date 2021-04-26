@@ -16,10 +16,13 @@ public:
     {
         vector<WeightedEdge<TValue>> edges = graph->GetEdges();
         vector<int> vertexs = graph->GetVertices();
-        int edges_num = 0;
+        int edges_num = 0, total_degree = 0;
         edges_num = edges.size();
 
-        if (graph->GetDegree() == 2 * edges_num)
+        for (int i = 0; i < vertexs.size(); i++)
+            total_degree += graph->GetDegree(vertexs[i]);
+
+        if (total_degree == 2 * edges_num)
         {
             for (int i = 0; i < edges_num; i++)
             {
