@@ -1,6 +1,7 @@
 #include <cassert>
 #include <DataStructures/WeightedGraph.h>
 #include <Algorithms/DijkstraShortestPaths.h>
+#include <Algorithms/BellmanFordShortestPaths.h>
 using namespace std;
 
 void func(int x)
