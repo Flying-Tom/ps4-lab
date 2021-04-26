@@ -14,21 +14,16 @@ public:
 
     BellmanFordShortestPaths(const TGraph *graph, int source) : ShortestPaths<TGraph>(graph, source)
     {
-        ShortestPaths<TGraph>::cost[source] = TValue();
+        cost[source] = 0;
+        map<int, TValue> backup;
+        vector<WeightedEdge<TValue>> edges = graph->GetEdges();
         vector<int> vertexs = graph->GetVertices();
         for (int i = 0; i < vertexs.size(); i++)
         {
-            vector<WeightedEdge<TValue>> edges = graph->GetOutgoingEdges(vertexs[i]);
-            for (const auto &edge : edges)
+            backup = cost;
+            for (int j = 0; j < edges.size(); j++)
             {
-                const int u = edge.GetSource();
-                const int v = edge.GetDestination();
-                const auto w = edge.GetWeight();
-                if (ShortestPaths<TGraph>::cost.find(v) == ShortestPaths<TGraph>::cost.end() || ShortestPaths<TGraph>::cost[v] > ShortestPaths<TGraph>::cost[u] + w)
-                {
-                    ShortestPaths<TGraph>::cost[v] = ShortestPaths<TGraph>::cost[u] + w;
-                    ShortestPaths<TGraph>::parent[v] = u;
-                }
+                ShortestPaths<TGraph>::cost[edges[j].GetDestination()] = ShortestPaths<TGraph>::cost[edges[j].GetDestination()] < backup[edges[j].GetSource()] + edges[j].GetWeight() ? ShortestPaths<TGraph>::cost[edges[j].GetDestination()] : backup[edges[j].GetSource()] + edges[j].GetWeight();
             }
         }
     };
