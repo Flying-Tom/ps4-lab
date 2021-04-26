@@ -2,6 +2,7 @@
 #include <DataStructures/WeightedGraph.h>
 #include <Algorithms/DijkstraShortestPaths.h>
 #include <Algorithms/BellmanFordShortestPaths.h>
+#include <DataStructures/Graph.h>
 using namespace std;
 
 void func(int x)
