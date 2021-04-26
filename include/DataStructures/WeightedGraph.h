@@ -8,6 +8,7 @@ using namespace std;
 template <typename T>
 class WeightedGraph : public Generic<WeightedEdge<T>>
 {
+public:
     typedef T value_type;
 
 public:

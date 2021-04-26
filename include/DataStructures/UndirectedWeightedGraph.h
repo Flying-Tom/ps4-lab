@@ -8,6 +8,7 @@ using namespace std;
 template <typename T>
 class UndirectedWeightedGraph : public WeightedGraph<T>
 {
+public:
     typedef T value_type;
 
 public:
