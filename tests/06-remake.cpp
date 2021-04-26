@@ -27,18 +27,18 @@ int main()
     g->AddVertex(12);
 
     g->AddEdge(1, 2, 1);
-    g->AddEdge(1, 1, 1);
-    g->AddEdge(2, 3, 1);
-    g->AddEdge(2, 4, 1);
-    g->AddEdge(3, 10, 1);
-    g->AddEdge(3, 11, 1);
-    g->AddEdge(4, 12, 1);
-    g->AddEdge(1, 5, 1);
-    g->AddEdge(5, 6, 1);
-    g->AddEdge(6, 7, 1);
-    g->AddEdge(6, 8, 1);
-    g->AddEdge(5, 9, 1);
-    g->AddEdge(7, 8, 1);
+    g->AddEdge(1, 1, -11);
+    g->AddEdge(2, 3, 12);
+    g->AddEdge(2, 4, -61);
+    g->AddEdge(3, 10, -1);
+    g->AddEdge(3, 11, 61);
+    g->AddEdge(4, 12, 21);
+    g->AddEdge(1, 5, 11);
+    g->AddEdge(5, 6, 13);
+    g->AddEdge(6, 7, -13);
+    g->AddEdge(6, 8, 12);
+    g->AddEdge(5, 9, 13);
+    g->AddEdge(7, 8, 11);
 
     puts("=======ShortestPaths =======");
     ShortestPaths<WeightedGraph<int>> *p = new DijkstraShortestPaths<WeightedGraph<int>>(g, 1);
