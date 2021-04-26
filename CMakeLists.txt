@@ -36,11 +36,11 @@ add_custom_command(TARGET GraphLibrary POST_BUILD
 #add_executable(Test03 tests/03-hello-world.cpp)
 #target_link_libraries(Test03 GraphLibrary)
 
-add_executable(Test04 tests/04-hello-world.cpp)
-target_link_libraries(Test04 GraphLibrary)
+#add_executable(Test04 tests/04-hello-world.cpp)
+#target_link_libraries(Test04 GraphLibrary)
 
-add_executable(Test05 tests/05-ShortestPaths.cpp)
-target_link_libraries(Test05 GraphLibrary)
+#add_executable(Test05 tests/05-ShortestPaths.cpp)
+#target_link_libraries(Test05 GraphLibrary)
 
 add_executable(Test06 tests/06-remake.cpp)
 target_link_libraries(Test06 GraphLibrary)
