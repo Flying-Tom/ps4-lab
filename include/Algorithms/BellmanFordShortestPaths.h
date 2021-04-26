@@ -25,7 +25,7 @@ public:
                 const int u = edge.GetSource();
                 const int v = edge.GetDestination();
                 const int w = edge.GetWeight();
-                if (ShortestPaths<TGraph>::cost.find(new_idx) == ShortestPaths<TGraph>::cost.end() || ShortestPaths<TGraph>::cost[v] > ShortestPaths<TGraph>::cost[u] + w)
+                if (ShortestPaths<TGraph>::cost.find(v) == ShortestPaths<TGraph>::cost.end() || ShortestPaths<TGraph>::cost[v] > ShortestPaths<TGraph>::cost[u] + w)
                 {
                     ShortestPaths<TGraph>::cost[v] = ShortestPaths<TGraph>::cost[u] + w;
                     ShortestPaths<TGraph>::parent[v] = u;
