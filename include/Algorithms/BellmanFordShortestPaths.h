@@ -1,17 +1,17 @@
-#ifndef DIJKSTRASHORTESTPATHS
-#define DIJKSTRASHORTESTPATHS
+#ifndef BELLMANFORDSHORTESTPATH_H
+#define BELLMANFORDSHORTESTPATH_H
 
 #include <Algorithms/ShortestPaths.h>
 
 template <typename TGraph>
-class DijkstraShortestPaths : public ShortestPaths<TGraph>
+class BellmanFordShortestPaths : ShortestPaths<TGraph>
 {
     typedef ShortestPaths<TGraph>::value_type TValue;
 
 public:
-    DijkstraShortestPaths() = delete;
+    BellmanFordShortestPaths() = delete;
 
-    DijkstraShortestPaths(const TGraph<TValue> *graph, int source) : ShortestPaths<TGraph, TValue>(graph, source)
+    BellmanFordShortestPaths(const TGraph<TValue> *graph, int source) : ShortestPaths<TGraph, TValue>(graph, source)
     {
         map<int, bool> vis;
         priority_queue<pair<TValue, int>, vector<pair<TValue, int>>, greater<pair<TValue, int>>> Q;
@@ -40,7 +40,7 @@ public:
         }
     };
 
-    virtual ~DijkstraShortestPaths(){};
+    virtual ~BellmanFordShortestPaths(){};
 
 public:
     bool HasPathTo(int destination) const

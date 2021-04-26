@@ -6,9 +6,11 @@
 #include <queue>
 #include <algorithm>
 
-template <template <typename> class TGraph, typename TValue>
+template <typename TGraph>
 class ShortestPaths
 {
+    typedef TValue T::value_type;
+
 public:
     mutable map<int, TValue> cost;
     mutable map<int, int> parent;
