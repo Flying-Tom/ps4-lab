@@ -6,6 +6,7 @@
 template <typename TGraph>
 class BellmanFordShortestPaths : ShortestPaths<TGraph>
 {
+public:
     typedef typename ShortestPaths<TGraph>::TValue TValue;
 
 public:
