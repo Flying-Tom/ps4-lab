@@ -6,6 +6,8 @@
 #include <queue>
 #include <algorithm>
 
+extern UndirectedWeightedGraph;
+
 template <typename TGraph>
 class ShortestPaths
 {
