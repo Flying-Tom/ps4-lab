@@ -26,7 +26,7 @@ public:
 
         ShortestPaths<TGraph>::cost[source] = TValue();
 
-        for (int i = 0; i < vertexs.size(); i++)
+        for (int i = 1; i < vertexs.size(); i++)
         {
             for (int j = 0; j < edges.size(); j++)
             {
