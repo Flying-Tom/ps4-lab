@@ -6,7 +6,7 @@
 template <typename TGraph>
 class DijkstraShortestPaths : public ShortestPaths<TGraph>
 {
-    typedef ShortestPaths<TGraph>::value_type TValue;
+    typedef typename ShortestPaths<TGraph>::value_type TValue;
 
 public:
     DijkstraShortestPaths() = delete;
