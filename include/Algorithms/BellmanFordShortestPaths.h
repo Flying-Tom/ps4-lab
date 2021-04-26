@@ -31,8 +31,7 @@ public:
                     ShortestPaths<TGraph>::cost[v] = ShortestPaths<TGraph>::cost[u] + weight;
                     ShortestPaths<TGraph>::parent[v] = u;
                 }
-
-                if (ShortestPaths<TGraph>::cost.find(v) != ShortestPaths<TGraph>::cost.end() && (ShortestPaths<TGraph>::cost.find(u) == ShortestPaths<TGraph>::cost.end() || ShortestPaths<TGraph>::cost[u] > ShortestPaths<TGraph>::cost[v] + weight))
+                else if (ShortestPaths<TGraph>::cost.find(v) != ShortestPaths<TGraph>::cost.end() && (ShortestPaths<TGraph>::cost.find(u) == ShortestPaths<TGraph>::cost.end() || ShortestPaths<TGraph>::cost[u] > ShortestPaths<TGraph>::cost[v] + weight))
                 {
                     ShortestPaths<TGraph>::cost[u] = ShortestPaths<TGraph>::cost[v] + weight;
                     ShortestPaths<TGraph>::parent[u] = v;
