@@ -18,10 +18,13 @@ public:
         vector<int> vertexs = graph->GetVertices();
         int edges_num = 0;
         edges_num = edges.size();
-        for (int i = 0; i < edges_num; i++)
+        if (is_same(UndirectedWeightedGraph<TValue>, TGraph).value())
         {
-            if (edges[i].GetSource() != edges[i].GetDestination())
-                edges.emplace_back(WeightedEdge(edges[i].GetDestination(), edges[i].GetSource(), edges[i].GetWeight()));
+            for (int i = 0; i < edges_num; i++)
+            {
+                if (edges[i].GetSource() != edges[i].GetDestination())
+                    edges.emplace_back(WeightedEdge(edges[i].GetDestination(), edges[i].GetSource(), edges[i].GetWeight()));
+            }
         }
 
         ShortestPaths<TGraph>::cost[source] = TValue();
