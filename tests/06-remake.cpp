@@ -45,6 +45,6 @@ int main()
     ShortestPaths<WeightedGraph<int>> *q = new BellmanFordShortestPaths<WeightedGraph<int>>(g, 1);
 
     for (int i = 1; i <= 12; i++)
-        assert(p->TryGetDistanceTo(12) == q->TryGetDistanceTo(12));
+        assert(p->TryGetDistanceTo(i) == q->TryGetDistanceTo(i));
     puts("\n=======================");
 }
