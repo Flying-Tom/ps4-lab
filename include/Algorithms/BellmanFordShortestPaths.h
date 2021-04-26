@@ -19,7 +19,7 @@ public:
         int edges_num = 0;
         edges_num = edges.size();
         for (int i = 0; i < edges_num; i++)
-            edges.emplace_back(WeightedEdge(GetDestination(), edges[i].GetSource(), edges[i].GetWeight()));
+            edges.emplace_back(WeightedEdge(edges[i].GetDestination(), edges[i].GetSource(), edges[i].GetWeight()));
 
         ShortestPaths<TGraph>::cost[source] = TValue();
 
