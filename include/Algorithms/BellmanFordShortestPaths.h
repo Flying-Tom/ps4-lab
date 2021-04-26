@@ -18,8 +18,9 @@ public:
         //map<int, TValue> backup;
         vector<WeightedEdge<TValue>> edges = graph->GetEdges();
         vector<int> vertexs = graph->GetVertices();
-        for (int i = 0; i < vertexs.size(); i++)
+        while (true)
         {
+            bool update = false;
             for (int j = 0; j < edges.size(); j++)
             {
                 const int u = edges[j].GetSource();
@@ -29,8 +30,11 @@ public:
                 {
                     ShortestPaths<TGraph>::cost[v] = ShortestPaths<TGraph>::cost[u] + weight;
                     ShortestPaths<TGraph>::parent[v] = u;
+                    update = true;
                 }
             }
+            if (update == false)
+                break;
         }
     };
 
