@@ -13,7 +13,7 @@ class ShortestPaths
 {
 
 public:
-    static_assert(is_detected(TGraph::value_type), "TGraph should be weighted");
+    static_assert(is_detected(typename TGraph::value_type), "TGraph should be weighted");
     typedef typename TGraph::value_type TValue;
     mutable map<int, TValue> cost;
     mutable map<int, int> parent;
