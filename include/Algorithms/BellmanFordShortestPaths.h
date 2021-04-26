@@ -14,12 +14,12 @@ public:
 
     BellmanFordShortestPaths(const TGraph *graph, int source) : ShortestPaths<TGraph>(graph, source)
     {
-        ShortestPaths<TGraph>::cost[source] = TValue();
-        //map<int, TValue> backup;
         vector<WeightedEdge<TValue>> edges = graph->GetEdges();
-        while (true)
+        vector<int> vertexs = graph->GetVertices();
+
+        ShortestPaths<TGraph>::cost[source] = TValue();
+        for (int i = 0; i < vertexs.size(); i++)
         {
-            bool update = false;
             for (int j = 0; j < edges.size(); j++)
             {
                 const int u = edges[j].GetSource();
@@ -29,11 +29,8 @@ public:
                 {
                     ShortestPaths<TGraph>::cost[v] = ShortestPaths<TGraph>::cost[u] + weight;
                     ShortestPaths<TGraph>::parent[v] = u;
-                    update = true;
                 }
             }
-            if (update == false)
-                break;
         }
     };
 
