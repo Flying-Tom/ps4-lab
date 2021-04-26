@@ -21,7 +21,7 @@ public:
 
     ShortestPaths(const TGraph *graph, int source)
     {
-        static_assert(is_same<TGraph, WeightedGraph>::value || is_same<TGraph, UndirectedWeightedGraph>::value);
+        static_assert(is_same<TGraph, WeightedGraph<TValue>>::value || is_same<TGraph, UndirectedWeightedGraph<TValue>>::value);
         src = source;
     };
 
