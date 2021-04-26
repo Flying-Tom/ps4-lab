@@ -14,13 +14,13 @@ public:
 
     BellmanFordShortestPaths(const TGraph *graph, int source) : ShortestPaths<TGraph>(graph, source)
     {
-        cost[source] = 0;
+        ShortestPaths<TGraph>::cost[source] = 0;
         map<int, TValue> backup;
         vector<WeightedEdge<TValue>> edges = graph->GetEdges();
         vector<int> vertexs = graph->GetVertices();
         for (int i = 0; i < vertexs.size(); i++)
         {
-            backup = cost;
+            backup = ShortestPaths<TGraph>::cost;
             for (int j = 0; j < edges.size(); j++)
             {
                 ShortestPaths<TGraph>::cost[edges[j].GetDestination()] = ShortestPaths<TGraph>::cost[edges[j].GetDestination()] < backup[edges[j].GetSource()] + edges[j].GetWeight() ? ShortestPaths<TGraph>::cost[edges[j].GetDestination()] : backup[edges[j].GetSource()] + edges[j].GetWeight();
