@@ -20,7 +20,7 @@ public:
 public:
     ShortestPaths() = delete;
 
-    ShortestPaths(const TGraph<TValue> *graph, int source)
+    ShortestPaths(const TGraph *graph, int source)
     {
         src = source;
     };
