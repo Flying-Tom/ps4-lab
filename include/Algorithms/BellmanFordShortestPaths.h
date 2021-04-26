@@ -23,7 +23,14 @@ public:
             backup = ShortestPaths<TGraph>::cost;
             for (int j = 0; j < edges.size(); j++)
             {
-                ShortestPaths<TGraph>::cost[edges[j].GetDestination()] = ShortestPaths<TGraph>::cost[edges[j].GetDestination()] < backup[edges[j].GetSource()] + edges[j].GetWeight() ? ShortestPaths<TGraph>::cost[edges[j].GetDestination()] : backup[edges[j].GetSource()] + edges[j].GetWeight();
+                const int u = edges[j].GetSource();
+                const int v = edges[j].GetDestination();
+                const auto weight = edges[j].GetWeight();
+                if (ShortestPaths<TGraph>::cost[u] > backup[v] + weight)
+                {
+                    ShortestPaths<TGraph>::cost[u] = backup[v] + weight;
+                    ShortestPaths<TGraph>::parent[v] = u;
+                }
             }
         }
     };
