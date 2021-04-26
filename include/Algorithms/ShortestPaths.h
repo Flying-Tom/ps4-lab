@@ -13,7 +13,7 @@ class ShortestPaths
 {
 
 public:
-    static_assert(!(is_same<TGraph, Graph>::value || is_same<TGraph, UndirectedGraph>::value), "TGraph should be weighted");
+    static_assert(is_same<TGraph, Graph>::value || is_same<TGraph, UndirectedGraph>::value, "TGraph should be weighted");
     typedef typename TGraph::value_type TValue;
     mutable map<int, TValue> cost;
     mutable map<int, int> parent;
