@@ -11,7 +11,7 @@ class DijkstraShortestPaths : public ShortestPaths<TGraph>
 public:
     DijkstraShortestPaths() = delete;
 
-    DijkstraShortestPaths(const TGraph *graph, int source) : ShortestPaths<TGraph, TValue>(graph, source)
+    DijkstraShortestPaths(const TGraph *graph, int source) : ShortestPaths<TGraph>(graph, source)
     {
         map<int, bool> vis;
         priority_queue<pair<TValue, int>, vector<pair<TValue, int>>, greater<pair<TValue, int>>> Q;
