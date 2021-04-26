@@ -5,20 +5,14 @@
 #include <optional>
 #include <queue>
 #include <algorithm>
-#include <DataStructures/Graph.h>
-#include <DataStructures/UndirectedGraph.h>
-
-#include <iostream>
 
 template <typename TGraph>
 class ShortestPaths
 {
 
 public:
-    static_assert(!(is_same<TGraph, Graph>::value || is_same<TGraph, UndirectedGraph>::value), "TGraph should be weighted");
+    //static_assert(!(is_same<TGraph, Graph>::value || is_same<TGraph, UndirectedGraph>::value), "TGraph should be weighted");
     typedef typename TGraph::value_type TValue;
-    decltype(TValue) fuck;
-    cout << fuck;
     static_assert(is_default_constructible<TValue>::value, "TValue requires default constructor");
     mutable map<int, TValue> cost;
     mutable map<int, int> parent;
