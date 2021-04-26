@@ -9,9 +9,9 @@
 template <typename TGraph>
 class ShortestPaths
 {
-    typedef typename TGraph::value_type TValue;
 
 public:
+    typedef typename TGraph::value_type TValue;
     mutable map<int, TValue> cost;
     mutable map<int, int> parent;
     int src;
