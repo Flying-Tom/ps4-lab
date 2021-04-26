@@ -16,7 +16,7 @@ public:
     static_assert(!(is_same<TGraph, Graph>::value || is_same<TGraph, UndirectedGraph>::value), "TGraph should be weighted");
     typedef typename TGraph::value_type TValue;
 
-    static_assert((is_default_constructible<TValue>::value,"TValue requires default constructor");
+    static_assert(is_default_constructible<TValue>::value, "TValue requires default constructor");
     mutable map<int, TValue> cost;
     mutable map<int, int> parent;
     int src;
