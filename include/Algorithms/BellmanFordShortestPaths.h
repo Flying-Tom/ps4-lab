@@ -11,12 +11,12 @@ class BellmanFordShortestPaths : ShortestPaths<TGraph>
 public:
     BellmanFordShortestPaths() = delete;
 
-    BellmanFordShortestPaths(const TGraph<TValue> *graph, int source) : ShortestPaths<TGraph, TValue>(graph, source)
+    BellmanFordShortestPaths(const TGraph<TValue> *graph, int source) : ShortestPaths<TGraph>(graph, source)
     {
         map<int, bool> vis;
         priority_queue<pair<TValue, int>, vector<pair<TValue, int>>, greater<pair<TValue, int>>> Q;
 
-        ShortestPaths<TGraph, TValue>::cost[source] = TValue();
+        ShortestPaths<TGraph>::cost[source] = TValue();
         Q.emplace(TValue(), source);
         while (!Q.empty())
         {
@@ -30,11 +30,11 @@ public:
             {
                 const TValue new_cost = cur_cost + edge.GetWeight();
                 const int new_idx = edge.GetDestination();
-                if (ShortestPaths<TGraph, TValue>::cost.find(new_idx) == ShortestPaths<TGraph, TValue>::cost.end() || new_cost < ShortestPaths<TGraph, TValue>::cost[new_idx])
+                if (ShortestPaths<TGraph>::cost.find(new_idx) == ShortestPaths<TGraph>::cost.end() || new_cost < ShortestPaths<TGraph>::cost[new_idx])
                 {
                     Q.emplace(new_cost, new_idx);
-                    ShortestPaths<TGraph, TValue>::parent[new_idx] = cur_idx;
-                    ShortestPaths<TGraph, TValue>::cost[new_idx] = new_cost;
+                    ShortestPaths<TGraph>::parent[new_idx] = cur_idx;
+                    ShortestPaths<TGraph>::cost[new_idx] = new_cost;
                 }
             }
         }
@@ -45,17 +45,17 @@ public:
 public:
     bool HasPathTo(int destination) const
     {
-        return ShortestPaths<TGraph, TValue>::HasPathto(destination);
+        return ShortestPaths<TGraph>::HasPathto(destination);
     };
 
     std::optional<TValue> TryGetDistanceTo(int destination) const
     {
-        return ShortestPaths<TGraph, TValue>::TryGetDistanceTo(destination);
+        return ShortestPaths<TGraph>::TryGetDistanceTo(destination);
     };
 
     std::optional<std::vector<int>> TryGetShortestPathTo(int destination) const
     {
-        return ShortestPaths<TGraph, TValue>::TryGetShortestPathTo(destination);
+        return ShortestPaths<TGraph>::TryGetShortestPathTo(destination);
     };
 };
 
