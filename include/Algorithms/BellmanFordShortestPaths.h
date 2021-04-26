@@ -11,7 +11,7 @@ class BellmanFordShortestPaths : ShortestPaths<TGraph>
 public:
     BellmanFordShortestPaths() = delete;
 
-    BellmanFordShortestPaths(const TGraph<TValue> *graph, int source) : ShortestPaths<TGraph>(graph, source)
+    BellmanFordShortestPaths(const TGraph *graph, int source) : ShortestPaths<TGraph>(graph, source)
     {
         map<int, bool> vis;
         priority_queue<pair<TValue, int>, vector<pair<TValue, int>>, greater<pair<TValue, int>>> Q;
