@@ -14,7 +14,7 @@ public:
 
     BellmanFordShortestPaths(const TGraph *graph, int source) : ShortestPaths<TGraph>(graph, source)
     {
-        ShortestPaths<TGraph>::cost[source] = 0;
+        ShortestPaths<TGraph>::cost[source] = TValue();
         map<int, TValue> backup;
         vector<WeightedEdge<TValue>> edges = graph->GetEdges();
         vector<int> vertexs = graph->GetVertices();
