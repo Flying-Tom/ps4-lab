@@ -43,6 +43,6 @@ int main()
 
     puts("=======ShortestPaths =======");
     ShortestPaths<WeightedGraph<int>> *p = new DijkstraShortestPaths<WeightedGraph<int>>(g, 1);
-    ShortestPaths<WeightedGraph<int>> *q = new BellmanFordShortestPaths<Graph>(g, 1);
+    ShortestPaths<Graph> *q = new BellmanFordShortestPaths<Graph>(g, 1);
     puts("\n=======================");
 }
