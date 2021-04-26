@@ -5,8 +5,8 @@
 #include <optional>
 #include <queue>
 #include <algorithm>
-#include <DataStructures/WeightedGraph.h>
-#include <DataStructures/UndirectedWeightedGraph.h>
+#include <DataStructures/Graph.h>
+#include <DataStructures/UndirectedGraph.h>
 
 template <typename TGraph>
 class ShortestPaths
