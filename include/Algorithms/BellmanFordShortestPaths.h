@@ -16,6 +16,10 @@ public:
     {
         vector<WeightedEdge<TValue>> edges = graph->GetEdges();
         vector<int> vertexs = graph->GetVertices();
+        int edges_num = 0;
+        edges_num = edges.size();
+        for (int i = 0; i < edges_num; i++)
+            edges.emplace_back(WeightedEdge(GetDestination(), edges[i].GetSource(), edges[i].GetWeight()));
 
         ShortestPaths<TGraph>::cost[source] = TValue();
 
@@ -30,11 +34,6 @@ public:
                 {
                     ShortestPaths<TGraph>::cost[v] = ShortestPaths<TGraph>::cost[u] + weight;
                     ShortestPaths<TGraph>::parent[v] = u;
-                }
-                else if (ShortestPaths<TGraph>::cost.find(v) != ShortestPaths<TGraph>::cost.end() && (ShortestPaths<TGraph>::cost.find(u) == ShortestPaths<TGraph>::cost.end() || ShortestPaths<TGraph>::cost[u] > ShortestPaths<TGraph>::cost[v] + weight))
-                {
-                    ShortestPaths<TGraph>::cost[u] = ShortestPaths<TGraph>::cost[v] + weight;
-                    ShortestPaths<TGraph>::parent[u] = v;
                 }
             }
         }
