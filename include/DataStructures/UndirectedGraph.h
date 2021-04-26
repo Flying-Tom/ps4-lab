@@ -5,7 +5,9 @@
 
 class UndirectedGraph : public Graph
 {
-private:
+public:
+    typedef NULL value_type;
+
 public:
     UndirectedGraph(){};
     ~UndirectedGraph(){};

@@ -6,6 +6,9 @@
 class Graph : public Generic<Edge>
 {
 public:
+    typedef NULL value_type;
+
+public:
     Graph(){};
     ~Graph(){};
 
