@@ -7,7 +7,7 @@ template <typename TGraph>
 class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
 {
     typedef typename MultiSourceShortestPaths<TGraph>::TValue TValue;
-    typedef typename MultiSourceShortestPaths<TGraph>::cost cost;
+#define cost MultiSourceShortestPaths<TGraph>::cost
 
 public:
     FloydShortestPaths() = delete;
@@ -20,15 +20,15 @@ public:
             for (auto i : vertexs)
                 for (auto j : vertexs)
                 {
-                    if (MultiSourceShortestPaths<TGraph>::cost.find({i, j}) == MultiSourceShortestPaths<TGraph>::cost.end())
+                    if (cost.find({i, j}) == cost.end())
                     {
                     }
                     else
                     {
-                        if (MultiSourceShortestPaths<TGraph>::cost.find({i, k}) == MultiSourceShortestPaths<TGraph>::cost.end() || MultiSourceShortestPaths<TGraph>::cost.find({k, j}) == MultiSourceShortestPaths<TGraph>::cost.end())
+                        if (cost.find({i, k}) == cost.end() || cost.find({k, j}) == cost.end())
                             continue;
-                        if (MultiSourceShortestPaths<TGraph>::cost[{i, k}] + MultiSourceShortestPaths<TGraph>::cost[{k, j}] < MultiSourceShortestPaths<TGraph>::cost[{i, j}])
-                            MultiSourceShortestPaths<TGraph>::cost[{i, j}] = MultiSourceShortestPaths<TGraph>::cost[{i, k}] + MultiSourceShortestPaths<TGraph>::cost[{k, j}];
+                        if (cost[{i, k}] + cost[{k, j}] < cost[{i, j}])
+                            cost[{i, j}] = cost[{i, k}] + cost[{k, j}];
                     }
                 }
     };
