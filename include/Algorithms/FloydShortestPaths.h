@@ -19,15 +19,15 @@ public:
             for (auto i : vertexs)
                 for (auto j : vertexs)
                 {
-                    if (MultiSourceShortestPaths::cost.find({i, j}) == MultiSourceShortestPaths::cost.end())
+                    if (MultiSourceShortestPaths<TGraph>::cost.find({i, j}) == MultiSourceShortestPaths<TGraph>::cost.end())
                     {
                     }
                     else
                     {
-                        if (MultiSourceShortestPaths::cost.find({i, k}) == MultiSourceShortestPaths::cost.end() || MultiSourceShortestPaths::cost.find({k, j}) == MultiSourceShortestPaths::cost.end())
+                        if (MultiSourceShortestPaths<TGraph>::cost.find({i, k}) == MultiSourceShortestPaths<TGraph>::cost.end() || MultiSourceShortestPaths<TGraph>::cost.find({k, j}) == MultiSourceShortestPaths<TGraph>::cost.end())
                             continue;
-                        if (MultiSourceShortestPaths::cost[{i, k}] + MultiSourceShortestPaths::cost[{k, j}] < MultiSourceShortestPaths::cost[{i, j}])
-                            MultiSourceShortestPaths::cost[{i, j}] = MultiSourceShortestPaths::cost[{i, k}] + MultiSourceShortestPaths::cost[{k, j}];
+                        if (MultiSourceShortestPaths<TGraph>::cost[{i, k}] + MultiSourceShortestPaths<TGraph>::cost[{k, j}] < MultiSourceShortestPaths<TGraph>::cost[{i, j}])
+                            MultiSourceShortestPaths<TGraph>::cost[{i, j}] = MultiSourceShortestPaths<TGraph>::cost[{i, k}] + MultiSourceShortestPaths<TGraph>::cost[{k, j}];
                     }
                 }
     };
