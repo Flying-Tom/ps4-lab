@@ -7,6 +7,7 @@ template <typename TGraph>
 class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
 {
     typedef typename MultiSourceShortestPaths<TGraph>::TValue TValue;
+    typedef MultiSourceShortestPaths<TGraph>::cost cost;
 
 public:
     FloydShortestPaths() = delete;
