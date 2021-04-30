@@ -35,19 +35,19 @@ public:
     virtual ~FloydShortestPaths(){};
 
 public:
-    bool HasPathTo(int destination) const
+    bool HasPathTo(int source, int destination) const
     {
-        return MultiSourceShortestPaths<TGraph>::HasPathto(destination);
+        return MultiSourceShortestPaths<TGraph>::HasPathto(source, destination);
     };
 
-    std::optional<TValue> TryGetDistanceTo(int destination) const
+    std::optional<TValue> TryGetDistanceTo(int source, int destination) const
     {
-        return MultiSourceShortestPaths<TGraph>::TryGetDistanceTo(destination);
+        return MultiSourceShortestPaths<TGraph>::TryGetDistanceTo(source, destination);
     };
 
-    std::optional<std::vector<int>> TryGetShortestPathTo(int destination) const
+    std::optional<std::vector<int>> TryGetShortestPathTo(int source, int destination) const
     {
-        return MultiSourceShortestPaths<TGraph>::TryGetShortestPathTo(destination);
+        return MultiSourceShortestPaths<TGraph>::TryGetShortestPathTo(source, destination);
     };
 };
 
