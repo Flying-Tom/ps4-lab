@@ -11,7 +11,7 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
 public:
     FloydShortestPaths() = delete;
 
-    FloydShortestPaths(const TGraph *graph, int source) : MultiSourceShortestPaths<TGraph>(graph, source)
+    FloydShortestPaths(const TGraph *graph) : MultiSourceShortestPaths<TGraph>(graph)
     {
 
         vector<int> vertexs = graph->GetVertices();
