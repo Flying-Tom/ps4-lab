@@ -9,6 +9,7 @@ class BellmanFordShortestPaths : public ShortestPaths<TGraph>
 public:
     typedef typename ShortestPaths<TGraph>::TValue TValue;
 
+#define cost ShortestPaths<TGraph>::cost
 public:
     BellmanFordShortestPaths() = delete;
 
@@ -30,7 +31,7 @@ public:
                     edges.emplace_back(WeightedEdge(edges[i].GetDestination(), edges[i].GetSource(), edges[i].GetWeight()));
             }
         }
-        ShortestPaths<TGraph>::cost[source] = TValue();
+        cost[source] = TValue();
 
         for (int i = 1; i < vertexs.size(); i++)
         {
@@ -39,9 +40,9 @@ public:
                 const int u = edges[j].GetSource();
                 const int v = edges[j].GetDestination();
                 const auto weight = edges[j].GetWeight();
-                if (ShortestPaths<TGraph>::cost.find(u) != ShortestPaths<TGraph>::cost.end() && u != v && (ShortestPaths<TGraph>::cost.find(v) == ShortestPaths<TGraph>::cost.end() || ShortestPaths<TGraph>::cost[v] > ShortestPaths<TGraph>::cost[u] + weight))
+                if (cost.find(u) != cost.end() && u != v && (cost.find(v) == cost.end() || cost[v] > cost[u] + weight))
                 {
-                    ShortestPaths<TGraph>::cost[v] = ShortestPaths<TGraph>::cost[u] + weight;
+                    cost[v] = cost[u] + weight;
                     ShortestPaths<TGraph>::parent[v] = u;
                 }
             }

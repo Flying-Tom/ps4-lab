@@ -21,8 +21,7 @@ public:
                 for (auto j : vertexs)
                 {
                     if (cost.find({i, j}) == cost.end())
-                    {
-                    }
+                        cost[{i, j}] = cost[{i, k}] + cost[{k, j}];
                     else
                     {
                         if (cost.find({i, k}) == cost.end() || cost.find({k, j}) == cost.end())
