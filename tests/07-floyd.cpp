@@ -1,7 +1,6 @@
 #include <cassert>
 #include <DataStructures/WeightedGraph.h>
-#include <Algorithms/DijkstraShortestPaths.h>
-#include <Algorithms/BellmanFordShortestPaths.h>
+#include <Algorithms/FloydShortestPaths.h>
 using namespace std;
 
 void func(int x)
@@ -41,10 +40,7 @@ int main()
     g->AddEdge(7, 8, 11);
 
     puts("=======ShortestPaths =======");
-    ShortestPaths<WeightedGraph<int>> *p = new DijkstraShortestPaths<WeightedGraph<int>>(g, 1);
-    ShortestPaths<WeightedGraph<int>> *q = new BellmanFordShortestPaths<WeightedGraph<int>>(g, 1);
+    MultiSourceShortestPaths<WeightedGraph<int>> *p = new FloydShortestPaths<WeightedGraph<int>>(g);
 
-    for (int i = 1; i <= 12; i++)
-        assert(p->TryGetDistanceTo(i) == q->TryGetDistanceTo(i));
     puts("\n=======================");
 }
