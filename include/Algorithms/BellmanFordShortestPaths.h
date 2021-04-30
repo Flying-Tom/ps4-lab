@@ -6,10 +6,11 @@
 template <typename TGraph>
 class BellmanFordShortestPaths : public ShortestPaths<TGraph>
 {
-public:
+#define cost ShortestPaths<TGraph>::cost
+#define parent ShortestPaths<TGraph>::parent
+
     typedef typename ShortestPaths<TGraph>::TValue TValue;
 
-#define cost ShortestPaths<TGraph>::cost
 public:
     BellmanFordShortestPaths() = delete;
 
@@ -43,7 +44,7 @@ public:
                 if (cost.find(u) != cost.end() && u != v && (cost.find(v) == cost.end() || cost[v] > cost[u] + weight))
                 {
                     cost[v] = cost[u] + weight;
-                    ShortestPaths<TGraph>::parent[v] = u;
+                    parent[v] = u;
                 }
             }
         }

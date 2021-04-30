@@ -6,9 +6,10 @@
 template <typename TGraph>
 class DijkstraShortestPaths : public ShortestPaths<TGraph>
 {
-    typedef typename ShortestPaths<TGraph>::TValue TValue;
-
 #define cost ShortestPaths<TGraph>::cost
+#define parent ShortestPaths<TGraph>::parent
+
+    typedef typename ShortestPaths<TGraph>::TValue TValue;
 
 public:
     DijkstraShortestPaths() = delete;
@@ -35,7 +36,7 @@ public:
                 if (cost.find(new_idx) == cost.end() || new_cost < cost[new_idx])
                 {
                     Q.emplace(new_cost, new_idx);
-                    ShortestPaths<TGraph>::parent[new_idx] = cur_idx;
+                    parent[new_idx] = cur_idx;
                     cost[new_idx] = new_cost;
                 }
             }
