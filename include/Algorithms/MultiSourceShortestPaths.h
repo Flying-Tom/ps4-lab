@@ -13,8 +13,8 @@ public:
 
 public:
     MultiSourceShortestPaths() = delete;
-    explicit MultiSourceShortestPaths(const TGraph *graph);
-    virtual ~MultiSourceShortestPaths();
+    explicit MultiSourceShortestPaths(const TGraph *graph){};
+    virtual ~MultiSourceShortestPaths(){};
 
     mutable map<pair<int, int>, TValue> cost;
 
