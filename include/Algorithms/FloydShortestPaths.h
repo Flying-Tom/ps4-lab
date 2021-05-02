@@ -20,7 +20,10 @@ public:
         vector<WeightedEdge<TValue>> edges = graph->GetEdges();
 
         for (auto edge : edges)
+        {
             cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
+            MultiSourceShortestPaths<TGraph>::path[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
+        }
 
         for (auto k : vertexs)
             for (auto i : vertexs)
