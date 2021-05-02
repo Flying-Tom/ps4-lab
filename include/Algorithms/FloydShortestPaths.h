@@ -48,7 +48,10 @@ public:
                         cost[{i, j}] = cost[{i, k}] + cost[{k, j}];
                         MultiSourceShortestPaths<TGraph>::path[{i, j}] = MultiSourceShortestPaths<TGraph>::path[{i, k}];
                         if (isundirected)
+                        {
+                            cost[{j, i}] = cost[{i, k}] + cost[{k, j}];
                             MultiSourceShortestPaths<TGraph>::path[{j, i}] = MultiSourceShortestPaths<TGraph>::path[{k, i}];
+                        }
                     }
                 }
     };
