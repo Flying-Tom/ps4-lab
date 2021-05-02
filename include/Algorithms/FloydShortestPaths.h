@@ -17,7 +17,6 @@ public:
     {
         vector<int> vertexs = graph->GetVertices();
         vector<WeightedEdge<TValue>> edges = graph->GetEdges();
-        bool isundirected = false;
         int total_degree = 0;
 
         for (auto v : vertexs)
@@ -26,8 +25,7 @@ public:
             cost[{v, v}] = TValue();
         }
 
-        isundirected = (total_degree == 2 * edges.size());
-        if (isundirected)
+        if (total_degree == 2 * edges.size())
         {
             for (auto edge : edges)
             {
@@ -42,10 +40,10 @@ public:
                         if (cost.find({i, k}) == cost.end() || cost.find({k, j}) == cost.end())
                             continue;
 
-                        if (cost.find({i, j}) == cost.end() || cost[{i, k}] + cost[{k, j}] < cost[{i, j}])
+                        if (i != j && (cost.find({i, j}) == cost.end() || cost[{i, k}] + cost[{k, j}] < cost[{i, j}]))
                         {
                             cost[{i, j}] = cost[{j, i}] = cost[{i, k}] + cost[{k, j}];
-                            MultiSourceShortestPaths<TGraph>::path[{i, j}] = MultiSourceShortestPaths<TGraph>::path[{j, i}] = MultiSourceShortestPaths<TGraph>::path[{i, k}];
+                            MultiSourceShortestPaths<TGraph>::path[{i, j}] = MultiSourceShortestPaths<TGraph>::path[{i, k}];
                         }
                     }
         }
