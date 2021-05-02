@@ -20,10 +20,9 @@ public:
         vector<WeightedEdge<TValue>> edges = graph->GetEdges();
 
         for (auto edge : edges)
-        {
-            cout << edge.GetSource() << " " << edge.GetDestination() << endl;
             cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
-        }
+
+        cout << "fuck" << endl;
 
         for (auto k : vertexs)
             for (auto i : vertexs)
