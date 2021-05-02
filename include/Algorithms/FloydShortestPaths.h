@@ -68,7 +68,7 @@ public:
                         if (cost.find({i, j}) == cost.end() || cost[{i, k}] + cost[{k, j}] < cost[{i, j}])
                         {
                             cost[{i, j}] = cost[{i, k}] + cost[{k, j}];
-                            pre[{i, j}] = pre[{i, k}];
+                            pre[{i, j}] = pre[{k, j}];
                         }
                     }
         }
