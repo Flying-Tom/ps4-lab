@@ -2,7 +2,7 @@
 #define FLOYDSHORTESTPATH_H
 
 #include <Algorithms/MultiSourceShortestPaths.h>
-
+#include <iostream>
 template <typename TGraph>
 class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
 {
@@ -17,6 +17,8 @@ public:
     {
 
         vector<int> vertexs = graph->GetVertices();
+        for (auto k : vertexs)
+            cout << k << " ";
         for (auto k : vertexs)
             for (auto i : vertexs)
                 for (auto j : vertexs)
