@@ -2,7 +2,6 @@
 #define FLOYDSHORTESTPATH_H
 
 #include <Algorithms/MultiSourceShortestPaths.h>
-#include <iostream>
 template <typename TGraph>
 class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
 {

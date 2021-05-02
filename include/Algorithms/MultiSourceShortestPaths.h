@@ -4,6 +4,7 @@
 #include <vector>
 #include <optional>
 #include <algorithm>
+#include <iostream>
 
 template <typename TGraph>
 class MultiSourceShortestPaths
