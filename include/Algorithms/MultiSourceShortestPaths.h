@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <optional>
-#include <queue>
+#include <algorithm>
 
 template <typename TGraph>
 class MultiSourceShortestPaths
