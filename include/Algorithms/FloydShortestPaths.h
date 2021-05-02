@@ -62,7 +62,7 @@ public:
                         if (cost.find({i, k}) == cost.end() || cost.find({k, j}) == cost.end())
                             continue;
 
-                        if (cost.find({i, j}) == cost.end() || cost[{i, k}] + cost[{k, j}] < cost[{i, j}])
+                        if (i != j && (cost.find({i, j}) == cost.end() || cost[{i, k}] + cost[{k, j}] < cost[{i, j}]))
                         {
                             cost[{i, j}] = cost[{i, k}] + cost[{k, j}];
                             MultiSourceShortestPaths<TGraph>::path[{i, j}] = MultiSourceShortestPaths<TGraph>::path[{i, k}];
