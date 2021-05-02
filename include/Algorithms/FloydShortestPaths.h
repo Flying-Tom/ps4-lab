@@ -9,7 +9,6 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
     typedef typename MultiSourceShortestPaths<TGraph>::TValue TValue;
 
 #define cost MultiSourceShortestPaths<TGraph>::cost
-#define path MultiSourceShortestPaths<TGraph>::path
 
 public:
     FloydShortestPaths() = delete;
@@ -28,7 +27,7 @@ public:
                     if (cost.find({i, j}) == cost.end() || cost[{i, k}] + cost[{k, j}] < cost[{i, j}])
                     {
                         cost[{i, j}] = cost[{i, k}] + cost[{k, j}];
-                        path[{i, j}] = path[{i, k}];
+                        MultiSourceShortestPaths<TGraph>::path[{i, j}] = MultiSourceShortestPaths<TGraph>::path[{i, k}];
                     }
                 }
     };

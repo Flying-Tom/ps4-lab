@@ -43,6 +43,7 @@ public:
                 source = path[{source, destination}];
             }
             ret.emplace_back(destination);
+            return ret;
         }
         return std::nullopt;
     };
