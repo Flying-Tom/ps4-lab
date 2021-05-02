@@ -9,7 +9,8 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
     typedef typename MultiSourceShortestPaths<TGraph>::TValue TValue;
 
 #define cost MultiSourceShortestPaths<TGraph>::cost
-#define path MultiSourceShortestPaths<TGraph>::path
+#define pre MultiSourceShortestPaths<TGraph>::pre
+
 public:
     FloydShortestPaths() = delete;
 
@@ -30,7 +31,7 @@ public:
             for (auto edge : edges)
             {
                 cost[{edge.GetSource(), edge.GetDestination()}] = cost[{edge.GetDestination(), edge.GetSource()}] = edge.GetWeight();
-                path[{edge.GetSource(), edge.GetDestination()}] = path[{edge.GetDestination(), edge.GetSource()}] = edge.GetDestination();
+                pre[{edge.GetSource(), edge.GetDestination()}] = pre[{edge.GetDestination(), edge.GetSource()}] = edge.GetDestination();
             }
 
             for (auto k : vertexs)
@@ -43,7 +44,7 @@ public:
                         if (cost.find({i, j}) == cost.end() || cost[{i, k}] + cost[{k, j}] < cost[{i, j}])
                         {
                             cost[{i, j}] = cost[{j, i}] = cost[{i, k}] + cost[{k, j}];
-                            path[{i, j}] = path[{i, k}];
+                            pre[{i, j}] = pre[{i, k}];
                         }
                     }
         }
@@ -52,7 +53,7 @@ public:
             for (auto edge : edges)
             {
                 cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
-                path[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
+                pre[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
             }
 
             for (auto k : vertexs)
@@ -65,7 +66,7 @@ public:
                         if (cost.find({i, j}) == cost.end() || cost[{i, k}] + cost[{k, j}] < cost[{i, j}])
                         {
                             cost[{i, j}] = cost[{i, k}] + cost[{k, j}];
-                            path[{i, j}] = path[{i, k}];
+                            pre[{i, j}] = pre[{i, k}];
                         }
                     }
         }
