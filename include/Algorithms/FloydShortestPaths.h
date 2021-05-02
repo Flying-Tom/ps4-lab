@@ -9,7 +9,7 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
     typedef typename MultiSourceShortestPaths<TGraph>::TValue TValue;
 
 #define cost MultiSourceShortestPaths<TGraph>::cost
-#define path MultiSourceShortestPaths<TGraph>::path
+
 public:
     FloydShortestPaths() = delete;
 
@@ -30,8 +30,8 @@ public:
             for (auto edge : edges)
             {
                 cost[{edge.GetSource(), edge.GetDestination()}] = cost[{edge.GetDestination(), edge.GetSource()}] = edge.GetWeight();
-                path[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
-                path[{edge.GetDestination(), edge.GetSource()}] = edge.GetSource();
+                MultiSourceShortestPaths<TGraph>::path[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
+                MultiSourceShortestPaths<TGraph>::path[{edge.GetDestination(), edge.GetSource()}] = edge.GetSource();
             }
 
             for (auto k : vertexs)
@@ -44,8 +44,8 @@ public:
                         if (cost.find({i, j}) == cost.end() || cost[{i, k}] + cost[{k, j}] < cost[{i, j}])
                         {
                             cost[{i, j}] = cost[{j, i}] = cost[{i, k}] + cost[{k, j}];
-                            path[{i, j}] = path[{i, k}];
-                            path[{j, i}] = path[{j, k}];
+                            MultiSourceShortestPaths<TGraph>::path[{i, j}] = MultiSourceShortestPaths<TGraph>::path[{i, k}];
+                            MultiSourceShortestPaths<TGraph>::path[{j, i}] = MultiSourceShortestPaths<TGraph>::path[{j, k}];
                         }
                     }
         }
@@ -54,7 +54,7 @@ public:
             for (auto edge : edges)
             {
                 cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
-                path[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
+                MultiSourceShortestPaths<TGraph>::path[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
             }
 
             for (auto k : vertexs)
@@ -67,7 +67,7 @@ public:
                         if (cost.find({i, j}) == cost.end() || cost[{i, k}] + cost[{k, j}] < cost[{i, j}])
                         {
                             cost[{i, j}] = cost[{i, k}] + cost[{k, j}];
-                            path[{i, j}] = path[{i, k}];
+                            MultiSourceShortestPaths<TGraph>::path[{i, j}] = MultiSourceShortestPaths<TGraph>::path[{i, k}];
                         }
                     }
         }
