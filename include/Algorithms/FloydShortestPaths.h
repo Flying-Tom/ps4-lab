@@ -32,7 +32,7 @@ public:
             for (auto edge : edges)
             {
                 cost[{edge.GetSource(), edge.GetDestination()}] = cost[{edge.GetDestination(), edge.GetSource()}] = edge.GetWeight();
-                MultiSourceShortestPaths<TGraph>::path[{edge.GetSource(), edge.GetDestination()}] = MultiSourceShortestPaths<TGraph>::path[{edge.GetDestination(), edge.edge.GetSource()}] = edge.GetDestination();
+                MultiSourceShortestPaths<TGraph>::path[{edge.GetSource(), edge.GetDestination()}] = MultiSourceShortestPaths<TGraph>::path[{edge.GetDestination(), edge.GetSource()}] = edge.GetDestination();
             }
 
             for (auto k : vertexs)
