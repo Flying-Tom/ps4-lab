@@ -45,6 +45,7 @@ public:
                         {
                             cost[{i, j}] = cost[{j, i}] = cost[{i, k}] + cost[{k, j}];
                             path[{i, j}] = path[{i, k}];
+                            path[{j, i}] = path[{j, k}];
                         }
                     }
         }
