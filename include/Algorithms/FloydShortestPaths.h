@@ -18,13 +18,15 @@ public:
         vector<int> vertexs = graph->GetVertices();
         vector<WeightedEdge<TValue>> edges = graph->GetEdges();
         bool isundirected = false;
-        int edges_num = 0, total_degree = 0;
-        edges_num = edges.size();
+        int total_degree = 0;
 
-        for (int i = 0; i < vertexs.size(); i++)
-            total_degree += graph->GetDegree(vertexs[i]);
+        for (auto v : vertexs)
+        {
+            total_degree += graph->GetDegree(v);
+            cost[{v, v}] = TValue();
+        }
 
-        isundirected = (total_degree == 2 * edges_num);
+        isundirected = (total_degree == 2 * edges.size());
 
         for (auto edge : edges)
         {
