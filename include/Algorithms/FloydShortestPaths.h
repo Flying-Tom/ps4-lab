@@ -16,13 +16,22 @@ public:
     FloydShortestPaths(const TGraph *graph) : MultiSourceShortestPaths<TGraph>(graph)
     {
         vector<int> vertexs = graph->GetVertices();
-
         vector<WeightedEdge<TValue>> edges = graph->GetEdges();
+        bool isundirected = false;
+        int edges_num = 0, total_degree = 0;
+        edges_num = edges.size();
+
+        for (int i = 0; i < vertexs.size(); i++)
+            total_degree += graph->GetDegree(vertexs[i]);
+
+        isundirected = (total_degree == 2 * edges_num);
 
         for (auto edge : edges)
         {
             cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
             MultiSourceShortestPaths<TGraph>::path[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
+            if (isundirected)
+                MultiSourceShortestPaths<TGraph>::path[{edge.GetDestination(), edge.GetSource()}] = edge.GetDestination();
         }
 
         for (auto k : vertexs)
