@@ -22,12 +22,11 @@ public:
         for (auto edge : edges)
             cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
 
-        cout << "fuck" << endl;
-
         for (auto k : vertexs)
             for (auto i : vertexs)
                 for (auto j : vertexs)
                 {
+                    cout << k << " " << i << " " << j << endl;
                     if (cost.find({i, k}) == cost.end() || cost.find({k, j}) == cost.end())
                         continue;
 
