@@ -17,8 +17,13 @@ public:
     {
 
         vector<int> vertexs = graph->GetVertices();
-        for (auto k : vertexs)
-            cout << k << " ";
+        vector<WeightedEdge<TValue>> edges = graph->GetEdges();
+
+        for (auto edge : edges)
+        {
+            cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
+        }
+
         for (auto k : vertexs)
             for (auto i : vertexs)
                 for (auto j : vertexs)
