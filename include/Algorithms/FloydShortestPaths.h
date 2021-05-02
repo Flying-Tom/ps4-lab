@@ -21,6 +21,7 @@ public:
 
         for (auto edge : edges)
         {
+            cout << "fuck";
             cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
         }
 
