@@ -17,7 +17,7 @@ public:
     virtual ~MultiSourceShortestPaths(){};
 
     mutable map<pair<int, int>, TValue> cost;
-    mutable map<pair<int, int>, int> path;
+    mutable map<pair<int, int>, int> next;
 
 public:
     bool HasPathTo(int source, int destination) const
@@ -40,7 +40,7 @@ public:
             while (source != destination)
             {
                 ret.emplace_back(source);
-                source = path[{source, destination}];
+                source = next[{source, destination}];
             }
             ret.emplace_back(destination);
             return ret;
