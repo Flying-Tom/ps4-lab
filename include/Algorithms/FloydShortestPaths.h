@@ -31,7 +31,8 @@ public:
             for (auto edge : edges)
             {
                 cost[{edge.GetSource(), edge.GetDestination()}] = cost[{edge.GetDestination(), edge.GetSource()}] = edge.GetWeight();
-                pre[{edge.GetSource(), edge.GetDestination()}] = pre[{edge.GetDestination(), edge.GetSource()}] = edge.GetDestination();
+                pre[{edge.GetSource(), edge.GetDestination()}] = edge.GetSource();
+                pre[{edge.GetDestination(), edge.GetSource()}] = edge.GetDestination();
             }
 
             for (auto k : vertexs)

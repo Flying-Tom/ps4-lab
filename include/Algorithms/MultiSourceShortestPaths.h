@@ -37,12 +37,13 @@ public:
         if (cost.find({source, destination}) != cost.end())
         {
             vector<int> ret;
-            while (source != destination)
+            while (destination != source)
             {
-                ret.emplace_back(source);
-                source = pre[{source, destination}];
+                ret.emplace_back(destination);
+                destination = pre[{source, destination}];
             }
-            ret.emplace_back(destination);
+            ret.emplace_back(source);
+            reverse(ret.begin(), ret.end());
             return ret;
         }
         return std::nullopt;
