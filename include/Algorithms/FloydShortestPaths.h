@@ -27,26 +27,50 @@ public:
         }
 
         isundirected = (total_degree == 2 * edges.size());
-
-        for (auto edge : edges)
+        if (isundirected)
         {
-            cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
-            MultiSourceShortestPaths<TGraph>::path[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
-        }
+            for (auto edge : edges)
+            {
+                cost[{edge.GetSource(), edge.GetDestination()}] = cost[{edge.GetDestination(), edge.GetSource()}] = edge.GetWeight();
+                MultiSourceShortestPaths<TGraph>::path[{edge.GetSource(), edge.GetDestination()}] = MultiSourceShortestPaths<TGraph>::path[{edge.GetDestination(), edge.edge.GetSource()}] = edge.GetDestination();
+            }
 
-        for (auto k : vertexs)
-            for (auto i : vertexs)
-                for (auto j : vertexs)
-                {
-                    if (cost.find({i, k}) == cost.end() || cost.find({k, j}) == cost.end())
-                        continue;
-
-                    if (cost.find({i, j}) == cost.end() || cost[{i, k}] + cost[{k, j}] < cost[{i, j}])
+            for (auto k : vertexs)
+                for (auto i : vertexs)
+                    for (auto j : vertexs)
                     {
-                        cost[{i, j}] = cost[{i, k}] + cost[{k, j}];
-                        MultiSourceShortestPaths<TGraph>::path[{i, j}] = MultiSourceShortestPaths<TGraph>::path[{i, k}];
+                        if (cost.find({i, k}) == cost.end() || cost.find({k, j}) == cost.end())
+                            continue;
+
+                        if (cost.find({i, j}) == cost.end() || cost[{i, k}] + cost[{k, j}] < cost[{i, j}])
+                        {
+                            cost[{i, j}] = cost[{i, k}] + cost[{k, j}];
+                            MultiSourceShortestPaths<TGraph>::path[{i, j}] = MultiSourceShortestPaths<TGraph>::path[{i, k}];
+                        }
                     }
-                }
+        }
+        else
+        {
+            for (auto edge : edges)
+            {
+                cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
+                MultiSourceShortestPaths<TGraph>::path[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
+            }
+
+            for (auto k : vertexs)
+                for (auto i : vertexs)
+                    for (auto j : vertexs)
+                    {
+                        if (cost.find({i, k}) == cost.end() || cost.find({k, j}) == cost.end())
+                            continue;
+
+                        if (cost.find({i, j}) == cost.end() || cost[{i, k}] + cost[{k, j}] < cost[{i, j}])
+                        {
+                            cost[{i, j}] = cost[{i, k}] + cost[{k, j}];
+                            MultiSourceShortestPaths<TGraph>::path[{i, j}] = MultiSourceShortestPaths<TGraph>::path[{i, k}];
+                        }
+                    }
+        }
     };
 
     virtual ~FloydShortestPaths(){};
