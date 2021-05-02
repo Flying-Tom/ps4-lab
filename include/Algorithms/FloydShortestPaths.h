@@ -2,14 +2,14 @@
 #define FLOYDSHORTESTPATH_H
 
 #include <Algorithms/MultiSourceShortestPaths.h>
+#include <iostream>
 template <typename TGraph>
 class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
 {
     typedef typename MultiSourceShortestPaths<TGraph>::TValue TValue;
 
 #define cost MultiSourceShortestPaths<TGraph>::cost
-#define pre MultiSourceShortestPaths<TGraph>::pre
-
+#define path MultiSourceShortestPaths<TGraph>::path
 public:
     FloydShortestPaths() = delete;
 
@@ -30,8 +30,7 @@ public:
             for (auto edge : edges)
             {
                 cost[{edge.GetSource(), edge.GetDestination()}] = cost[{edge.GetDestination(), edge.GetSource()}] = edge.GetWeight();
-                pre[{edge.GetSource(), edge.GetDestination()}] = edge.GetSource();
-                pre[{edge.GetDestination(), edge.GetSource()}] = edge.GetDestination();
+                path[{edge.GetSource(), edge.GetDestination()}] = path[{edge.GetDestination(), edge.GetSource()}] = edge.GetDestination();
             }
 
             for (auto k : vertexs)
@@ -44,8 +43,7 @@ public:
                         if (cost.find({i, j}) == cost.end() || cost[{i, k}] + cost[{k, j}] < cost[{i, j}])
                         {
                             cost[{i, j}] = cost[{j, i}] = cost[{i, k}] + cost[{k, j}];
-                            pre[{i, j}] = pre[{k, j}];
-                            pre[{j, i}] = pre[{k, i}];
+                            path[{i, j}] = path[{i, k}];
                         }
                     }
         }
@@ -54,7 +52,7 @@ public:
             for (auto edge : edges)
             {
                 cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
-                pre[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
+                path[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
             }
 
             for (auto k : vertexs)
@@ -67,7 +65,7 @@ public:
                         if (cost.find({i, j}) == cost.end() || cost[{i, k}] + cost[{k, j}] < cost[{i, j}])
                         {
                             cost[{i, j}] = cost[{i, k}] + cost[{k, j}];
-                            pre[{i, j}] = pre[{k, j}];
+                            path[{i, j}] = path[{i, k}];
                         }
                     }
         }

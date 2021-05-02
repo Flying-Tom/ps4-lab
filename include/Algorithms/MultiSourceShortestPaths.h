@@ -3,8 +3,6 @@
 
 #include <vector>
 #include <optional>
-#include <algorithm>
-#include <iostream>
 
 template <typename TGraph>
 class MultiSourceShortestPaths
@@ -19,7 +17,7 @@ public:
     virtual ~MultiSourceShortestPaths(){};
 
     mutable map<pair<int, int>, TValue> cost;
-    mutable map<pair<int, int>, int> pre;
+    mutable map<pair<int, int>, int> path;
 
 public:
     bool HasPathTo(int source, int destination) const
@@ -39,14 +37,12 @@ public:
         if (cost.find({source, destination}) != cost.end())
         {
             vector<int> ret;
-            while (destination != source)
+            while (source != destination)
             {
-                ret.emplace_back(destination);
-                destination = pre[{source, destination}];
-                cout << "fuck" << endl;
+                ret.emplace_back(source);
+                source = path[{source, destination}];
             }
-            ret.emplace_back(source);
-            reverse(ret.begin(), ret.end());
+            ret.emplace_back(destination);
             return ret;
         }
         return std::nullopt;
