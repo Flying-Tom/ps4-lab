@@ -15,7 +15,7 @@ public:
 
     FloydShortestPaths(const TGraph *graph) : MultiSourceShortestPaths<TGraph>(graph)
     {
-
+        cout << "fuck";
         vector<int> vertexs = graph->GetVertices();
         vector<WeightedEdge<TValue>> edges = graph->GetEdges();
 
