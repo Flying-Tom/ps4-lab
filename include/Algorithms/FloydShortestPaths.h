@@ -20,15 +20,12 @@ public:
         bool isundirected = false;
         int total_degree = 0;
 
-       
         isundirected = (total_degree == 2 * edges.size());
 
         for (auto edge : edges)
         {
             cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
             MultiSourceShortestPaths<TGraph>::path[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
-            if (isundirected)
-                MultiSourceShortestPaths<TGraph>::path[{edge.GetDestination(), edge.GetSource()}] = edge.GetDestination();
         }
 
         for (auto k : vertexs)
@@ -42,11 +39,6 @@ public:
                     {
                         cost[{i, j}] = cost[{i, k}] + cost[{k, j}];
                         MultiSourceShortestPaths<TGraph>::path[{i, j}] = MultiSourceShortestPaths<TGraph>::path[{i, k}];
-                        if (isundirected)
-                        {
-                            cost[{j, i}] = cost[{i, k}] + cost[{k, j}];
-                            MultiSourceShortestPaths<TGraph>::path[{j, i}] = MultiSourceShortestPaths<TGraph>::path[{k, i}];
-                        }
                     }
                 }
     };
