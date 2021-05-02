@@ -7,7 +7,9 @@ template <typename TGraph>
 class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
 {
     typedef typename MultiSourceShortestPaths<TGraph>::TValue TValue;
+
 #define cost MultiSourceShortestPaths<TGraph>::cost
+#define cost MultiSourceShortestPaths<TGraph>::path
 
 public:
     FloydShortestPaths() = delete;
@@ -20,14 +22,13 @@ public:
             for (auto i : vertexs)
                 for (auto j : vertexs)
                 {
-                    if (cost.find({i, j}) == cost.end())
-                        cost[{i, j}] = cost[{i, k}] + cost[{k, j}];
-                    else
+                    if (cost.find({i, k}) == cost.end() || cost.find({k, j}) == cost.end())
+                        continue;
+
+                    if (cost.find({i, j}) == cost.end() || cost[{i, k}] + cost[{k, j}] < cost[{i, j}])
                     {
-                        if (cost.find({i, k}) == cost.end() || cost.find({k, j}) == cost.end())
-                            continue;
-                        if (cost[{i, k}] + cost[{k, j}] < cost[{i, j}])
-                            cost[{i, j}] = cost[{i, k}] + cost[{k, j}];
+                        cost[{i, j}] = cost[{i, k}] + cost[{k, j}];
+                        path[{i, j}] = path[{i, k}];
                     }
                 }
     };

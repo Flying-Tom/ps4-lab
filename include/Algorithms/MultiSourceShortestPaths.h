@@ -17,6 +17,7 @@ public:
     virtual ~MultiSourceShortestPaths(){};
 
     mutable map<pair<int, int>, TValue> cost;
+    mutable map<pair<int, int>, int> path;
 
 public:
     bool HasPathTo(int source, int destination) const
@@ -35,6 +36,13 @@ public:
     {
         if (cost.find({source, destination}) != cost.end())
         {
+            vector<int> ret;
+            while (source != destination)
+            {
+                ret.emplace_back(source);
+                source = path[{source, destination}];
+            }
+            ret.emplace_back(destination);
         }
         return std::nullopt;
     };
