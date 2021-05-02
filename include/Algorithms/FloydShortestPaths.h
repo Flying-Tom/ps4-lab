@@ -20,6 +20,12 @@ public:
         bool isundirected = false;
         int total_degree = 0;
 
+        for (auto v : vertexs)
+        {
+            total_degree += graph->GetDegree(v);
+            cost[{v, v}] = TValue();
+        }
+
         isundirected = (total_degree == 2 * edges.size());
 
         for (auto edge : edges)
