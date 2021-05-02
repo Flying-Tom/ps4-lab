@@ -42,6 +42,7 @@ public:
             {
                 ret.emplace_back(destination);
                 destination = pre[{source, destination}];
+                cout << "fuck" << endl;
             }
             ret.emplace_back(source);
             reverse(ret.begin(), ret.end());
