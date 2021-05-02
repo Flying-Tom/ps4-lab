@@ -41,8 +41,8 @@ int main()
 
     puts("=======ShortestPaths =======");
     MultiSourceShortestPaths<WeightedGraph<int>> *p = new FloydShortestPaths<WeightedGraph<int>>(g);
-    int dis = p->TryGetDistanceTo(1, 12);
-    vector<int> temp = p->TryGetShortestPathTo(1, 12);
+    std::optional<TValue> dis = p->TryGetDistanceTo(1, 12);
+    std::optional<std::vector<int>> temp = p->TryGetShortestPathTo(1, 12);
 
     puts("\n=======================");
 }
