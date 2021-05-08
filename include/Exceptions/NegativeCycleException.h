@@ -9,10 +9,10 @@ protected:
     std::string message;
 
 public:
-    explicit GLException(const std::string &s);
+    explicit NegativeCycleException(const std::string &s);
     virtual std::string GetMessage() const;
 };
 
-ostream &operator<<(ostream &os, const GLException &e);
+ostream &operator<<(ostream &os, const NegativeCycleException &e);
 
 #endif
