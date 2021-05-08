@@ -6,9 +6,6 @@
 template <typename TGraph>
 class DijkstraShortestPaths : public ShortestPaths<TGraph>
 {
-#define cost ShortestPaths<TGraph>::cost
-#define parent ShortestPaths<TGraph>::parent
-
     typedef typename ShortestPaths<TGraph>::TValue TValue;
 
 public:
@@ -19,11 +16,11 @@ public:
         map<int, bool> vis;
         priority_queue<pair<TValue, int>, vector<pair<TValue, int>>, greater<pair<TValue, int>>> Q;
 
-        cost[source] = TValue();
+        ShortestPaths<TGraph>::cost[source] = TValue();
         Q.emplace(TValue(), source);
         while (!Q.empty())
         {
-            const auto [cur_cost, cur_idx] = Q.top();
+            const auto [cur_ShortestPaths<TGraph>::cost, cur_idx] = Q.top();
             Q.pop();
             if (vis.find(cur_idx) != vis.end())
                 continue;
@@ -31,13 +28,13 @@ public:
             vector<WeightedEdge<TValue>> edges = graph->GetOutgoingEdges(cur_idx);
             for (const auto &edge : edges)
             {
-                const TValue new_cost = cur_cost + edge.GetWeight();
+                const TValue new_ShortestPaths<TGraph>::cost = cur_ShortestPaths<TGraph>::cost + edge.GetWeight();
                 const int new_idx = edge.GetDestination();
-                if (cost.find(new_idx) == cost.end() || new_cost < cost[new_idx])
+                if (ShortestPaths<TGraph>::cost.find(new_idx) == ShortestPaths<TGraph>::cost.end() || new_ShortestPaths<TGraph>::cost < ShortestPaths<TGraph>::cost[new_idx])
                 {
-                    Q.emplace(new_cost, new_idx);
-                    parent[new_idx] = cur_idx;
-                    cost[new_idx] = new_cost;
+                    Q.emplace(new_ShortestPaths<TGraph>::cost, new_idx);
+                    ShortestPaths<TGraph>::parent[new_idx] = cur_idx;
+                    ShortestPaths<TGraph>::cost[new_idx] = new_ShortestPaths<TGraph>::cost;
                 }
             }
         }
