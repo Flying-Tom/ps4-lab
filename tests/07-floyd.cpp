@@ -1,5 +1,6 @@
 #include <cassert>
 #include <DataStructures/WeightedGraph.h>
+#include <Algorithms/BellmanFordShortestPaths.h>
 #include <Algorithms/FloydShortestPaths.h>
 using namespace std;
 
@@ -42,8 +43,7 @@ int main()
 
     puts("=======ShortestPaths =======");
     MultiSourceShortestPaths<WeightedGraph<int>> *p = new FloydShortestPaths<WeightedGraph<int>>(g);
-    std::optional<int> dis = p->TryGetDistanceOf(1, 12);
-    std::optional<std::vector<int>> temp = p->TryGetShortestPathOf(1, 12);
+    ShortestPaths<WeightedGraph<int>> *q = new BellmanFordShortestPaths<WeightedGraph<int>>(g, 1);
 
     puts("\n=======================");
 }
