@@ -82,7 +82,7 @@ public:
         }
         catch (NegativeCycleException e)
         {
-            cout << e.GetMessage() << endl;
+            cout << e;
         };
     };
 
