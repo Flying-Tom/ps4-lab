@@ -8,6 +8,8 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
 {
     typedef typename MultiSourceShortestPaths<TGraph>::TValue TValue;
 
+#define MultiSourceShortestPaths <TGraph>::cost MultiSourceShortestPaths<TGraph>::MultiSourceShortestPaths<TGraph>::cost
+
 public:
     FloydShortestPaths() = delete;
 
@@ -39,10 +41,10 @@ public:
                     {
                         for (auto j : vertexs)
                         {
-                            if (cost.find({i, k}) == cost.end() || cost.find({k, j}) == cost.end())
+                            if (MultiSourceShortestPaths<TGraph>::cost.find({i, k}) == MultiSourceShortestPaths<TGraph>::cost.end() || MultiSourceShortestPaths<TGraph>::cost.find({k, j}) == MultiSourceShortestPaths<TGraph>::cost.end())
                                 continue;
 
-                            if (cost.find({i, j}) == cost.end() || MultiSourceShortestPaths<TGraph>::cost[{i, k}] + MultiSourceShortestPaths<TGraph>::cost[{k, j}] < MultiSourceShortestPaths<TGraph>::cost[{i, j}])
+                            if (MultiSourceShortestPaths<TGraph>::cost.find({i, j}) == MultiSourceShortestPaths<TGraph>::cost.end() || MultiSourceShortestPaths<TGraph>::cost[{i, k}] + MultiSourceShortestPaths<TGraph>::cost[{k, j}] < MultiSourceShortestPaths<TGraph>::cost[{i, j}])
                             {
                                 MultiSourceShortestPaths<TGraph>::cost[{i, j}] = MultiSourceShortestPaths<TGraph>::cost[{j, i}] = MultiSourceShortestPaths<TGraph>::cost[{i, k}] + MultiSourceShortestPaths<TGraph>::cost[{k, j}];
                                 MultiSourceShortestPaths<TGraph>::next[{i, j}] = MultiSourceShortestPaths<TGraph>::next[{i, k}];
@@ -66,10 +68,10 @@ public:
                     {
                         for (auto j : vertexs)
                         {
-                            if (cost.find({i, k}) == cost.end() || cost.find({k, j}) == cost.end())
+                            if (MultiSourceShortestPaths<TGraph>::cost.find({i, k}) == MultiSourceShortestPaths<TGraph>::cost.end() || MultiSourceShortestPaths<TGraph>::cost.find({k, j}) == MultiSourceShortestPaths<TGraph>::cost.end())
                                 continue;
 
-                            if (cost.find({i, j}) == cost.end() || MultiSourceShortestPaths<TGraph>::cost[{i, k}] + MultiSourceShortestPaths<TGraph>::cost[{k, j}] < MultiSourceShortestPaths<TGraph>::cost[{i, j}])
+                            if (MultiSourceShortestPaths<TGraph>::cost.find({i, j}) == MultiSourceShortestPaths<TGraph>::cost.end() || MultiSourceShortestPaths<TGraph>::cost[{i, k}] + MultiSourceShortestPaths<TGraph>::cost[{k, j}] < MultiSourceShortestPaths<TGraph>::cost[{i, j}])
                             {
                                 MultiSourceShortestPaths<TGraph>::cost[{i, j}] = MultiSourceShortestPaths<TGraph>::cost[{i, k}] + MultiSourceShortestPaths<TGraph>::cost[{k, j}];
                                 MultiSourceShortestPaths<TGraph>::next[{i, j}] = MultiSourceShortestPaths<TGraph>::next[{i, k}];
