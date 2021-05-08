@@ -55,12 +55,12 @@ public:
             for (auto e : edges)
             {
                 if (cost[e.GetDestination()] > cost[e.GetSource()] + e.GetWeight())
-                    throw NegativeCycleException();
+                    throw NegativeCycleException("BellmanFordShortestPaths");
             }
         }
         catch (NegativeCycleException e)
         {
-            cout << "BellmanFordShortestPaths" << endl;
+            cout << e.message << endl;
         }
     };
 
