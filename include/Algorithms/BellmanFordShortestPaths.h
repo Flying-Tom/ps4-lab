@@ -60,7 +60,7 @@ public:
         }
         catch (NegativeCycleException e)
         {
-            cout << e.message << endl;
+            cout << e.GetMessage() << endl;
         }
     };
 
