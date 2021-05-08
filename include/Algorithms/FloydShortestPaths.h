@@ -52,7 +52,7 @@ public:
                                 next[{j, i}] = next[{j, k}];
                             }
                         }
-                        if (cost[i][i] < TValue())
+                        if (cost[{i, i}] < TValue())
                             throw NegativeCycleException("FloydShortestPaths");
                     }
             }
