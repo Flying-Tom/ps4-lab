@@ -6,9 +6,6 @@
 template <typename TGraph>
 class DijkstraShortestPaths : public ShortestPaths<TGraph>
 {
-#define cost ShortestPaths<TGraph>::cost
-#define ShortestPaths<TGraph>::parent ShortestPaths<TGraph>::ShortestPaths<TGraph>::parent
-
     typedef typename ShortestPaths<TGraph>::TValue TValue;
 
 public:
