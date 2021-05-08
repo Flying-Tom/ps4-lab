@@ -77,7 +77,8 @@ public:
         }
         catch
         {
-        }
+            cout << "FloydShortestPaths" << endl;
+        };
     };
 
     virtual ~FloydShortestPaths(){};
