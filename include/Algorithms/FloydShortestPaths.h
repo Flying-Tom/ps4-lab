@@ -22,7 +22,7 @@ public:
             for (auto v : vertexs)
             {
                 total_degree += graph->GetDegree(v);
-                MultiSourceShortestPaths<TGraph>::cost[{v, v}] = epsilon();
+                MultiSourceShortestPaths<TGraph>::cost[{v, v}] = epsilon<TValue>();
             }
 
             if (total_degree == 2 * edges.size())
@@ -49,7 +49,7 @@ public:
                                 MultiSourceShortestPaths<TGraph>::next[{j, i}] = MultiSourceShortestPaths<TGraph>::next[{j, k}];
                             }
                         }
-                        if (MultiSourceShortestPaths<TGraph>::cost[{i, i}] < epsilon())
+                        if (MultiSourceShortestPaths<TGraph>::cost[{i, i}] < epsilon<TValue>())
                             throw NegativeCycleException("Floyd");
                     }
             }
@@ -75,7 +75,7 @@ public:
                                 MultiSourceShortestPaths<TGraph>::next[{i, j}] = MultiSourceShortestPaths<TGraph>::next[{i, k}];
                             }
                         }
-                        if (MultiSourceShortestPaths<TGraph>::cost[{i, i}] < epsilon())
+                        if (MultiSourceShortestPaths<TGraph>::cost[{i, i}] < epsilon<TValue>())
                             throw NegativeCycleException("Floyd");
                     }
             }

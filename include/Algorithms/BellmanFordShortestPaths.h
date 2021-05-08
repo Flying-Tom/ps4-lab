@@ -32,7 +32,7 @@ public:
                         edges.emplace_back(WeightedEdge(edges[i].GetDestination(), edges[i].GetSource(), edges[i].GetWeight()));
                 }
             }
-            ShortestPaths<TGraph>::cost[source] = epsilon();
+            ShortestPaths<TGraph>::cost[source] = epsilon<TValue>();
 
             for (int i = 1; i < vertexs.size(); i++)
             {

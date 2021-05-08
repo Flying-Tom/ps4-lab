@@ -16,8 +16,8 @@ public:
         map<int, bool> vis;
         priority_queue<pair<TValue, int>, vector<pair<TValue, int>>, greater<pair<TValue, int>>> Q;
 
-        ShortestPaths<TGraph>::cost[source] = epsilon();
-        Q.emplace(epsilon(), source);
+        ShortestPaths<TGraph>::cost[source] = epsilon<TValue>();
+        Q.emplace(epsilon<TValue>(), source);
         while (!Q.empty())
         {
             const auto [cur_cost, cur_idx] = Q.top();
