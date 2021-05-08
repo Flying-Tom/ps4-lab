@@ -78,7 +78,7 @@ public:
                                 next[{i, j}] = next[{i, k}];
                             }
                         }
-                        if (cost[i][i] < TValue())
+                        if (cost[{i, i}] < TValue())
                             throw NegativeCycleException("FloydShortestPaths");
                     }
             }
