@@ -39,6 +39,7 @@ public:
 
                 for (auto k : vertexs)
                     for (auto i : vertexs)
+                    {
                         for (auto j : vertexs)
                         {
                             if (cost.find({i, k}) == cost.end() || cost.find({k, j}) == cost.end())
@@ -51,6 +52,9 @@ public:
                                 next[{j, i}] = next[{j, k}];
                             }
                         }
+                        if (cost[i][i] < TValue())
+                            throw NegativeCycleException();
+                    }
             }
             else
             {
@@ -62,6 +66,7 @@ public:
 
                 for (auto k : vertexs)
                     for (auto i : vertexs)
+                    {
                         for (auto j : vertexs)
                         {
                             if (cost.find({i, k}) == cost.end() || cost.find({k, j}) == cost.end())
@@ -73,6 +78,9 @@ public:
                                 next[{i, j}] = next[{i, k}];
                             }
                         }
+                        if (cost[i][i] < TValue())
+                            throw NegativeCycleException();
+                    }
             }
         }
         catch (NegativeCycleException e)
