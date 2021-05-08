@@ -75,7 +75,7 @@ public:
                         }
             }
         }
-        catch
+        catch (NegativeCycleException e)
         {
             cout << "FloydShortestPaths" << endl;
         };
