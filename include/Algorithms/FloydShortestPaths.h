@@ -53,7 +53,7 @@ public:
                             }
                         }
                         if (cost[i][i] < TValue())
-                            throw NegativeCycleException();
+                            throw NegativeCycleException("FloydShortestPaths");
                     }
             }
             else
