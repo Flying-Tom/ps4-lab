@@ -11,7 +11,7 @@ protected:
 public:
     explicit NegativeCycleException(const std::string &s) : GLException(s)
     {
-        message = s
+        message = s;
     }
     virtual std::string GetMessage() const
     {
