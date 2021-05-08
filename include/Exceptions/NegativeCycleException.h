@@ -7,10 +7,7 @@ class NegativeCycleException : public GLException
 {
 
 public:
-    explicit NegativeCycleException(const std::string &s) : GLException(s)
-    {
-        message = s;
-    }
+    explicit NegativeCycleException(const std::string &s) : GLException(s){};
     virtual std::string GetMessage() const
     {
         return string();
