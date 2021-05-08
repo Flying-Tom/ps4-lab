@@ -52,7 +52,7 @@ public:
             for (auto e : edges)
             {
                 if (ShortestPaths<TGraph>::cost[e.GetDestination()] > ShortestPaths<TGraph>::cost[e.GetSource()] + e.GetWeight())
-                    throw NegativeCycleException("BellmanFordShortestPaths");
+                    throw NegativeCycleException("BellmanFord");
             }
         }
         catch (NegativeCycleException e)
