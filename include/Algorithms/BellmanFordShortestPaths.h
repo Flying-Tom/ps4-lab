@@ -2,6 +2,7 @@
 #define BELLMANFORDSHORTESTPATH_H
 
 #include <Algorithms/ShortestPaths.h>
+#include <Algorithms/Exceptions/NegativeCycleException.h>
 
 template <typename TGraph>
 class BellmanFordShortestPaths : public ShortestPaths<TGraph>
