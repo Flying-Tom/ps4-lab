@@ -11,14 +11,8 @@ protected:
     std::string message;
 
 public:
-    explicit GLException(const std::string &s)
-    {
-        message = s;
-    }
-    virtual std::string GetMessage() const
-    {
-        return string();
-    }
+    explicit GLException(const std::string &s);
+    virtual std::string GetMessage() const;
 };
 
 ostream &operator<<(ostream &os, const GLException &e);
