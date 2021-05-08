@@ -5,14 +5,6 @@
 
 class NegativeCycleException : public GLException
 {
-protected:
-    std::string message;
-
-public:
-    explicit NegativeCycleException(const std::string &s);
-    virtual std::string GetMessage() const;
 };
-
-ostream &operator<<(ostream &os, const NegativeCycleException &e);
 
 #endif
