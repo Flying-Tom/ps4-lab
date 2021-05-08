@@ -50,7 +50,7 @@ public:
                             }
                         }
                         if (MultiSourceShortestPaths<TGraph>::cost[{i, i}] < TValue())
-                            throw NegativeCycleException("FloydShortestPaths");
+                            throw NegativeCycleException("Floyd");
                     }
             }
             else
