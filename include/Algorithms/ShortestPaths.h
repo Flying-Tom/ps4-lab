@@ -5,6 +5,7 @@
 #include <optional>
 #include <queue>
 #include <algorithm>
+#include <Algorithms/epsilon.h>
 
 template <typename TGraph>
 class ShortestPaths

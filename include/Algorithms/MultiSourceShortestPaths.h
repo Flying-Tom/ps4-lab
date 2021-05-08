@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <optional>
+#include <Algorithms/epsilon.h>
 
 template <typename TGraph>
 class MultiSourceShortestPaths
