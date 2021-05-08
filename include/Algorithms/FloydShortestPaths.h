@@ -80,7 +80,7 @@ public:
                     }
             }
         }
-        catch (const NegativeException &e)
+        catch (const NegativeCycleException &e)
         {
             cout << e;
         };
