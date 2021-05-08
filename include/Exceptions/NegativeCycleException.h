@@ -12,7 +12,10 @@ public:
     explicit NegativeCycleException(const std::string &s) : GLException(const std::string &s){
 
                                                             };
-    virtual std::string GetMessage() const {};
+    virtual std::string GetMessage() const
+    {
+        return string();
+    };
 };
 
 #endif
