@@ -2,7 +2,9 @@
 #define BELLMANFORDSHORTESTPATH_H
 
 #include <Algorithms/ShortestPaths.h>
-#include <Algorithms/Exceptions/NegativeCycleException.h>
+#include <Exceptions/NegativeCycleException.h>
+
+NegativeCycleException e;
 
 template <typename TGraph>
 class BellmanFordShortestPaths : public ShortestPaths<TGraph>
@@ -17,37 +19,44 @@ public:
 
     BellmanFordShortestPaths(const TGraph *graph, int source) : ShortestPaths<TGraph>(graph, source)
     {
-        vector<WeightedEdge<TValue>> edges = graph->GetEdges();
-        vector<int> vertexs = graph->GetVertices();
-        int edges_num = 0, total_degree = 0;
-        edges_num = edges.size();
-
-        for (int i = 0; i < vertexs.size(); i++)
-            total_degree += graph->GetDegree(vertexs[i]);
-
-        if (total_degree == 2 * edges_num)
+        try
         {
-            for (int i = 0; i < edges_num; i++)
-            {
-                if (edges[i].GetSource() != edges[i].GetDestination())
-                    edges.emplace_back(WeightedEdge(edges[i].GetDestination(), edges[i].GetSource(), edges[i].GetWeight()));
-            }
-        }
-        cost[source] = TValue();
+            vector<WeightedEdge<TValue>> edges = graph->GetEdges();
+            vector<int> vertexs = graph->GetVertices();
+            int edges_num = 0, total_degree = 0;
+            edges_num = edges.size();
 
-        for (int i = 1; i < vertexs.size(); i++)
-        {
-            for (int j = 0; j < edges.size(); j++)
+            for (int i = 0; i < vertexs.size(); i++)
+                total_degree += graph->GetDegree(vertexs[i]);
+
+            if (total_degree == 2 * edges_num)
             {
-                const int u = edges[j].GetSource();
-                const int v = edges[j].GetDestination();
-                const auto weight = edges[j].GetWeight();
-                if (cost.find(u) != cost.end() && u != v && (cost.find(v) == cost.end() || cost[v] > cost[u] + weight))
+                for (int i = 0; i < edges_num; i++)
                 {
-                    cost[v] = cost[u] + weight;
-                    parent[v] = u;
+                    if (edges[i].GetSource() != edges[i].GetDestination())
+                        edges.emplace_back(WeightedEdge(edges[i].GetDestination(), edges[i].GetSource(), edges[i].GetWeight()));
                 }
             }
+            cost[source] = TValue();
+
+            for (int i = 1; i < vertexs.size(); i++)
+            {
+                for (int j = 0; j < edges.size(); j++)
+                {
+                    const int u = edges[j].GetSource();
+                    const int v = edges[j].GetDestination();
+                    const auto weight = edges[j].GetWeight();
+                    if (cost.find(u) != cost.end() && u != v && (cost.find(v) == cost.end() || cost[v] > cost[u] + weight))
+                    {
+                        cost[v] = cost[u] + weight;
+                        parent[v] = u;
+                    }
+                }
+            }
+        }
+        catch (NegativeCycleException e)
+        {
+            cout << "BellmanFordShortestPaths" << endl;
         }
     };
 

@@ -1,7 +1,7 @@
 #ifndef NEGATIVECYCLE_EXCEPTION
 #define NEGATIVECYCLE
 
-#include <Algorithms/Exceptions/GLException.h>
+#include <Exceptions/GLException.h>
 
 class NegativeCycleException : public GLException
 {
