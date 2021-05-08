@@ -8,8 +8,6 @@ class FloydShortestPaths : public MultiSourceShortestPaths<TGraph>
 {
     typedef typename MultiSourceShortestPaths<TGraph>::TValue TValue;
 
-#define cost MultiSourceShortestPaths<TGraph>::cost
-
 public:
     FloydShortestPaths() = delete;
 
