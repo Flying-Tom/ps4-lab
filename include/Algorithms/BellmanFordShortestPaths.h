@@ -4,8 +4,6 @@
 #include <Algorithms/ShortestPaths.h>
 #include <Exceptions/NegativeCycleException.h>
 
-NegativeCycleException e;
-
 template <typename TGraph>
 class BellmanFordShortestPaths : public ShortestPaths<TGraph>
 {
