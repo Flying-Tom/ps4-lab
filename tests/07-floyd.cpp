@@ -42,8 +42,8 @@ int main()
     g->AddEdge(7, 8, 11);
 
     puts("=======ShortestPaths =======");
-    MultiSourceShortestPaths<WeightedGraph<double>> *p = new FloydShortestPaths<WeightedGraph<double>>(g);
-    ShortestPaths<WeightedGraph<double>> *q = new BellmanFordShortestPaths<WeightedGraph<double>>(g, 1);
+    MultiSourceShortestPaths<WeightedGraph<int>> *p = new FloydShortestPaths<WeightedGraph<int>>(g);
+    ShortestPaths<WeightedGraph<int>> *q = new BellmanFordShortestPaths<WeightedGraph<int>>(g, 1);
 
     puts("\n=======================");
 }
