@@ -9,7 +9,7 @@ protected:
     std::string message;
 
 public:
-    explicit NegativeCycleException(const std::string &s) : GLException(){
+    explicit NegativeCycleException(const std::string &s) : GLException(const std::string &s){
 
                                                             };
     virtual std::string GetMessage() const {};
