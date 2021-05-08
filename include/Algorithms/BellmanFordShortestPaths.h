@@ -51,6 +51,12 @@ public:
                     }
                 }
             }
+
+            for (auto e : edges)
+            {
+                if (cost[e.GetDestination()] > cost[e.GetSource()] + e.GetWeight())
+                    throw NegativeCycleException();
+            }
         }
         catch (NegativeCycleException e)
         {
