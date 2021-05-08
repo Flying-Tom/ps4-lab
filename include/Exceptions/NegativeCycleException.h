@@ -1,5 +1,5 @@
 #ifndef NEGATIVECYCLE_EXCEPTION
-#define NEGATIVECYCLE
+#define NEGATIVECYCLE_EXCEPTION
 
 #include <Exceptions/GLException.h>
 
