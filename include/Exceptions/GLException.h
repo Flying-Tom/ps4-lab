@@ -12,7 +12,10 @@ protected:
 
 public:
     explicit GLException(const std::string &s){};
-    virtual std::string GetMessage() const {};
+    virtual std::string GetMessage() const
+    {
+        return string();
+    };
 };
 
 ostream &operator<<(ostream &os, const GLException &e);
