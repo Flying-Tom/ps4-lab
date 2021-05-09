@@ -49,8 +49,13 @@ public:
 
         for (auto e : edges)
         {
-            if (ShortestPaths<TGraph>::cost[e.GetDestination()] > ShortestPaths<TGraph>::cost[e.GetSource()] + e.GetWeight())
+            const int u = edges[j].GetSource();
+            const int v = edges[j].GetDestination();
+            const auto weight = edges[j].GetWeight();
+            if (ShortestPaths<TGraph>::cost.find(u) != ShortestPaths<TGraph>::cost.end() && u != v && (ShortestPaths<TGraph>::cost.find(v) == ShortestPaths<TGraph>::cost.end() || ShortestPaths<TGraph>::cost[v] > ShortestPaths<TGraph>::cost[u] + weight))
+            {
                 throw NegativeCycleException("Bellman-Ford");
+            }
         }
     };
 
