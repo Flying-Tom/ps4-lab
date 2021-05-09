@@ -4,6 +4,9 @@ project(GraphLibrary)
 find_package(Git)
 
 set(CMAKE_CXX_STANDARD 17)
+
+set (CMAKE_CXX_FLAGS "-gdwarf-2")
+
 include_directories("include")
 file(GLOB sources "source/**/*.cpp")
 add_library(GraphLibrary ${sources})
