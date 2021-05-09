@@ -36,7 +36,6 @@ public:
 
             for (auto k : vertexs)
                 for (auto i : vertexs)
-                {
                     for (auto j : vertexs)
                     {
                         if (MultiSourceShortestPaths<TGraph>::cost.find({i, k}) == MultiSourceShortestPaths<TGraph>::cost.end() || MultiSourceShortestPaths<TGraph>::cost.find({k, j}) == MultiSourceShortestPaths<TGraph>::cost.end())
@@ -49,9 +48,6 @@ public:
                             MultiSourceShortestPaths<TGraph>::next[{j, i}] = MultiSourceShortestPaths<TGraph>::next[{j, k}];
                         }
                     }
-                    if (MultiSourceShortestPaths<TGraph>::cost[{i, i}] < epsilon<TValue>())
-                        throw NegativeCycleException("Floyd");
-                }
         }
         else
         {
@@ -63,7 +59,6 @@ public:
 
             for (auto k : vertexs)
                 for (auto i : vertexs)
-                {
                     for (auto j : vertexs)
                     {
                         if (MultiSourceShortestPaths<TGraph>::cost.find({i, k}) == MultiSourceShortestPaths<TGraph>::cost.end() || MultiSourceShortestPaths<TGraph>::cost.find({k, j}) == MultiSourceShortestPaths<TGraph>::cost.end())
@@ -75,9 +70,12 @@ public:
                             MultiSourceShortestPaths<TGraph>::next[{i, j}] = MultiSourceShortestPaths<TGraph>::next[{i, k}];
                         }
                     }
-                    if (MultiSourceShortestPaths<TGraph>::cost[{i, i}] < epsilon<TValue>())
-                        throw NegativeCycleException("Floyd");
-                }
+        }
+
+        for (auto v : vertexs)
+        {
+            if (MultiSourceShortestPaths<TGraph>::cost[{v, v}] < epsilon<TValue>())
+                throw NegativeCycleException("Floyd");
         }
     };
 
