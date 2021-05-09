@@ -45,17 +45,17 @@ public:
 public:
     bool HasPathTo(int destination) const
     {
-        return ShortestPaths<TGraph>::HasPathto(destination);
+        return this->HasPathto(destination);
     };
 
     std::optional<TValue> TryGetDistanceTo(int destination) const
     {
-        return ShortestPaths<TGraph>::TryGetDistanceTo(destination);
+        return this->TryGetDistanceTo(destination);
     };
 
     std::optional<std::vector<int>> TryGetShortestPathTo(int destination) const
     {
-        return ShortestPaths<TGraph>::TryGetShortestPathTo(destination);
+        return this->TryGetShortestPathTo(destination);
     };
 };
 
