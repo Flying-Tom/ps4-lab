@@ -18,12 +18,6 @@ public:
         vector<WeightedEdge<TValue>> edges = graph->GetEdges();
         int total_degree = 0;
 
-        for (auto v : vertexs)
-        {
-            total_degree += graph->GetDegree(v);
-            MultiSourceShortestPaths<TGraph>::cost[{v, v}] = epsilon<TValue>();
-        }
-
         if (total_degree == 2 * edges.size())
         {
             for (auto edge : edges)
@@ -32,6 +26,12 @@ public:
                 MultiSourceShortestPaths<TGraph>::cost[{edge.GetDestination(), edge.GetSource()}] = edge.GetWeight();
                 MultiSourceShortestPaths<TGraph>::next[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
                 MultiSourceShortestPaths<TGraph>::next[{edge.GetDestination(), edge.GetSource()}] = edge.GetSource();
+            }
+
+            for (auto v : vertexs)
+            {
+                total_degree += graph->GetDegree(v);
+                MultiSourceShortestPaths<TGraph>::cost[{v, v}] = epsilon<TValue>();
             }
 
             for (auto k : vertexs)
@@ -55,6 +55,12 @@ public:
             {
                 MultiSourceShortestPaths<TGraph>::cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
                 MultiSourceShortestPaths<TGraph>::next[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
+            }
+
+            for (auto v : vertexs)
+            {
+                total_degree += graph->GetDegree(v);
+                MultiSourceShortestPaths<TGraph>::cost[{v, v}] = epsilon<TValue>();
             }
 
             for (auto k : vertexs)
