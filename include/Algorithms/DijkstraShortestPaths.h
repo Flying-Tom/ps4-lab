@@ -16,7 +16,7 @@ public:
         map<int, bool> vis;
         priority_queue<pair<TValue, int>, vector<pair<TValue, int>>, greater<pair<TValue, int>>> Q;
 
-        ShortestPaths<TGraph>::cost[source] = epsilon<TValue>();
+        this->cost[source] = epsilon<TValue>();
         Q.emplace(epsilon<TValue>(), source);
         while (!Q.empty())
         {
@@ -30,11 +30,11 @@ public:
             {
                 const TValue new_cost = cur_cost + edge.GetWeight();
                 const int new_idx = edge.GetDestination();
-                if (ShortestPaths<TGraph>::cost.find(new_idx) == ShortestPaths<TGraph>::cost.end() || new_cost < ShortestPaths<TGraph>::cost[new_idx])
+                if (this->cost.find(new_idx) == this->cost.end() || new_cost < this->cost[new_idx])
                 {
                     Q.emplace(new_cost, new_idx);
-                    ShortestPaths<TGraph>::parent[new_idx] = cur_idx;
-                    ShortestPaths<TGraph>::cost[new_idx] = new_cost;
+                    this->parent[new_idx] = cur_idx;
+                    this->cost[new_idx] = new_cost;
                 }
             }
         }
