@@ -26,10 +26,11 @@ int main()
     g->AddVertex(11);
     g->AddVertex(12);
 
-    g->AddEdge(1, 1, -1);
-    g->AddEdge(2, 2, -1);
+    g->AddEdge(1, 2, 1);
+    g->AddEdge(2, 3, 2);
+    g->AddEdge(3, 1, -3);
+
     g->AddEdge(1, 1, 11);
-    g->AddEdge(2, 3, 12);
     g->AddEdge(2, 4, 61);
     g->AddEdge(3, 10, 1);
     g->AddEdge(3, 11, 61);
