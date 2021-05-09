@@ -11,7 +11,7 @@ int main()
 
     g->AddVertex(1);
 
-    g->AddEdge(1, 1, -1);
+    g->AddEdge(1, 1, 1);
 
     puts("=======ShortestPaths =======");
     MultiSourceShortestPaths<WeightedGraph<TYPE>> *p = new FloydShortestPaths<WeightedGraph<TYPE>>(g);
