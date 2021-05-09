@@ -43,7 +43,7 @@ int main()
 
     puts("=======ShortestPaths =======");
     MultiSourceShortestPaths<WeightedGraph<double>> *p = new FloydShortestPaths<WeightedGraph<double>>(g);
-    ShortestPaths<WeightedGraph<double>> *q = new BellmanFordShortestPaths<WeightedGraph<double>>(g, 1);
+    //ShortestPaths<WeightedGraph<double>> *q = new BellmanFordShortestPaths<WeightedGraph<double>>(g, 1);
 
     puts("\n=======================");
 }
