@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cassert>
 #include <DataStructures/WeightedGraph.h>
 #include <Algorithms/BellmanFordShortestPaths.h>
@@ -15,6 +16,6 @@ int main()
 
     puts("=======ShortestPaths =======");
     MultiSourceShortestPaths<WeightedGraph<TYPE>> *p = new FloydShortestPaths<WeightedGraph<TYPE>>(g);
-    cout << p->TryGetDistanceOf(1, 1);
+    cout << p->TryGetDistanceOf(1, 1) << endl;
     puts("\n=======================");
 }
