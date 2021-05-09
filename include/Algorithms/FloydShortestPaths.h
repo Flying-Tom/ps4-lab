@@ -18,6 +18,9 @@ public:
         vector<WeightedEdge<TValue>> edges = graph->GetEdges();
         int total_degree = 0;
 
+        for (auto v : vertexs)
+            total_degree += graph->GetDegree(v);
+
         if (total_degree == 2 * edges.size())
         {
             for (auto edge : edges)
@@ -29,10 +32,7 @@ public:
             }
 
             for (auto v : vertexs)
-            {
-                total_degree += graph->GetDegree(v);
                 MultiSourceShortestPaths<TGraph>::cost[{v, v}] = epsilon<TValue>();
-            }
 
             for (auto k : vertexs)
                 for (auto i : vertexs)
@@ -58,10 +58,7 @@ public:
             }
 
             for (auto v : vertexs)
-            {
-                total_degree += graph->GetDegree(v);
                 MultiSourceShortestPaths<TGraph>::cost[{v, v}] = epsilon<TValue>();
-            }
 
             for (auto k : vertexs)
                 for (auto i : vertexs)
