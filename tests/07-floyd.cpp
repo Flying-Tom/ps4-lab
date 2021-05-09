@@ -3,6 +3,7 @@
 #include <Algorithms/BellmanFordShortestPaths.h>
 #include <Algorithms/FloydShortestPaths.h>
 using namespace std;
+#define TYPE int
 
 void func(int x)
 {
@@ -11,7 +12,7 @@ void func(int x)
 
 int main()
 {
-    WeightedGraph<double> *g = new WeightedGraph<double>;
+    WeightedGraph<TYPE> *g = new WeightedGraph<TYPE>;
 
     g->AddVertex(1);
     g->AddVertex(2);
@@ -42,8 +43,8 @@ int main()
     g->AddEdge(7, 8, 11);
 
     puts("=======ShortestPaths =======");
-    MultiSourceShortestPaths<WeightedGraph<double>> *p = new FloydShortestPaths<WeightedGraph<double>>(g);
-    //ShortestPaths<WeightedGraph<double>> *q = new BellmanFordShortestPaths<WeightedGraph<double>>(g, 1);
+    MultiSourceShortestPaths<WeightedGraph<TYPE>> *p = new FloydShortestPaths<WeightedGraph<TYPE>>(g);
+    //ShortestPaths<WeightedGraph<TYPE>> *q = new BellmanFordShortestPaths<WeightedGraph<TYPE>>(g, 1);
 
     puts("\n=======================");
 }
