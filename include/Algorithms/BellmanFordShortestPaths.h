@@ -30,7 +30,7 @@ public:
                     edges.emplace_back(WeightedEdge(edges[i].GetDestination(), edges[i].GetSource(), edges[i].GetWeight()));
             }
         }
-        ShortestPaths<TGraph>::cost[source] = epsilon<TValue>();
+        this->cost[source] = epsilon<TValue>();
 
         for (int i = 1; i < vertexs.size(); i++)
         {
@@ -39,9 +39,9 @@ public:
                 const int u = edges[j].GetSource();
                 const int v = edges[j].GetDestination();
                 const auto weight = edges[j].GetWeight();
-                if (ShortestPaths<TGraph>::cost.find(u) != ShortestPaths<TGraph>::cost.end() && u != v && (ShortestPaths<TGraph>::cost.find(v) == ShortestPaths<TGraph>::cost.end() || ShortestPaths<TGraph>::cost[v] > ShortestPaths<TGraph>::cost[u] + weight))
+                if (this->cost.find(u) != this->cost.end() && u != v && (this->cost.find(v) == this->cost.end() || this->cost[v] > this->cost[u] + weight))
                 {
-                    ShortestPaths<TGraph>::cost[v] = ShortestPaths<TGraph>::cost[u] + weight;
+                    this->cost[v] = this->cost[u] + weight;
                     ShortestPaths<TGraph>::parent[v] = u;
                 }
             }
@@ -52,7 +52,7 @@ public:
             const int u = e.GetSource();
             const int v = e.GetDestination();
             const auto weight = e.GetWeight();
-            if (ShortestPaths<TGraph>::cost.find(u) != ShortestPaths<TGraph>::cost.end() && u != v && (ShortestPaths<TGraph>::cost.find(v) == ShortestPaths<TGraph>::cost.end() || ShortestPaths<TGraph>::cost[v] > ShortestPaths<TGraph>::cost[u] + weight))
+            if (this->cost.find(u) != this->cost.end() && u != v && (this->cost.find(v) == this->cost.end() || this->cost[v] > this->cost[u] + weight))
                 throw NegativeCycleException("Bellman-Ford");
         }
     };
