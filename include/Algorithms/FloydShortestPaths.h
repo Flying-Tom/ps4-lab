@@ -25,27 +25,27 @@ public:
         {
             for (auto edge : edges)
             {
-                this->cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
-                this->cost[{edge.GetDestination(), edge.GetSource()}] = edge.GetWeight();
-                this->next[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
-                this->next[{edge.GetDestination(), edge.GetSource()}] = edge.GetSource();
+                MultiSourceShortestPaths<TGraph>::cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
+                MultiSourceShortestPaths<TGraph>::cost[{edge.GetDestination(), edge.GetSource()}] = edge.GetWeight();
+                MultiSourceShortestPaths<TGraph>::next[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
+                MultiSourceShortestPaths<TGraph>::next[{edge.GetDestination(), edge.GetSource()}] = edge.GetSource();
             }
 
             for (auto v : vertexs)
-                this->cost[{v, v}] = epsilon<TValue>();
+                MultiSourceShortestPaths<TGraph>::cost[{v, v}] = epsilon<TValue>();
 
             for (auto k : vertexs)
                 for (auto i : vertexs)
                     for (auto j : vertexs)
                     {
-                        if (this->cost.find({i, k}) == this->cost.end() || this->cost.find({k, j}) == this->cost.end())
+                        if (MultiSourceShortestPaths<TGraph>::cost.find({i, k}) == MultiSourceShortestPaths<TGraph>::cost.end() || MultiSourceShortestPaths<TGraph>::cost.find({k, j}) == MultiSourceShortestPaths<TGraph>::cost.end())
                             continue;
 
-                        if (this->cost.find({i, j}) == this->cost.end() || this->cost[{i, k}] + this->cost[{k, j}] < this->cost[{i, j}])
+                        if (MultiSourceShortestPaths<TGraph>::cost.find({i, j}) == MultiSourceShortestPaths<TGraph>::cost.end() || MultiSourceShortestPaths<TGraph>::cost[{i, k}] + MultiSourceShortestPaths<TGraph>::cost[{k, j}] < MultiSourceShortestPaths<TGraph>::cost[{i, j}])
                         {
-                            this->cost[{i, j}] = this->cost[{j, i}] = this->cost[{i, k}] + this->cost[{k, j}];
-                            this->next[{i, j}] = this->next[{i, k}];
-                            this->next[{j, i}] = this->next[{j, k}];
+                            MultiSourceShortestPaths<TGraph>::cost[{i, j}] = MultiSourceShortestPaths<TGraph>::cost[{j, i}] = MultiSourceShortestPaths<TGraph>::cost[{i, k}] + MultiSourceShortestPaths<TGraph>::cost[{k, j}];
+                            MultiSourceShortestPaths<TGraph>::next[{i, j}] = MultiSourceShortestPaths<TGraph>::next[{i, k}];
+                            MultiSourceShortestPaths<TGraph>::next[{j, i}] = MultiSourceShortestPaths<TGraph>::next[{j, k}];
                         }
                     }
         }
@@ -53,31 +53,31 @@ public:
         {
             for (auto edge : edges)
             {
-                this->cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
-                this->next[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
+                MultiSourceShortestPaths<TGraph>::cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
+                MultiSourceShortestPaths<TGraph>::next[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
             }
 
             for (auto v : vertexs)
-                this->cost[{v, v}] = epsilon<TValue>();
+                MultiSourceShortestPaths<TGraph>::cost[{v, v}] = epsilon<TValue>();
 
             for (auto k : vertexs)
                 for (auto i : vertexs)
                     for (auto j : vertexs)
                     {
-                        if (this->cost.find({i, k}) == this->cost.end() || this->cost.find({k, j}) == this->cost.end())
+                        if (MultiSourceShortestPaths<TGraph>::cost.find({i, k}) == MultiSourceShortestPaths<TGraph>::cost.end() || MultiSourceShortestPaths<TGraph>::cost.find({k, j}) == MultiSourceShortestPaths<TGraph>::cost.end())
                             continue;
 
-                        if (this->cost.find({i, j}) == this->cost.end() || this->cost[{i, k}] + this->cost[{k, j}] < this->cost[{i, j}])
+                        if (MultiSourceShortestPaths<TGraph>::cost.find({i, j}) == MultiSourceShortestPaths<TGraph>::cost.end() || MultiSourceShortestPaths<TGraph>::cost[{i, k}] + MultiSourceShortestPaths<TGraph>::cost[{k, j}] < MultiSourceShortestPaths<TGraph>::cost[{i, j}])
                         {
-                            this->cost[{i, j}] = this->cost[{i, k}] + this->cost[{k, j}];
-                            this->next[{i, j}] = this->next[{i, k}];
+                            MultiSourceShortestPaths<TGraph>::cost[{i, j}] = MultiSourceShortestPaths<TGraph>::cost[{i, k}] + MultiSourceShortestPaths<TGraph>::cost[{k, j}];
+                            MultiSourceShortestPaths<TGraph>::next[{i, j}] = MultiSourceShortestPaths<TGraph>::next[{i, k}];
                         }
                     }
         }
 
         for (auto v : vertexs)
         {
-            if (this->cost[{v, v}] < epsilon<TValue>())
+            if (MultiSourceShortestPaths<TGraph>::cost[{v, v}] < epsilon<TValue>())
                 throw NegativeCycleException("Floyd");
         }
     };
@@ -87,17 +87,17 @@ public:
 public:
     bool HasPathOf(int source, int destination) const
     {
-        return this->HasPathOf(source, destination);
+        return MultiSourceShortestPaths<TGraph>::HasPathOf(source, destination);
     };
 
     std::optional<TValue> TryGetDistanceOf(int source, int destination) const
     {
-        return this->TryGetDistanceOf(source, destination);
+        return MultiSourceShortestPaths<TGraph>::TryGetDistanceOf(source, destination);
     };
 
     std::optional<std::vector<int>> TryGetShortestPathOf(int source, int destination) const
     {
-        return this->TryGetShortestPathOf(source, destination);
+        return MultiSourceShortestPaths<TGraph>::TryGetShortestPathOf(source, destination);
     };
 };
 
