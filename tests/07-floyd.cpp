@@ -3,7 +3,7 @@
 #include <Algorithms/BellmanFordShortestPaths.h>
 #include <Algorithms/FloydShortestPaths.h>
 using namespace std;
-#define TYPE int
+#define TYPE double
 
 void func(int x)
 {
