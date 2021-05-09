@@ -42,7 +42,7 @@ public:
                 if (this->cost.find(u) != this->cost.end() && u != v && (this->cost.find(v) == this->cost.end() || this->cost[v] > this->cost[u] + weight))
                 {
                     this->cost[v] = this->cost[u] + weight;
-                    ShortestPaths<TGraph>::parent[v] = u;
+                    this->parent[v] = u;
                 }
             }
         }
@@ -62,17 +62,17 @@ public:
 public:
     bool HasPathTo(int destination) const
     {
-        return ShortestPaths<TGraph>::HasPathto(destination);
+        return this->HasPathto(destination);
     };
 
     std::optional<TValue> TryGetDistanceTo(int destination) const
     {
-        return ShortestPaths<TGraph>::TryGetDistanceTo(destination);
+        return this->TryGetDistanceTo(destination);
     };
 
     std::optional<std::vector<int>> TryGetShortestPathTo(int destination) const
     {
-        return ShortestPaths<TGraph>::TryGetShortestPathTo(destination);
+        return this->TryGetShortestPathTo(destination);
     };
 };
 
