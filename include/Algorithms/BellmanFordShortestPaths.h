@@ -53,9 +53,7 @@ public:
             const int v = e.GetDestination();
             const auto weight = e.GetWeight();
             if (ShortestPaths<TGraph>::cost.find(u) != ShortestPaths<TGraph>::cost.end() && u != v && (ShortestPaths<TGraph>::cost.find(v) == ShortestPaths<TGraph>::cost.end() || ShortestPaths<TGraph>::cost[v] > ShortestPaths<TGraph>::cost[u] + weight))
-            {
                 throw NegativeCycleException("Bellman-Ford");
-            }
         }
     };
 
