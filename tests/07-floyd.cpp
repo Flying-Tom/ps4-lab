@@ -15,5 +15,6 @@ int main()
 
     puts("=======ShortestPaths =======");
     MultiSourceShortestPaths<WeightedGraph<TYPE>> *p = new FloydShortestPaths<WeightedGraph<TYPE>>(g);
+    cout << p->TryGetDistanceOf(1, 1);
     puts("\n=======================");
 }
