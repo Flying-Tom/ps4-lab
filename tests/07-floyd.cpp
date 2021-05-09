@@ -27,7 +27,7 @@ int main()
     g->AddVertex(11);
     g->AddVertex(12);
 
-    g->AddEdge(1, 1, -1);
+    g->AddEdge(1, 1, 0);
     //g->AddEdge(2, 1, 1);
     /*
     g->AddEdge(1, 1, 11);
