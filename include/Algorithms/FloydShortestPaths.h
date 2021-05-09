@@ -27,8 +27,8 @@ public:
             {
                 this->cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
                 this->cost[{edge.GetDestination(), edge.GetSource()}] = edge.GetWeight();
-                MultiSourceShortestPaths<TGraph>::next[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
-                MultiSourceShortestPaths<TGraph>::next[{edge.GetDestination(), edge.GetSource()}] = edge.GetSource();
+                this->next[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
+                this->next[{edge.GetDestination(), edge.GetSource()}] = edge.GetSource();
             }
 
             for (auto v : vertexs)
@@ -44,8 +44,8 @@ public:
                         if (this->cost.find({i, j}) == this->cost.end() || this->cost[{i, k}] + this->cost[{k, j}] < this->cost[{i, j}])
                         {
                             this->cost[{i, j}] = this->cost[{j, i}] = this->cost[{i, k}] + this->cost[{k, j}];
-                            MultiSourceShortestPaths<TGraph>::next[{i, j}] = MultiSourceShortestPaths<TGraph>::next[{i, k}];
-                            MultiSourceShortestPaths<TGraph>::next[{j, i}] = MultiSourceShortestPaths<TGraph>::next[{j, k}];
+                            this->next[{i, j}] = this->next[{i, k}];
+                            this->next[{j, i}] = this->next[{j, k}];
                         }
                     }
         }
@@ -54,7 +54,7 @@ public:
             for (auto edge : edges)
             {
                 this->cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
-                MultiSourceShortestPaths<TGraph>::next[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
+                this->next[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
             }
 
             for (auto v : vertexs)
@@ -70,7 +70,7 @@ public:
                         if (this->cost.find({i, j}) == this->cost.end() || this->cost[{i, k}] + this->cost[{k, j}] < this->cost[{i, j}])
                         {
                             this->cost[{i, j}] = this->cost[{i, k}] + this->cost[{k, j}];
-                            MultiSourceShortestPaths<TGraph>::next[{i, j}] = MultiSourceShortestPaths<TGraph>::next[{i, k}];
+                            this->next[{i, j}] = this->next[{i, k}];
                         }
                     }
         }
@@ -87,17 +87,17 @@ public:
 public:
     bool HasPathOf(int source, int destination) const
     {
-        return MultiSourceShortestPaths<TGraph>::HasPathOf(source, destination);
+        return this->HasPathOf(source, destination);
     };
 
     std::optional<TValue> TryGetDistanceOf(int source, int destination) const
     {
-        return MultiSourceShortestPaths<TGraph>::TryGetDistanceOf(source, destination);
+        return this->TryGetDistanceOf(source, destination);
     };
 
     std::optional<std::vector<int>> TryGetShortestPathOf(int source, int destination) const
     {
-        return MultiSourceShortestPaths<TGraph>::TryGetShortestPathOf(source, destination);
+        return this->TryGetShortestPathOf(source, destination);
     };
 };
 
