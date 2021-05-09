@@ -3,7 +3,7 @@
 #include <Algorithms/BellmanFordShortestPaths.h>
 #include <Algorithms/FloydShortestPaths.h>
 using namespace std;
-#define TYPE double
+#define TYPE int
 
 void func(int x)
 {
@@ -27,7 +27,8 @@ int main()
     g->AddVertex(11);
     g->AddVertex(12);
 
-    g->AddEdge(1, 2, -1);
+    g->AddEdge(1, 1, -1);
+    //g->AddEdge(2, 1, 1);
     /*
     g->AddEdge(1, 1, 11);
     g->AddEdge(2, 3, 12);
