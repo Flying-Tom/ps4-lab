@@ -28,13 +28,15 @@ public:
         {
             for (auto edge : edges)
             {
-                MultiSourceShortestPaths<TGraph>::cost[{edge.GetSource(), edge.GetDestination()}] = MultiSourceShortestPaths<TGraph>::cost[{edge.GetDestination(), edge.GetSource()}] = edge.GetWeight();
+                MultiSourceShortestPaths<TGraph>::cost[{edge.GetSource(), edge.GetDestination()}] = edge.GetWeight();
+                MultiSourceShortestPaths<TGraph>::cost[{edge.GetDestination(), edge.GetSource()}] = edge.GetWeight();
                 MultiSourceShortestPaths<TGraph>::next[{edge.GetSource(), edge.GetDestination()}] = edge.GetDestination();
                 MultiSourceShortestPaths<TGraph>::next[{edge.GetDestination(), edge.GetSource()}] = edge.GetSource();
             }
 
             for (auto k : vertexs)
                 for (auto i : vertexs)
+                {
                     for (auto j : vertexs)
                     {
                         if (MultiSourceShortestPaths<TGraph>::cost.find({i, k}) == MultiSourceShortestPaths<TGraph>::cost.end() || MultiSourceShortestPaths<TGraph>::cost.find({k, j}) == MultiSourceShortestPaths<TGraph>::cost.end())
@@ -47,6 +49,9 @@ public:
                             MultiSourceShortestPaths<TGraph>::next[{j, i}] = MultiSourceShortestPaths<TGraph>::next[{j, k}];
                         }
                     }
+                    if (MultiSourceShortestPaths<TGraph>::cost[{i, i}] < epsilon<TValue>())
+                        throw NegativeCycleException("Floyd");
+                }
         }
         else
         {
@@ -58,6 +63,7 @@ public:
 
             for (auto k : vertexs)
                 for (auto i : vertexs)
+                {
                     for (auto j : vertexs)
                     {
                         if (MultiSourceShortestPaths<TGraph>::cost.find({i, k}) == MultiSourceShortestPaths<TGraph>::cost.end() || MultiSourceShortestPaths<TGraph>::cost.find({k, j}) == MultiSourceShortestPaths<TGraph>::cost.end())
@@ -69,13 +75,9 @@ public:
                             MultiSourceShortestPaths<TGraph>::next[{i, j}] = MultiSourceShortestPaths<TGraph>::next[{i, k}];
                         }
                     }
-        }
-
-        for (auto v : vertexs)
-        {
-
-            if (MultiSourceShortestPaths<TGraph>::cost[{v, v}] < epsilon<TValue>())
-                throw NegativeCycleException("Floyd");
+                    if (MultiSourceShortestPaths<TGraph>::cost[{i, i}] < epsilon<TValue>())
+                        throw NegativeCycleException("Floyd");
+                }
         }
     };
 
