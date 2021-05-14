@@ -44,7 +44,7 @@ int main()
 
     puts("======= BiparititeGraphMatching =======");
     BipariteGraphMatching<UndirectedWeightedGraph<TYPE>> *p = new BipariteGraphMatching<UndirectedWeightedGraph<TYPE>>(g1, {1, 2, 3, 4}, {5, 6, 7, 8});
-    //BipariteGraphMatching<UndirectedGraph> *q = new BipariteGraphMatching<UndirectedGraph>(g1, {1, 2, 3, 4}, {5, 6, 7, 8});
+    BipariteGraphMatching<UndirectedGraph> *q = new BipariteGraphMatching<UndirectedGraph>(g2, {1, 2, 3, 4}, {5, 6, 7, 8});
 
     cout << p->SumOfMatches() << endl;
     cout << p->FindMatchOf(1).value() << endl;
