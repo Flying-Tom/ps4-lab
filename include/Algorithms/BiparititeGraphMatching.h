@@ -83,7 +83,7 @@ public:
                 rec[p.first] = p.second;
                 rec[p.second] = p.first;
             }
-        }
+        };
     };
     int SumOfMatches() const
     {
