@@ -8,8 +8,8 @@ template <typename TGraph>
 class BipariteGraphMatching
 {
 private:
-    map<int, bool> used;
-    map<int, int> belong;
+    mutable map<int, bool> used;
+    mutable map<int, int> belong;
     int max_matches;
     std::unordered_set<int> L, R;
 
