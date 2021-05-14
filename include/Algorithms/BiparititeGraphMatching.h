@@ -1,19 +1,18 @@
 #ifndef GRAPHLIBRARY_BIPARTITEGRAPHMATCHING_H
 #define GRAPHLIBRARY_BIPARTITEGRAPHMATCHING_H
 #include <unordered_set>
-#include <optional>
 #include <unordered_map>
+#include <optional>
 #include <map>
 
 template <typename TGraph>
 class BipariteGraphMatching
 {
 private:
+    std::unordered_set<int> L, R;
     mutable std::map<int, bool> used;
     mutable std::map<int, int> belong;
-    mutable std::map<int, int> rec;
     int matches_sum;
-    std::unordered_set<int> L, R;
 
 private:
     bool find(const TGraph *g, int x)
@@ -33,20 +32,15 @@ private:
         }
         return false;
     }
-
-public:
-    BipariteGraphMatching(const TGraph *g, std::unordered_set<int> left, std::unordered_set<int> right)
+    void check()
     {
-        matches_sum = 0;
-        L = left;
-        R = right;
-        for (auto v : left)
+        for (auto v : L)
         {
-            if (right.find(v) != right.end())
+            if (R.find(v) != R.end())
                 throw std::invalid_argument("There exists an intersection between left and right!");
         }
 
-        for (auto x : left)
+        for (auto x : L)
         {
             if (!g->ContainsVertex(x))
                 throw std::invalid_argument("Left set has unexpected point!");
@@ -57,7 +51,7 @@ public:
                     throw std::invalid_argument("A point in Left connects to unexpected point!");
             }
         }
-        for (auto x : right)
+        for (auto x : R)
         {
             if (!g->ContainsVertex(x))
                 throw std::invalid_argument("Right set has unexpected point!");
@@ -68,7 +62,15 @@ public:
                     throw std::invalid_argument("A point in Right connects to unexpected point!");
             }
         }
+    }
 
+public:
+    BipariteGraphMatching(const TGraph *g, std::unordered_set<int> left, std::unordered_set<int> right)
+    {
+        matches_sum = 0;
+        L = left;
+        R = right;
+        check();
         for (auto v : L)
         {
             used.clear();
