@@ -32,6 +32,6 @@ int main()
     BipariteGraphMatching<WeightedGraph<TYPE>> *p = new BipariteGraphMatching<WeightedGraph<TYPE>>(g1, {1, 2, 3, 4}, {5, 6, 7, 8});
 
     cout << p->SumOfMatches() << endl;
-    cout << p->FindMatchOf(1) << endl;
+    cout << p->FindMatchOf(1).value() << endl;
     puts("\n=======================");
 }
