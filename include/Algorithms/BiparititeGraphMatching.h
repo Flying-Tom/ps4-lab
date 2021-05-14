@@ -3,14 +3,13 @@
 #include <unordered_set>
 #include <optional>
 #include <map>
-using namespace std;
 
 template <typename TGraph>
 class BipariteGraphMatching
 {
 private:
-    mutable map<int, bool> used;
-    mutable map<int, int> belong;
+    map<int, bool> used;
+    map<int, int> belong;
     int max_matches;
     std::unordered_set<int> L, R;
 
