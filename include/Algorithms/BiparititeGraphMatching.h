@@ -88,7 +88,9 @@ public:
     };
     std::optional<int> FindMatchOf(int idx) const
     {
-        if (belong.find(idx) == belong.end() || (L.find(idx) == L.end() && R.find(idx) == R.end()))
+        if (L.find(idx) == L.end() && R.find(idx) == R.end())
+            return std::nullopt;
+        if (belong.find(idx) == belong.end())
             return std::nullopt;
         return belong[idx];
     };
