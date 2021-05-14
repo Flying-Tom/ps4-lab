@@ -51,3 +51,6 @@ target_link_libraries(Test06 GraphLibrary)
 
 add_executable(Test07 tests/07-floyd.cpp)
 target_link_libraries(Test07 GraphLibrary)
+
+add_executable(Test08 tests/08-Biparite.cpp)
+target_link_libraries(Test08 GraphLibrary)
