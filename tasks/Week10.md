@@ -20,7 +20,19 @@
 
 由于负环难以定义，所以抛出的异常中不需要包含负环。但为了方便潜在的用户debug，异常中需包含当前正在运行的算法名（分别是`Bellman-Ford`和`Floyd`）。（这样，如果用户在运行一个非常复杂的算法时遇到异常，他就可以通过异常中的信息，确定异常发生在哪个函数的内部）
 
-你throw的异常中可以包含任意你觉得可能有助于debug的信息，我们只会通过`operator<<(std::ostream&, const GLException&)`对结果进行评判。
+你throw的异常的结构体里可以包含任意你觉得可能有助于debug的信息，我们只会通过`operator<<(std::ostream&, const GLException&)`对结果进行评判，因此你要确保`cout`的输出结果只包含算法名。
+
+评判方式类似于：
+
+```c++
+try {
+    // 建图、跑算法
+} catch(const NegativeException& e) {
+    cout << e;
+}
+```
+
+所以，如果运行的是Bellman-Ford算法，你要确保`cout`打印出的值为`Bellman-Ford`；如果运行的是Floyd算法，你要确保`cout`打印出的值为`Floyd`（都不包含回车或括号）。
 
 ### 浮点误差
 
