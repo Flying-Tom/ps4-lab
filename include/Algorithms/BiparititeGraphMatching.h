@@ -70,7 +70,7 @@ public:
                 }
             }
 
-            for (auto v : left)
+            for (auto v : L)
             {
                 used.clear();
                 if (find(g, v))
