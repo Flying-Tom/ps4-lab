@@ -11,6 +11,7 @@ private:
     map<int, bool> used;
     map<int, int> belong;
     int max_matches;
+    std::unordered_set<int> L, R;
 
 private:
     bool find(const TGraph *g, int x)
@@ -18,7 +19,7 @@ private:
         for (auto e : g->GetOutgoingEdges(x))
         {
             int y = e.GetDestination();
-            if (used.find(y) == used.end())
+            if (R.find(y) != R.end() && used.find(y) == used.end())
             {
                 used[y] = true;
                 if (belong.find(y) == belong.end() || find(belong.find(y)))
@@ -31,19 +32,41 @@ private:
         return false;
     }
 
-    void hungarian(){
-
-    };
-
 public:
     BipariteGraphMatching(const TGraph *g, std::unordered_set<int> left, std::unordered_set<int> right)
     {
-        max_matches = 0;
-        for (auto v : left)
+        try
         {
-            used.clear();
-            if (find(g, v))
-                max_matches++;
+            max_matches = 0;
+            L = left;
+            R = right;
+            for (auto v : left)
+            {
+                if (right.find(v) != right.end)
+                    throw std::invalid_argument;
+            }
+
+            for (auto v : left)
+            {
+                if (!g->ContainsVertex(v))
+                    throw std::invalid_argument;
+            }
+            for (auto v : right)
+            {
+                if (!g->ContainsVertex(v))
+                    throw std::invalid_argument;
+            }
+
+                        for (auto v : left)
+            {
+                used.clear();
+                if (find(g, v))
+                    max_matches++;
+            }
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << e.what() << '\n';
         }
     };
     int SumOfMatches() const
