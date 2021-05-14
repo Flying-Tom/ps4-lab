@@ -46,15 +46,27 @@ public:
                     throw std::invalid_argument("There exists an intersection between left and right!");
             }
 
-            for (auto v : left)
+            for (auto x : left)
             {
-                if (!g->ContainsVertex(v))
+                if (!g->ContainsVertex(x))
                     throw std::invalid_argument("Left set has unexpected point!");
+                vector<int> temp = g->GetNeighbors(x);
+                for (auto y : temp)
+                {
+                    if (R.find(y) == R.end())
+                        throw std::invalid_argument("A point in Left connects to unexpected point!");
+                }
             }
-            for (auto v : right)
+            for (auto x : right)
             {
-                if (!g->ContainsVertex(v))
+                if (!g->ContainsVertex(x))
                     throw std::invalid_argument("Right set has unexpected point!");
+                vector<int> temp = g->GetNeighbors(x);
+                for (auto y : temp)
+                {
+                    if (L.find(y) == L.end())
+                        throw std::invalid_argument("A point in Right connects to unexpected point!");
+                }
             }
 
             for (auto v : left)
