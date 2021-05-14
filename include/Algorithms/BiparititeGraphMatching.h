@@ -7,8 +7,10 @@
 template <typename TGraph>
 class BipariteGraphMatching
 {
+private:
     map<int, bool> used;
     map<int, int> belong;
+    int max_matches;
 
 private:
     bool find(const TGraph *g, int x)
@@ -34,14 +36,30 @@ private:
     };
 
 public:
-    BipariteGraphMatching(const TGraph *g, std::unordered_set<int> left, std::unordered_set<int> right){
-
+    BipariteGraphMatching(const TGraph *g, std::unordered_set<int> left, std::unordered_set<int> right)
+    {
+        max_matches = 0;
+        vector<int> vertexs = g->GetVertices();
+        for (auto v : vertexs)
+        {
+            used.clear();
+            if (find(g, v))
+                max_matches++;
+        }
     };
-    int SumOfMatches() const {
-
+    int SumOfMatches() const
+    {
+        return max_matches;
     };
-    std::optional<int> FindMatchOf(int idx) const {
-
+    std::optional<int> FindMatchOf(int idx) const
+    {
+        vector<int> ret;
+        for (auto p : belong)
+        {
+            if (p.second == idx)
+                ret.emplace_back(p.first);
+        }
+        return ret;
     };
 };
 
