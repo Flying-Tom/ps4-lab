@@ -37,53 +37,50 @@ private:
 public:
     BipariteGraphMatching(const TGraph *g, std::unordered_set<int> left, std::unordered_set<int> right)
     {
-        try
+        matches_sum = 0;
+        L = left;
+        R = right;
+        for (auto v : left)
         {
-            matches_sum = 0;
-            L = left;
-            R = right;
-            for (auto v : left)
-            {
-                if (right.find(v) != right.end())
-                    throw std::invalid_argument("There exists an intersection between left and right!");
-            }
+            if (right.find(v) != right.end())
+                throw std::invalid_argument("There exists an intersection between left and right!");
+        }
 
-            for (auto x : left)
+        for (auto x : left)
+        {
+            if (!g->ContainsVertex(x))
+                throw std::invalid_argument("Left set has unexpected point!");
+            std::vector<int> temp = g->GetNeighbors(x);
+            for (auto y : temp)
             {
-                if (!g->ContainsVertex(x))
-                    throw std::invalid_argument("Left set has unexpected point!");
-                std::vector<int> temp = g->GetNeighbors(x);
-                for (auto y : temp)
-                {
-                    if (R.find(y) == R.end())
-                        throw std::invalid_argument("A point in Left connects to unexpected point!");
-                }
+                if (R.find(y) == R.end())
+                    throw std::invalid_argument("A point in Left connects to unexpected point!");
             }
-            for (auto x : right)
+        }
+        for (auto x : right)
+        {
+            if (!g->ContainsVertex(x))
+                throw std::invalid_argument("Right set has unexpected point!");
+            std::vector<int> temp = g->GetNeighbors(x);
+            for (auto y : temp)
             {
-                if (!g->ContainsVertex(x))
-                    throw std::invalid_argument("Right set has unexpected point!");
-                std::vector<int> temp = g->GetNeighbors(x);
-                for (auto y : temp)
-                {
-                    if (L.find(y) == L.end())
-                        throw std::invalid_argument("A point in Right connects to unexpected point!");
-                }
+                if (L.find(y) == L.end())
+                    throw std::invalid_argument("A point in Right connects to unexpected point!");
             }
+        }
 
-            for (auto v : L)
-            {
-                used.clear();
-                if (find(g, v))
-                    matches_sum++;
-            }
+        for (auto v : L)
+        {
+            used.clear();
+            if (find(g, v))
+                matches_sum++;
+        }
 
-            for (auto p : belong)
-            {
-                rec[p.first] = p.second;
-                rec[p.second] = p.first;
-            }
-        };
+        for (auto p : belong)
+        {
+            rec[p.first] = p.second;
+            rec[p.second] = p.first;
+        }
     };
     int SumOfMatches() const
     {
