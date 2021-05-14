@@ -8,36 +8,27 @@ using namespace std;
 
 int main()
 {
-    UndirectedWeightedGraph<TYPE> *g = new UndirectedWeightedGraph<TYPE>;
+    UndirectedWeightedGraph<TYPE> *g1 = new UndirectedWeightedGraph<TYPE>;
 
-    g->AddVertex(1);
-    g->AddVertex(2);
-    g->AddVertex(3);
-    g->AddVertex(4);
-    g->AddVertex(5);
-    g->AddVertex(6);
-    g->AddVertex(7);
-    g->AddVertex(8);
-    g->AddVertex(9);
-    g->AddVertex(10);
-    g->AddVertex(11);
-    g->AddVertex(12);
+    g1->AddVertex(1);
+    g1->AddVertex(2);
+    g1->AddVertex(3);
+    g1->AddVertex(4);
+    g1->AddVertex(5);
+    g1->AddVertex(6);
+    g1->AddVertex(7);
+    g1->AddVertex(8);
+    g1->AddVertex(9);
+    g1->AddVertex(10);
+    g1->AddVertex(11);
+    g1->AddVertex(12);
 
-    g->AddEdge(1, 2, 1);
-    g->AddEdge(1, 1, 11);
-    g->AddEdge(2, 3, 12);
-    g->AddEdge(2, 4, 61);
-    g->AddEdge(3, 10, 1);
-    g->AddEdge(3, 11, 61);
-    g->AddEdge(4, 12, 21);
-    g->AddEdge(1, 5, 11);
-    g->AddEdge(5, 6, 13);
-    g->AddEdge(6, 7, 13);
-    g->AddEdge(6, 8, 12);
-    g->AddEdge(5, 9, 13);
-    g->AddEdge(7, 8, 11);
+    g1->AddEdge(1, 5, 1);
+    g1->AddEdge(2, 6, 1);
+    g1->AddEdge(3, 7, 1);
+    g1->AddEdge(4, 8, 1);
 
     puts("======= BiparititeGraphMatching =======");
-    BipariteGraphMatching<WeightedGraph<TYPE>> *p = new BipariteGraphMatching<WeightedGraph<TYPE>>(g, {1, 2}, {3, 4});
+    BipariteGraphMatching<WeightedGraph<TYPE>> *p = new BipariteGraphMatching<WeightedGraph<TYPE>>(g1, {1, 2, 3, 4}, {5, 6, 7, 8});
     puts("\n=======================");
 }
