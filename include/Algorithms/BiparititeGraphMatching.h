@@ -42,7 +42,7 @@ public:
             R = right;
             for (auto v : left)
             {
-                if (right.find(v) != right.end)
+                if (right.find(v) != right.end())
                     throw std::invalid_argument("There exists an intersection between left and right!");
             }
 
