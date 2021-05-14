@@ -11,6 +11,7 @@ class BipariteGraphMatching
 private:
     mutable std::map<int, bool> used;
     mutable std::map<int, int> belong;
+    mutable std::map<int, int> rec;
     int matches_sum;
     std::unordered_set<int> L, R;
 
@@ -76,6 +77,12 @@ public:
                 if (find(g, v))
                     matches_sum++;
             }
+
+            for (auto p : belong)
+            {
+                rec[p.first] = p.second;
+                rec[p.second] = p.first;
+            }
         }
         catch (const std::exception &e)
         {
@@ -90,9 +97,9 @@ public:
     {
         if (L.find(idx) == L.end() && R.find(idx) == R.end())
             return std::nullopt;
-        if (belong.find(idx) == belong.end())
+        if (rec.find(idx) == rec.end())
             return std::nullopt;
-        return belong[idx];
+        return rec[idx];
     };
 };
 
