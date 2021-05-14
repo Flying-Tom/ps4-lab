@@ -2,7 +2,7 @@
 #define GRAPHLIBRARY_BIPARTITEGRAPHMATCHING_H
 #include <unordered_set>
 #include <optional>
-#include <map>
+#include <unordered_map>
 
 template <typename TGraph>
 class BipariteGraphMatching
