@@ -78,8 +78,8 @@ public:
 
         for (auto p : belong)
         {
-            rec[p.first] = p.second;
-            rec[p.second] = p.first;
+            belong[p.first] = p.second;
+            belong[p.second] = p.first;
         }
     };
     int SumOfMatches() const
@@ -88,9 +88,9 @@ public:
     };
     std::optional<int> FindMatchOf(int idx) const
     {
-        if ((L.find(idx) == L.end() && R.find(idx) == R.end()) || rec.find(idx) == rec.end())
+        if ((L.find(idx) == L.end() && R.find(idx) == R.end()) || belong.find(idx) == belong.end())
             return std::nullopt;
-        return rec[idx];
+        return belong[idx];
     };
 };
 
