@@ -22,7 +22,7 @@ private:
             if (R.find(y) != R.end() && used.find(y) == used.end())
             {
                 used[y] = true;
-                if (belong.find(y) == belong.end() || find(belong.find(y)))
+                if (belong.find(y) == belong.end() || find(belong[y]))
                 {
                     belong[y] = x;
                     return true;
