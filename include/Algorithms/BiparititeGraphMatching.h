@@ -32,7 +32,7 @@ private:
         }
         return false;
     }
-    void check()
+    void check(const TGraph *g)
     {
         for (auto v : L)
         {
@@ -70,7 +70,7 @@ public:
         matches_sum = 0;
         L = left;
         R = right;
-        check();
+        check(g);
         for (auto v : L)
         {
             used.clear();
