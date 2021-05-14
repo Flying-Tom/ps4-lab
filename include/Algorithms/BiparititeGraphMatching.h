@@ -84,10 +84,6 @@ public:
                 rec[p.second] = p.first;
             }
         }
-        catch (const std::exception &e)
-        {
-            std::cerr << e.what() << '\n';
-        }
     };
     int SumOfMatches() const
     {
@@ -95,9 +91,7 @@ public:
     };
     std::optional<int> FindMatchOf(int idx) const
     {
-        if (L.find(idx) == L.end() && R.find(idx) == R.end())
-            return std::nullopt;
-        if (rec.find(idx) == rec.end())
+        if ((L.find(idx) == L.end() && R.find(idx) == R.end()) || rec.find(idx) == rec.end())
             return std::nullopt;
         return rec[idx];
     };
