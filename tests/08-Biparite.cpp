@@ -38,6 +38,6 @@ int main()
     g->AddEdge(7, 8, 11);
 
     puts("======= BiparititeGraphMatching =======");
-    BipariteGraphMatching<WeightedGraph<TYPE>> *p = new BipariteGraphMatching<WeightedGraph<TYPE>>(g, {1, 2}, {2, 4});
+    BipariteGraphMatching<WeightedGraph<TYPE>> *p = new BipariteGraphMatching<WeightedGraph<TYPE>>(g, {1, 2}, {3, 4});
     puts("\n=======================");
 }
