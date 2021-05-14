@@ -50,7 +50,7 @@ public:
             {
                 if (!g->ContainsVertex(x))
                     throw std::invalid_argument("Left set has unexpected point!");
-                vector<int> temp = g->GetNeighbors(x);
+                std::vector<int> temp = g->GetNeighbors(x);
                 for (auto y : temp)
                 {
                     if (R.find(y) == R.end())
@@ -61,7 +61,7 @@ public:
             {
                 if (!g->ContainsVertex(x))
                     throw std::invalid_argument("Right set has unexpected point!");
-                vector<int> temp = g->GetNeighbors(x);
+                std::vector<int> temp = g->GetNeighbors(x);
                 for (auto y : temp)
                 {
                     if (L.find(y) == L.end())
