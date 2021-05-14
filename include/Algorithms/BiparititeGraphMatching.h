@@ -43,21 +43,21 @@ public:
             for (auto v : left)
             {
                 if (right.find(v) != right.end)
-                    throw std::invalid_argument;
+                    throw std::invalid_argument("There exists an intersection between left and right!");
             }
 
             for (auto v : left)
             {
                 if (!g->ContainsVertex(v))
-                    throw std::invalid_argument;
+                    throw std::invalid_argument("Left set has unexpected point!");
             }
             for (auto v : right)
             {
                 if (!g->ContainsVertex(v))
-                    throw std::invalid_argument;
+                    throw std::invalid_argument("Right set has unexpected point!");
             }
 
-                        for (auto v : left)
+            for (auto v : left)
             {
                 used.clear();
                 if (find(g, v))
