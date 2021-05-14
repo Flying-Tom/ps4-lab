@@ -39,6 +39,5 @@ int main()
 
     puts("======= BiparititeGraphMatching =======");
     BipariteGraphMatching<WeightedGraph<TYPE>> *p = new BipariteGraphMatching<WeightedGraph<TYPE>>(g);
-    cout << p->TryGetDistanceOf(1, 1).value();
     puts("\n=======================");
 }
