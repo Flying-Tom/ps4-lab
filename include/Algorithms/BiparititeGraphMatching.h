@@ -39,8 +39,7 @@ public:
     BipariteGraphMatching(const TGraph *g, std::unordered_set<int> left, std::unordered_set<int> right)
     {
         max_matches = 0;
-        vector<int> vertexs = g->GetVertices();
-        for (auto v : vertexs)
+        for (auto v : left)
         {
             used.clear();
             if (find(g, v))
@@ -53,13 +52,9 @@ public:
     };
     std::optional<int> FindMatchOf(int idx) const
     {
-        vector<int> ret;
-        for (auto p : belong)
-        {
-            if (p.second == idx)
-                ret.emplace_back(p.first);
-        }
-        return ret;
+        if (belong.find(idx) != belong.end())
+            return belong[idx];
+        return std::nullopt;
     };
 };
 
