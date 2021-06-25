@@ -1,16 +1,10 @@
 # Graph Library
 
-This is the project for Problem Solving IV in Nanjing University.
+This is the project for Problem Solving IV in Nanjing University and finished by FlyingTom.
 
 The project is to create a C++ shared library implementing graph data structure and algorithms.
 
 ## Get Started
-
-```shell
-$ git clone https://git.doowzs.com/PS4/CodeBase.git Lab
-```
-
-## Compile
 
 On Windows, install CLion or Visual Studio and open project folder.
 
@@ -22,21 +16,14 @@ $ cmake -DCMAKE_BUILD_TYPE=Release ..
 $ make
 ```
 
-## Submit
+## Tasks
 
-To submit manually, remove all files except `.git` and create a zip archive of your project folder, then upload it to online judge. The archive should not exceed 10MiB in size and its content looks like:
+- Abstraction and encapsulation
+- Inheritance
+- Virtual Function
+- Generics and Templates
+- Static method
+- Constructor and Destructor
+- Template Metaprogramming
+- Exception
 
-```
-XXXXXX.zip
-  - Lab (any folder)
-    - .git
-```
-
-or (supports after doowzs/DotOJ#4)
-
-```
-XXXXXX.zip
-  - .git
-```
-
-On Linux/macOS, run `make submit TOKEN=token` or submit manually.
