@@ -29,28 +29,8 @@ add_custom_command(TARGET GraphLibrary POST_BUILD
 
 # Your custom tests below
 
-add_executable(Test01 tests/01-hello-world.cpp)
-target_link_libraries(Test01 GraphLibrary)
-
-add_executable(Test02 tests/02-hello-world.cpp)
-target_link_libraries(Test02 GraphLibrary)
+add_executable(Test tests/hello-world.cpp)
+target_link_libraries(Test GraphLibrary)
 
 
-add_executable(Test03 tests/03-hello-world.cpp)
-target_link_libraries(Test03 GraphLibrary)
 
-#add_executable(Test04 tests/04-hello-world.cpp)
-#target_link_libraries(Test04 GraphLibrary)
-
-#add_executable(Test05 tests/05-ShortestPaths.cpp)
-#target_link_libraries(Test05 GraphLibrary)
-
-add_executable(Test06 tests/06-remake.cpp)
-target_link_libraries(Test06 GraphLibrary)
-
-
-add_executable(Test07 tests/07-floyd.cpp)
-target_link_libraries(Test07 GraphLibrary)
-
-add_executable(Test08 tests/08-Biparite.cpp)
-target_link_libraries(Test08 GraphLibrary)
